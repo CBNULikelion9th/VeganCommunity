@@ -1,0 +1,29 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+
+<h1>post_id: {{post.title}}</h1>
+
+{% if post.image %}
+<p><img src="{{ post.image.url }}" alt="사진이 불러와지지 않음"></p>
+
+<!-- <img src="이미지가 저장된 경로" alt="사진이 불러와지지 않음"> -->
+{% endif %}
+{% if post.image2 %}
+<p><img src="{{ post.image2.url }}" alt="사진이 불러와지지 않음"></p>
+
+{% endif %}
+</p>
+
+
+<p>
+    {{ post.content}}
+</p>
+
+<small>{{ post.updated_at}}</small>
+<br>
+<a href="{% url 'post_edit' post.id %}"><input type="button" value="수정"></a>
+<a href="{% url 'post_list' %}"><input type="button" value="목록"></a>
+<a href="{% url 'post_delete' post.id %}">삭제</a>
+
+{% endblock content %}

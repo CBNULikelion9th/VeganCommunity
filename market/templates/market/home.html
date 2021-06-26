@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'market/base.html' %}
+
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+            <meta charset="UTF-8">
+            <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>메인페이지</title>
+    </head>
+        <body>
+        <div class="maintag">
+            <h3>농부님이신가요?</h3>
+        <h3>나들목 장터를 구경하세요!</h3>
+        </div>
+            <div class="main_img">
+                <!-- <a href="{% url 'farmer_notice' %}" class="visit" title="pic">                 -->
+                    <a href="{% url 'market_new' %}" class="visit" title="pic">                
+                    <img src="/static/img/farmer.png" class="img2" style="width: 700px; height: 700px; object-fit: cover;" >
+                </a>
+                
+                <a href="{% url 'market_list' %}" title="srip">                
+                    <img src="/static/img/buy-online.png" class="img2" style="width: 700px; height: 700px; object-fit: cover;">
+                </a>
+                
+
+                <!-- <img alt="White LinkedIn Icon" style="width: 24px; height: 24px; object-fit: cover;" src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_48,h_48,al_c,q_85,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.webp"> -->
+               <!-- <div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div> -->
+            </div>
+        
+        </body>
+
+</html>    
+
+{% endblock content %}

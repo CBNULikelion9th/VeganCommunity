@@ -1,0 +1,31 @@
+{% load static %}
+<div class=all>
+<head>
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <div class="title1">
+
+    <h1>방명록 list</h1>
+    </div>      
+
+
+<table class="table">
+    <tbody>
+        {% for post in post_list %}
+        <tr>
+            <td>{{post.id }}</td>
+            <td><a href="{% url 'market_detail' post.id %}" class=list>{{ post.title }}</a></td>
+            <td>{{ post.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+<br>
+<br>
+<a href="{% url 'market_new' %}"><input type="button" value="상품 등록하기" class=button></a>
+<hr>
+</div>

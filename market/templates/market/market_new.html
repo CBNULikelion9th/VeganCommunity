@@ -1,0 +1,14 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+
+
+<h1> market_new 함수가 실행하는 페이지</h1>
+
+<form action="{% url 'market_new' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>사진 : <input type="file" name ="image2"></p>
+     {{ form.as_p }}    <!-- form을 p태그형태로 -->
+    <input type="submit" value='생성'>
+</form>
+{% endblock content %}
