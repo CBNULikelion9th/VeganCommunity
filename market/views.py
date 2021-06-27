@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm #CommentForm
 
@@ -25,18 +25,27 @@ def market_detail(request, post_id ):
     return render(request, 'market/market_detail.html', context)
 
 def market_new(request):
-    return render(request, 'market/market_new.html')
+    if request.method == 'GET':
+        form = PostForm()
 
-# def market_detail(request, post_id):
-#     post = Post.objects.get(id=post_id)#(post_id=post_id)
-
-#     context = {
-#             'post': post,
+    elif request.method == 'POST':
+        #포스트 : 사용자가 입력한 데이터를 저장하는 부분
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            #post = form.save(ommit=true) user가 없어서 error
+            # post = form.save(commit=False)
+            # print(post)
+            # post.user = request.user
+             #post.id가 생성됨
+            
+            post_after_commit = post.save()
+            print(post_after_comit)
+        return redirect('market_detail', post_id = post_after_commit.id)
+            
+    return render(request, 'market/market_new.html', {
+        
+    })
     
-#         # 'post_id': 1,
-#     }
-#     return render(request, 'market/market_detail.html', context)
-
 
 # def market_new(request):
 #     if request.method == 'GET':
@@ -49,7 +58,6 @@ def market_new(request):
 #             post.user = request.user
 #             post.save()
 #             return redirect('market_detail', post_id =post.id)
-#             # return redirect('post_detail', post_id=post.id)
 #     return render(request, 'market/market_new.html', {
 #         'form' : form,
 #     })

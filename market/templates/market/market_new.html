@@ -1,14 +1,35 @@
 {% extends 'market/base.html' %}
 
 {% block content %}
+{% load static %}
 
-
-<h1> market_new 함수가 실행하는 페이지</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="new_form">
+<h3> Uproad New product </h3>
 
 <form action="{% url 'market_new' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
+    <div>
+        <input type="checkbox" id="check_button1" class="check">
+        <label for="check_button1">유기농</label>
+    </div>
+    <div>
+        <input type="checkbox" id="check_button2" class="check">
+        <label for="check_button2">자연농</label>
+    </div>
+    <div>
+        <input type="checkbox" id="check_button3" class="check">
+        <label for="check_button2">일반농</label>
+    </div>
     <p>사진 : <input type="file" name ="image2"></p>
+    <p>제목 : <input type="text" name ="title"></p>
+    <p>작성자 : <input type="text" name ="writer"></p>
+    <p> 농부님의 농작물을 소개해주세요! </p> <textarea name ="" id="" cols="60" rows="30"></textarea>
+
+
      {{ form.as_p }}    <!-- form을 p태그형태로 -->
+     <br>
     <input type="submit" value='생성'>
 </form>
+</div>
 {% endblock content %}

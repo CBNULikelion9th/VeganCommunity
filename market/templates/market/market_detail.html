@@ -11,9 +11,20 @@
 {% endif %}
 {% if post.image2 %}
 <p><img src="{{ post.image2.url }}" alt="사진이 불러와지지 않음"></p>
-
 {% endif %}
 </p>
+<h1>{{ post.title }}</h1>
+<!-- {{post.update_counter}} -->
+<hr>
+
+{{ post.content }} <br>
+
+<h3>
+조회수 : {{post.view_count}}
+</h3>
+<hr>
+
+<a href="{% url 'market_list' %}">목록으로</a>
 
 
 <p>
@@ -22,8 +33,6 @@
 
 <small>{{ post.updated_at}}</small>
 <br>
-<a href="{% url 'post_edit' post.id %}"><input type="button" value="수정"></a>
-<a href="{% url 'post_list' %}"><input type="button" value="목록"></a>
-<a href="{% url 'post_delete' post.id %}">삭제</a>
+<a href="{% url 'market_list' %}"><input type="button" value="목록"></a>
 
 {% endblock content %}

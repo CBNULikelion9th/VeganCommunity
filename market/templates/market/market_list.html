@@ -1,22 +1,24 @@
 {% load static %}
 <div class=all>
 <head>
-    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta charset="UTF-8">
 
 </head>
 <body>
     <div class="title1">
 
-    <h1>방명록 list</h1>
-    </div>      
+    <!-- <h1>나들목 장터 상품들을 구경하세요:)</h1> -->
+        <h1> Welcome to Na-deul-mok ! </h1>
+</div>      
 
 
 <table class="table">
     <tbody>
-        {% for post in post_list %}
+        {% for post in market_list %}
         <tr>
-            <td>{{post.id }}</td>
+            <td>{{ post.id }}</td>
+            <!-- <a href="{{post.id}}">{{ post.title }}</a> -->
             <td><a href="{% url 'market_detail' post.id %}" class=list>{{ post.title }}</a></td>
             <td>{{ post.updated_at }}</td>
         </tr>
