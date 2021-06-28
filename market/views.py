@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm #CommentForm
+from django.utils import timezone
 
 def market_home(request):
     return render(request, 'market/home.html')
+
 
 def farmer_notice(request):
     return render(request, 'market/farmer_notice.html')
@@ -17,75 +19,67 @@ def market_list(request):
 
 def market_detail(request, post_id ):
     post = Post.objects.get(id=post_id)
+    post.save()
+    default_view_count = post.view_count
+    post.view_count = default_view_count + 1
+    return render(request, 'market/market_detail.html', {
+        'post':post,
+    })
 
-    context = {
-            'post': 'post',
-        
-    }
-    return render(request, 'market/market_detail.html', context)
+# def market_new(request):
+#     form = PostForm()
+#     return render(request, 'market/market_new.html',{'form':form })
 
 def market_new(request):
+    form = PostForm(request.POST, request.FILES)
     if request.method == 'GET':
         form = PostForm()
-
-    elif request.method == 'POST':
-        #포스트 : 사용자가 입력한 데이터를 저장하는 부분
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            #post = form.save(ommit=true) user가 없어서 error
-            # post = form.save(commit=False)
-            # print(post)
-            # post.user = request.user
-             #post.id가 생성됨
-            
-            post_after_commit = post.save()
-            print(post_after_comit)
-        return redirect('market_detail', post_id = post_after_commit.id)
-            
-    return render(request, 'market/market_new.html', {
-        
-    })
     
+    elif request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
 
-# def market_new(request):
-#     if request.method == 'GET':
-#         form = PostForm()
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            image = form.cleaned_data['image']
+            post = Post.objects.create(title=title, content=content, image=image)
+            return redirect('market_detail', post_id=post.id)
+    return render(request, 'market/market_new.html',{'form':form })
 
-#     elif request.method == 'POST':
-#         form = PostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.user = request.user
-#             post.save()
-#             return redirect('market_detail', post_id =post.id)
-#     return render(request, 'market/market_new.html', {
-#         'form' : form,
-#     })
-
-#2
-# def market_detail(request, post_id ):
-#     post = Post.objects.get(id=post_id)
-
-#     context = {
-#             'post': post,
-#         # 'post_id': 1,
-#         # 'post': post,
-#     }
-#     return render(request, 'market/market_detail.html', context)
+def market_create(request):
+    
+    new_post= Post()
+    new_post.title = request.POST['title']
+    new_post.writer = request.POST['writer']
+    new_post.body = request.POST['body']
+    new_post.image = request.FILES['image']
+    new_post.pub_date = timezone.now()
+    new_post.save()
+    return redirect('market_detail', new_post.id)
 
 
 # def market_new(request):
 #     if request.method == 'GET':
 #         form = PostForm()
-
 #     elif request.method == 'POST':
 #         #포스트 : 사용자가 입력한 데이터를 저장하는 부분
 #         form = PostForm(request.POST, request.FILES)
 #         if form.is_valid():
-#             #post = form.save(ommit=true) user가 없어서 error
-#             post = form.save(commit=False)
-#             post.user = request.user
-#             post.save() #post.id가 생성됨
+#             #post = form.save(commit=true) user가 없어서 error
+#             # post = form.save(commit=False)
+#             # print(post)
+#             # post.user = request.user
+#             # post.save() #post.id가 생성됨    
+#             post_after_commit = post.save()
+#             print(post_after_commit)
+#             return redirect('market_detail', post_id = post_after_commit.id)
+            
+#     return render(request, 'market/market_new.html', {
+#         'form' : form,
+#     })
+    
+
+
 
             # title = form.cleaned_data['title']
             # content = form.cleaned_data['content']
@@ -116,8 +110,6 @@ def market_comment(request,  post_id):
     return render(request, 'blog/comment2.html',{
         'form': form,
     })
-
-
 
 
 

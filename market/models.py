@@ -5,13 +5,15 @@ from django.conf import settings
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
+    writer = models.CharField(max_length=100, default="")
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(blank=True, upload_to='blog')
+    image = models.ImageField(blank=True, upload_to='blog/', null=True)
     #question = models.ForeignKey(Question, Null=True, blank=True ,on_delete=models.CASCADE) 
     #answer = models.ForeignKey(Answer, Null=True, blank=True, on_delete=models.CASCADE)
-    
+    view_count = models.IntegerField(default=0)
+
 
     def __str__(self): 
         return f'{self.title}'

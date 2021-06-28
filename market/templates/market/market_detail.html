@@ -2,29 +2,25 @@
 
 {% block content %}
 
-<h1>post_id: {{post.title}}</h1>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+
+</head>
+<h2>{{post.title}}</h2>
 
 {% if post.image %}
 <p><img src="{{ post.image.url }}" alt="사진이 불러와지지 않음"></p>
 
-<!-- <img src="이미지가 저장된 경로" alt="사진이 불러와지지 않음"> -->
 {% endif %}
 {% if post.image2 %}
 <p><img src="{{ post.image2.url }}" alt="사진이 불러와지지 않음"></p>
 {% endif %}
 </p>
-<h1>{{ post.title }}</h1>
 <!-- {{post.update_counter}} -->
 <hr>
 
-{{ post.content }} <br>
-
-<h3>
-조회수 : {{post.view_count}}
-</h3>
-<hr>
-
-<a href="{% url 'market_list' %}">목록으로</a>
 
 
 <p>
@@ -32,7 +28,9 @@
 </p>
 
 <small>{{ post.updated_at}}</small>
+<h5>조회수 : {{post.view_count}}</h5>
 <br>
-<a href="{% url 'market_list' %}"><input type="button" value="목록"></a>
+
+<a href="{% url 'market_list' %}"><input type="button" value="장터로 돌아가기"></a>
 
 {% endblock content %}

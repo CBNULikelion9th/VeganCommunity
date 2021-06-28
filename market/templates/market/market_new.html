@@ -7,27 +7,26 @@
 <div class="new_form">
 <h3> Uproad New product </h3>
 
-<form action="{% url 'market_new' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'market_create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
-        <input type="checkbox" id="check_button1" class="check">
+    <span>
+        <input type="checkbox" id="check_button1" class="check" name="organic">
         <label for="check_button1">유기농</label>
-    </div>
-    <div>
-        <input type="checkbox" id="check_button2" class="check">
+    </span>
+    <span>
+        <input type="checkbox" id="check_button2" class="check" name="nature">
         <label for="check_button2">자연농</label>
-    </div>
-    <div>
-        <input type="checkbox" id="check_button3" class="check">
+    </span>
+    <span>
+        <input type="checkbox" id="check_button3" class="check" name="usual">
         <label for="check_button2">일반농</label>
-    </div>
-    <p>사진 : <input type="file" name ="image2"></p>
+    </span>
+    <p>사진 : <input type="file" name ="image"></p>
     <p>제목 : <input type="text" name ="title"></p>
     <p>작성자 : <input type="text" name ="writer"></p>
-    <p> 농부님의 농작물을 소개해주세요! </p> <textarea name ="" id="" cols="60" rows="30"></textarea>
+    <p> 농부님의 농작물을 소개해주세요! </p> <textarea name ="body" id="" cols="60" rows="30"></textarea>
 
-
-     {{ form.as_p }}    <!-- form을 p태그형태로 -->
+     <!-- {{ form.as_p }}    form을 p태그형태로 -->
      <br>
     <input type="submit" value='생성'>
 </form>

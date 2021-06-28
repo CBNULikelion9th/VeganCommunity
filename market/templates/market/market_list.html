@@ -1,3 +1,7 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+
 {% load static %}
 <div class=all>
 <head>
@@ -13,14 +17,28 @@
 </div>      
 
 
-<table class="table">
+<!-- <table class="table"> -->
+    <table class="table table-success table-striped">
+
     <tbody>
         {% for post in market_list %}
         <tr>
             <td>{{ post.id }}</td>
+            <!-- <td><img src="..." class="rounded float-start" alt="..."> -->
+            
+            <td>{% if post.image %}
+            <p><img src="{{ blog.image.url }}" class="rounded float-start" alt="사진이 불러와지지 않음"></p>
+            {% endif %}</td>
+            <!-- <img src="..." class="rounded mx-auto d-block" alt="...">
+            <img src="..." class="rounded float-end" alt="..."> -->
+            </td>
+
             <!-- <a href="{{post.id}}">{{ post.title }}</a> -->
             <td><a href="{% url 'market_detail' post.id %}" class=list>{{ post.title }}</a></td>
+            <td>{{ post.writer }}</td>
             <td>{{ post.updated_at }}</td>
+            <td>조회수 : {{post.view_count}}</td>
+
         </tr>
         {% endfor %}
     </tbody>
@@ -31,3 +49,5 @@
 <a href="{% url 'market_new' %}"><input type="button" value="상품 등록하기" class=button></a>
 <hr>
 </div>
+
+{% endblock content %}
