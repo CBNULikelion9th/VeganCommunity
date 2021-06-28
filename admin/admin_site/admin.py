@@ -16,6 +16,7 @@ class FoodAdmin(admin.ModelAdmin):
 
 class MarketGoodsAdmin(admin.ModelAdmin):
     list_display = ('user_name', 'food_name',)
+    fields = ('__all__',)
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Vegan_Store, VeganStoreAdmin)

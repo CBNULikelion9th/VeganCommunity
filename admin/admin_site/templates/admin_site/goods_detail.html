@@ -19,6 +19,7 @@
         {% if good.image %}
         <img src="{{good.image.url}}">
         {% endif %}
+        <p>Feature: {{good.feature}}</p>
         <p>Content: {{good.content}}</p>
         <br>
         <a href="{% url 'good_list' %}" class="btn btn-secondary">리스트</a>

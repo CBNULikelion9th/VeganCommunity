@@ -19,6 +19,12 @@ FEATURE = (
     ('사찰 음식', '사찰 음식'),
 )
 
+GOODS_FEATURE = (
+    ('농산물', '농산물'),
+    ('제철 과일', '제철 과일'),
+    ('기타', '기타'),
+)
+
 class User(models.Model):
     authority = models.CharField(max_length=10, choices=(('master', 'master'), ('user', 'user'),))
     user_id = models.CharField(max_length=50)
@@ -42,7 +48,6 @@ class Food(models.Model):
     all_nutrition = models.TextField()
     allegy_nutrition = models.TextField()
     Feature = MultiSelectField(choices=FEATURE, blank=True)
-    # 다중 선택 가능하게 하기
     # 주소, 대체품 리스트 형태로 구현
 
 class Food_Review(models.Model):
@@ -54,7 +59,7 @@ class Market_Goods(models.Model):
     user_name = models.CharField(max_length=50)
     food_name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    # 농산물, 제철과일, 기타 다중 선택
+    feature = models.CharField(max_length=10, choices=GOODS_FEATURE)
     content = models.TextField()
 
 class Goods_Comment(models.Model):
