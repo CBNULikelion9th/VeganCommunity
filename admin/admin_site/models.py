@@ -43,6 +43,12 @@ class Store_Review(models.Model):
     star = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     review = models.TextField()
 
+class User_Custom_Store(models.Model):
+    name = models.CharField(max_length=50)
+    vegan_step = models.CharField(max_length=10, choices=STEP)
+    address = models.CharField(max_length=100)
+    field = models.CharField(max_length=10, choices=STORE)
+
 class Food(models.Model):
     name = models.CharField(max_length=50)
     all_nutrition = models.TextField()
@@ -53,7 +59,7 @@ class Food(models.Model):
 class Food_Review(models.Model):
     food = models.ForeignKey(Food, on_delete=models.CASCADE, related_name='review')
     star = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-    comment = models.TextField()
+    review = models.TextField()
 
 class Market_Goods(models.Model):
     user_name = models.CharField(max_length=50)

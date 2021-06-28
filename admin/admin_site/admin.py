@@ -9,6 +9,9 @@ class VeganStoreAdmin(admin.ModelAdmin):
     list_display = ('name', 'vegan_step')
     fields = ('__all__',)
 
+class CustomStoreAdmin(admin.ModelAdmin):
+    list_display = ('name', 'address')
+    fields = ('__all__',)
 
 class FoodAdmin(admin.ModelAdmin):
     list_display = ('name',)

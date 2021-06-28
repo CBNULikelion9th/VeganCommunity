@@ -22,6 +22,26 @@
         <a href="{% url 'food_list' %}" class="btn btn-secondary">리스트</a>
         <a href="{% url 'food_update' food.id %}" class="btn btn-secondary">수정</a>
         <a href="{% url 'food_delete' food.id %}" class="btn btn-secondary">삭제</a>
+
+        <hr>
+        <h3>Reviews</h3>
+        <a href="{% url 'food_review_create' food.id %}" class="btn btn-secondary">후기 작성</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>star</th>
+                <th>review</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for review in reviews %}
+              <tr>
+                  <td>{{review.star}}</td>
+                  <td>{{review.review}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+          </table>
     </section>
 </body>
 </html>

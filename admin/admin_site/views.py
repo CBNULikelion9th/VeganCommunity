@@ -83,6 +83,12 @@ def review_create(request, id):
     context = {'form': form, 'id': id, 'store': store}
     return render(request, 'admin_site/review_create.html', context)
 
+def review_list(request):
+    list = Store_Review.objects.all()
+    context = {
+        'list': list,
+    }
+    return render(request, 'admin_site/review_list.html', context)
 
 def vegan_store_delete(request, id):
     store = Vegan_Store.objects.get(id=id)
@@ -113,6 +119,49 @@ def vegan_store_update(request, id):
 
     return render(request, 'admin_site/vegan_store_update.html', {'store':store, 'form':form})
 
+def custom_store_list(request):
+    list = User_Custom_Store.objects.all()
+    context = {
+        'list': list,
+    }
+    return render(request, 'admin_site/custom_store_list.html', context)
+
+def custom_store_detail(request, id):
+    store = User_Custom_Store.objects.get(id=id)
+    context = {
+        'store': store,
+    }
+    return render(request, 'admin_site/custom_store_detail.html', context)
+
+def custom_store_delete(request, id):
+    store = User_Custom_Store.objects.get(id=id)
+    store.delete()
+    return redirect('custom_store_list')
+
+def custom_store_new(request):
+    if request.method == "POST":
+        form = CustomStoreForm(request.POST)
+        if form.is_valid():
+            store = form.save()
+        return redirect('custom_store_detail', store.id)
+    else:
+        form = CustomStoreForm()
+    
+    return render(request, 'admin_site/custom_store_new.html', {'form': form})
+
+def custom_store_update(request, id):
+    store = User_Custom_Store.objects.get(id=id)
+
+    if request.method == "POST":
+        form = CustomStoreForm(request.POST, instance=store)
+        if form.is_valid():
+            form.save()
+            return redirect('custom_store_detail', store.id)
+    else:
+        form = CustomStoreForm(instance=store)
+
+    return render(request, 'admin_site/custom_store_update.html', {'store':store, 'form':form})
+
 def food_list(request):
     list = Food.objects.all()
     context = {
@@ -122,10 +171,38 @@ def food_list(request):
 
 def food_detail(request, id):
     food = Food.objects.get(id=id)
+    if request.method == "POST":
+        review_form = FoodReviewForm(request.POST)
+        if review_form.is_valid():
+            reviews = review_form.save()
+    
+    review_form = FoodReviewForm()
+    reviews = food.review.all()
+
+    return render(request, 'admin_site/food_detail.html', {
+        'food': food, 'review_form': review_form, 'reviews': reviews,
+    })
+
+def food_review_create(request, id):
+    food = Food.objects.get(id=id)
+    if request.method == "POST":
+        form = FoodReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.food_id = id
+            review.save()
+            return redirect('food_detail', id)
+    else:
+        form = FoodReviewForm()
+    context = {'form': form, 'id': id, 'food': food}
+    return render(request, 'admin_site/food_review_create.html', context)
+
+def food_review_list(request):
+    list = Food_Review.objects.all()
     context = {
-        'food': food,
+        'list': list,
     }
-    return render(request, 'admin_site/food_detail.html', context)
+    return render(request, 'admin_site/food_review_list.html', context)
 
 def food_delete(request, id):
     food = Food.objects.get(id=id)
@@ -165,10 +242,38 @@ def good_list(request):
 
 def good_detail(request, id):
     good = Market_Goods.objects.get(id=id)
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comments = comment_form.save()
+    
+    comment_form = CommentForm()
+    comments = good.comment.all()
+
+    return render(request, 'admin_site/goods_detail.html', {
+        'good': good, 'comment_form': comment_form, 'comments': comments,
+    })
+
+def comment_create(request, id):
+    good = Market_Goods.objects.get(id=id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.goods_id = id
+            comment.save()
+            return redirect('good_detail', id)
+    else:
+        form = CommentForm()
+    context = {'form': form, 'id': id, 'good': good}
+    return render(request, 'admin_site/comment_create.html', context)
+
+def comment_list(request):
+    list = Goods_Comment.objects.all()
     context = {
-        'good': good,
+        'list': list,
     }
-    return render(request, 'admin_site/goods_detail.html', context)
+    return render(request, 'admin_site/comment_list.html', context)
 
 def good_delete(request, id):
     good = Market_Goods.objects.get(id=id)

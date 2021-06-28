@@ -25,6 +25,26 @@
         <a href="{% url 'good_list' %}" class="btn btn-secondary">리스트</a>
         <a href="{% url 'good_update' good.id %}" class="btn btn-secondary">수정</a>
         <a href="{% url 'good_delete' good.id %}" class="btn btn-secondary">삭제</a>
+
+        <hr>
+        <h3>Comments</h3>
+        <a href="{% url 'comment_create' good.id %}" class="btn btn-secondary">댓글 작성</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for comment in comments %}
+              <tr>
+                  <td>{{comment.name}}</td>
+                  <td>{{comment.comment}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+          </table>
     </section>
 </body>
 </html>

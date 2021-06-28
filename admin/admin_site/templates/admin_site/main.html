@@ -48,7 +48,7 @@
 
             <tr>
             <td class="title">
-                <a href="">STORE_REVIEW</a>
+                <a href="{% url 'review_list' %}">STORE_REVIEW</a>
             </td>
             <td>
                 <a href="" type="button" class="btn btn-secondary">+</a>
@@ -57,10 +57,10 @@
 
             <tr>
             <td class="title">
-                <a href="">USER_CUSTOM_VEGAN_STORE</a>
+                <a href="{% url 'custom_store_list' %}">USER_CUSTOM_VEGAN_STORE</a>
             </td>
             <td>
-                <a href="" type="button" class="btn btn-secondary">+</a>
+                <a href="{% url 'custom_store_new' %}" type="button" class="btn btn-secondary">+</a>
             </td>
             </tr>
 
@@ -70,6 +70,15 @@
             </td>
             <td>
                 <a href="{% url 'food_new' %}" type="button" class="btn btn-secondary">+</a>
+            </td>
+            </tr>
+            
+            <tr>
+            <td class="title">
+                <a href="{% url 'food_review_list' %}">FOOD_REVIEW</a>
+            </td>
+            <td>
+                <a href="" type="button" class="btn btn-secondary">+</a>
             </td>
             </tr>
 
@@ -84,7 +93,7 @@
 
             <tr>
                 <td class="title">
-                    <a href="">FOODS_COMMENT</a>
+                    <a href="{% url 'comment_list' %}">GOODS_COMMENT</a>
                 </td>
                 <td>
                     <a href="" type="button" class="btn btn-secondary">+</a>
