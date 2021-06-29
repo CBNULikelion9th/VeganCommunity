@@ -14,7 +14,7 @@
     <h1>CREATE FOOD</h1>
     <hr><br>
     <section>
-    <form action="{% url 'food_new' %}" method="POST", enctype="multipart/form-data">
+    <form action="{% url 'food_new' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="btn btn-secondary" value="음식 추가"/>
