@@ -52,11 +52,18 @@ def market_create(request):
     new_post.title = request.POST['title']
     new_post.writer = request.POST['writer']
     new_post.body = request.POST['body']
+
+    # new_post.organic = request.POST['organic']
+    # new_post.nature = request.POST['nature']
+
     new_post.image = request.FILES['image']
     new_post.pub_date = timezone.now()
     new_post.save()
     return redirect('market_detail', new_post.id)
 
+def market_edit(request, post_id):
+    market_edit = Post.objects.get(id=post_id)
+    return render(request, 'market_edit.html', {'market_edit':market_edit})
 
 # def market_new(request):
 #     if request.method == 'GET':

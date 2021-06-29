@@ -11,35 +11,45 @@
 </head>
 <body>
     <div class="title1">
-
     <!-- <h1>나들목 장터 상품들을 구경하세요:)</h1> -->
-        <h1> Welcome to Na-deul-mok ! </h1>
-</div>      
-
-
-<!-- <table class="table"> -->
-    <table class="table table-success table-striped">
+        <p>  나 들 목 장 터  OPEN </p>
+        </div>      
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Open this select menu</option>
+            <option value="1">최신순</option>
+            <option value="2">저가순</option>
+            <option value="3">고가순</option>
+          </select>
+          <br>
+    <table class="table-striped">
 
     <tbody>
+        <div class="td_1">
         {% for post in market_list %}
         <tr>
-            <td>{{ post.id }}</td>
+            <!-- <td>{{ post.id }}</td> -->
             <!-- <td><img src="..." class="rounded float-start" alt="..."> -->
-            
             <td>{% if post.image %}
-            <p><img src="{{ blog.image.url }}" class="rounded float-start" alt="사진이 불러와지지 않음"></p>
+            <p><a href="{% url 'market_detail' post.id %}" >
+                <img src="{{ post.image.url }}" class="rounded_image" alt="사진이 업로드 되지 않음">
+            </a></p>
             {% endif %}</td>
             <!-- <img src="..." class="rounded mx-auto d-block" alt="...">
             <img src="..." class="rounded float-end" alt="..."> -->
             </td>
-
-            <!-- <a href="{{post.id}}">{{ post.title }}</a> -->
-            <td><a href="{% url 'market_detail' post.id %}" class=list>{{ post.title }}</a></td>
+        </tr>
+            <!-- <a href="{% url 'market_detail' post.id %}" ></a> -->
+            <td class=list_title>
+                {{ post.title }}</td>
+        
+        <tr>
             <td>{{ post.writer }}</td>
             <td>{{ post.updated_at }}</td>
             <td>조회수 : {{post.view_count}}</td>
-
         </tr>
+        </div>
+
+        
         {% endfor %}
     </tbody>
 </table>

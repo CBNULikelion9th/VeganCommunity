@@ -12,20 +12,26 @@
             <title>메인페이지</title>
     </head>
         <body>
-        <div class="maintag">
-            <h3>농부님이신가요?</h3>
-        <h3>나들목 장터를 구경하세요!</h3>
-        </div>
+            <br>
+        <span class="main_tag">
+            <p>  나 들 목  직 거 래 장 터 O P E N !  </p>
+        </span>    
             <div class="main_img">
+                <div class="farmer_home">
+                    <h3>농부님이신가요?</h3>
                 <!-- <a href="{% url 'farmer_notice' %}" class="visit" title="pic">                 -->
                     <a href="{% url 'farmer_notice' %}" class="visit" title="pic">                
-                    <img src="/static/img/farmer1.png" class="img2" style="width: 500px; height: 500px; object-fit: cover;" >
-                </a>
+                    <img src="/static/img/farmer2.png" class="img2" style="width: 500px; height: 500px; object-fit: cover;" >
+                    </a>
+                </div>
                 <div class="verticalLine"></div>
+            
+                <div class="home_market">
+                    <h3>나들목 장터를 구경하세요!</h3>
                 <a href="{% url 'market_list' %}" title="srip">                
-                    <img src="/static/img/buy-online.png" class="img2" style="width: 500px; height: 500px; object-fit: cover;">
+                    <img src="/static/img/harvest.png" class="img2" style="width: 500px; height: 500px; object-fit: cover;">
                 </a>
-                
+                </div>    
 
                 <!-- <img alt="White LinkedIn Icon" style="width: 24px; height: 24px; object-fit: cover;" src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_48,h_48,al_c,q_85,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.webp"> -->
                <!-- <div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div> -->
