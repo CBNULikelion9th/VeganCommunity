@@ -11,11 +11,13 @@ body {
 }
 
 .title1 {
-    font-family :Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 24px;
-    color:slateblue;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 34px;
+    color:rgb(225, 247, 235);
     text-align: center;
     vertical-align: middle;
+    margin-top: 20px;
+
 }
 
 
@@ -23,12 +25,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 40px;
     /* background-color: rgb(210, 250, 237); */
 }
 
+.farmer_home{
+    padding-right: 20px;
+    border: 3.5px solid ivory;
+    border-radius: 15px;
+    margin-right: 50px;
+}
+
+.home_market{
+    padding-left: 20px;
+    margin-left: 50px;
+    border: 3.5px solid ivory;
+    border-radius: 15px;
+}
 .main_tag{
-    display: flex;
+
     text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: bold;
+    font-size: 24px;
+    color:lightgoldenrodyellow;
 }
 
 h1{
@@ -44,14 +64,32 @@ h1{
 
 h3 {
     color:darkolivegreen;
-    font-size:30px;
-    font-family:cursive;
+    font-size:37px;
+    font-family: 'Black Han Sans', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
-
+    text-align: center;
 }
+
+h4 {
+    color:rgb(5, 56, 58);
+    font-size: 20px;
+    font-family: 'Nanum Myeongjo', serif;
+    
+}
+
+h5.contents {
+    text-align: center;
+}
+
 .button{
     color:darkolivegreen;
+    background-color: ivory;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+    border: 1px solid rgb(13, 105, 36);
+    margin-top: 3px;
+    height: 34px;
 }
 
 .new_form{
@@ -120,3 +158,56 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
     left: auto;
     right: 1px;
 }
+
+
+
+.parent{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+}
+.image_contents {
+    border: 1px solid rgb(206, 112, 112);
+    flex:1;
+    width:30%;
+    box-sizing: border-box;
+}
+
+.contents{
+    border: 1px solid green;
+    flex:1;
+    margin: 0px 5%;
+    width:30%;
+    box-sizing: border-box;
+}
+
+.table-striped{
+    border-radius: 30px;
+    width: 100%;
+    background-color: rgba(252, 243, 225, 0.769);
+}
+
+.rounded_image{
+    border: 0.2px solid ivory;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+
+}
+
+.list_title{
+
+    width: 400px;
+    height: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-style: bold;
+    color: black;
+    padding-top: -10px;
+
+}
+
+/* .td_1 {
+    
+
+} */
