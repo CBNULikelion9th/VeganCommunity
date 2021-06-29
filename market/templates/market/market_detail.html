@@ -1,0 +1,36 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+
+</head>
+<h2>{{post.title}}</h2>
+
+{% if post.image %}
+<p><img src="{{ post.image.url }}" alt="사진이 불러와지지 않음"></p>
+
+{% endif %}
+{% if post.image2 %}
+<p><img src="{{ post.image2.url }}" alt="사진이 불러와지지 않음"></p>
+{% endif %}
+</p>
+<!-- {{post.update_counter}} -->
+<hr>
+
+
+
+<p>
+    {{ post.content}}
+</p>
+
+<small>{{ post.updated_at}}</small>
+<h5>조회수 : {{post.view_count}}</h5>
+<br>
+
+<a href="{% url 'market_list' %}"><input type="button" value="장터로 돌아가기"></a>
+
+{% endblock content %}
