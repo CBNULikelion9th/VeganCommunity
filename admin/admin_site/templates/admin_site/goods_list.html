@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'layout.css' %}" rel="stylesheet"/> 
+    <title>Goods LIST</title>
+</head>
+<body>
+    <h1>Select GOOD To Change</h1>
+    <hr>
+    <section>
+        <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
+        <a href="{% url 'good_new' %}" class="btn btn-secondary">Add Goods</a>
+        <!-- 검색 기능 추가 -->
+        <br><br>
+        <table class="table">
+            <thead>
+                    <th>User Name</th>
+                    <th>Food Name</th>
+            </thead>
+            <tbody>
+                {% for l in list %}
+                <tr>
+                    <td><a href="{% url 'good_detail' l.id %}">{{l.user_name}}</a></td>
+                    <td>{{l.food_name}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
