@@ -27,7 +27,7 @@
 <div class ="contents">
 <p>
     <h4>상 품 설 명</h4>
-    <h4>{{ post.body }}</h4>
+    <h4>{{ post.content }}</h4>
 </p>
 
 <small>{{ post.updated_at}}</small>
@@ -38,5 +38,6 @@
 <a href="{% url 'market_list' %}"><input type="button" value="장터로 돌아가기" class=button></a>
 <br>
 <a href="{% url 'market_edit' %}"><input type="button" value="게시글 수정하기" class=button></a>
+<a href="{% url 'market_delete' post.id %}"><input type="button" value="게시글 삭제" class=button></a>
 
 {% endblock content %}

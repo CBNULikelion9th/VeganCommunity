@@ -65,6 +65,11 @@ def market_edit(request, post_id):
     market_edit = Post.objects.get(id=post_id)
     return render(request, 'market_edit.html', {'market_edit':market_edit})
 
+def post_delete(request, post_id) :
+    post = Post.objects.get (id=post_id)
+    post.delete()
+    return redirect('market_list')
+
 # def market_new(request):
 #     if request.method == 'GET':
 #         form = PostForm()
