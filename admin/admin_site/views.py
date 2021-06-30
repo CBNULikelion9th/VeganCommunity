@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from .models import *
-from .forms import *
 from django.db.models import Q
+from django.shortcuts import render, redirect
+from .models import User, Vegan_Store, Store_Review, User_Custom_Store, \
+                    Food, Food_Review, Market_Goods,Goods_Comment
+from .forms import UserForm, ReviewForm, VeganStoreForm, CustomStoreForm, \
+                    FoodReviewForm, FoodForm, CommentForm, GoodForm
 
 def main(request):
     return render(request, 'admin_site/main.html')
@@ -10,7 +12,7 @@ def user_list(request):
     list = User.objects.all()
     search_type = request.GET.get('search_type')
     search_key = request.GET.get('search_key')
-
+    
     if search_key:
         if search_type == 'authority':
             list = list.filter(authority__icontains=search_key)
