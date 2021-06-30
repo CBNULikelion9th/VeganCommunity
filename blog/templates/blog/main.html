@@ -27,8 +27,7 @@
       </style>
   
     </head>
-      <div id="map"></div>
-  
+      <div id="map"></div>  
       Async script executes immediately and must be after any DOM elements used in callback. -->
       <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
   
@@ -62,16 +61,65 @@
               });
               
               // 위도와 경도 입력해서 핀 추가하는 부분 
+              //1. 청주 여누 - 비건 채식 레스토랑
               new google.maps.Marker({
-                position: { lat: 36.6290439, lng:127.4563401 },
+                position: { lat: 36.6341916, lng:127.4249196 },
                 map: e,                
               });
 
+              //2. 청주 오프리 - 비건 채식 레스토랑
               new google.maps.Marker({
-                position: { lat:36.6418464, lng:127.4865707 },
+                position: { lat:36.6343191, lng:127.4249196 },
                 map: e,
-              });             
-              //
+              });       
+              
+              //3. 청주 늘푸른식당 - 음식점             
+              new google.maps.Marker({
+                position: { lat:36.6341916, lng:127.4249196 },
+                map: e,
+              });  
+              
+              //4. 스토리          
+              new google.maps.Marker({
+                position: { lat:36.6341916, lng:127.4249196 },
+                map: e,
+              });    
+
+              //5. 청주 하일 - 카페
+              new google.maps.Marker({
+                position: { lat:36.6341916, lng:127.4249196 },
+                map: e,
+              });    
+
+              //6. 대전 러빙헛 - 비건 채식 레스토랑
+              new google.maps.Marker({
+                position: { lat:36.3593959, lng:127.403795 },
+                map: e,
+              });    
+
+              //7. 대전 비건바닐라 - 제과점
+              new google.maps.Marker({
+                position: { lat:36.3562582, lng:127.3363213 },
+                map: e,
+              });     
+
+              //8. 대전 세이비건 - 식료품점
+              new google.maps.Marker({
+                position: { lat:36.3745656, lng:127.2863375 },
+                map: e,
+              });      
+
+               //9. 대전 에이블리 - 비건 채식 레스토랑
+               new google.maps.Marker({
+                position: { lat:36.3975042, lng:127.367005 },
+                map: e,
+              });       
+
+               //10. 전주 채식주의자의무화과 - 비건 채식 레스토랑
+               new google.maps.Marker({
+                position: { lat:35.8157252, lng:126.8928893 },
+                map: e,
+              });     
 
             }
             e.r(o), e.d(o, { initMap: () => t });
@@ -89,6 +137,10 @@
     <section id="up-mainfunc">
         <div class="maplogo">
           We are Vegan
+          <div class="search_store">
+            <input type="search" value="" >
+            <input type="submit" value="검색">
+          </div>
         </div>
     </section>
     <section id="down-mainfunc">

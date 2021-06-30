@@ -1,3 +1,4 @@
+/* 오른쪽 지도 들어갈 부분 */
 body {
   background-color: white;
   left: 0%;
@@ -5,6 +6,8 @@ body {
   margin: 0;
   min-width: 1000px;
 }
+
+/* 초록 위 배너 */
 .leftbody {
     background-color: white;
     width: 300;
@@ -13,6 +16,8 @@ body {
     margin: 0;
     min-width: 300px;
 }
+
+/* 검색창 초록 배너 */
 #up-mainfunc {
   background-color: rgb(83, 188, 78);  
   height: 300;
@@ -23,6 +28,7 @@ body {
   left: 0;
   z-index: 10;
 }
+/* we are vegan 글씨 */
 .maplogo {
     position: absolute;
     color: white;
@@ -34,6 +40,18 @@ body {
     font-size: 30px;
     font-weight: 1000;
 }
+.search_store {
+  position: absolute;
+  color: white;
+  width: 400;
+  top: 60;
+  left: -10%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 1000;
+}
+/* 초록 아래 배너 */
 #down-mainfunc {
     background-color: rgb(83, 188, 78);  
     height: 800;
@@ -44,5 +62,5 @@ body {
     left: 0;
     z-index: 10;
     scroll-behavior: smooth;
-  }
+}
 
