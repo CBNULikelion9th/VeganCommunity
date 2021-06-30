@@ -15,9 +15,16 @@
     <hr>
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
-        <!-- <a href="{% url 'food_new' %}" class="btn btn-secondary">Add Food</a> -->
-        <!-- 검색 기능 추가 -->
         <br><br>
+        <form action="{% url 'comment_list' %}" method='GET'>
+            <div class="row" style="margin-bottom: 15px;">
+                <div>
+                    <input type="text" name="search_key" value="{{search_key}}" placeholder="댓글 보고싶은 상품명을 입력하세요.">
+                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
+                </div>
+            </div>
+        </form>
+
         <table class="table">
             <thead>
                     <th>Goods</th>

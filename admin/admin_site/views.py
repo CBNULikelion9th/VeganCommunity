@@ -1,15 +1,30 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.db.models import Q
 
 def main(request):
     return render(request, 'admin_site/main.html')
 
 def user_list(request):
     list = User.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'authority':
+            list = list.filter(authority__icontains=search_key)
+        elif search_type == 'id':
+            list = list.filter(user_id__icontains=search_key)
+        elif search_type == 'name':
+            list = list.filter(name__icontains=search_key)
+        elif search_type == 'vegan_step':
+            list = list.filter(vegan_step__icontains=search_key)
+
     context = {
         'list': list,
     }
+
     return render(request, 'admin_site/user_list.html', context)
 
 def user_detail(request, id):
@@ -50,6 +65,18 @@ def user_update(request, id):
 
 def vegan_store_list(request):
     list = Vegan_Store.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'name':
+            list = list.filter(name__icontains=search_key)
+        elif search_type == 'vegan_step':
+            list = list.filter(vegan_step__icontains=search_key)
+        elif search_type == 'address':
+            list = list.filter(address__icontains=search_key)
+        elif search_type == 'field':
+            list = list.filter(field__icontains=search_key)
     context = {
         'list': list,
     }
@@ -85,6 +112,14 @@ def review_create(request, id):
 
 def review_list(request):
     list = Store_Review.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'store':
+            list = list.filter(store__icontains=search_key)
+        elif search_type == 'star':
+            list = list.filter(star__icontains=search_key)
     context = {
         'list': list,
     }
@@ -121,6 +156,18 @@ def vegan_store_update(request, id):
 
 def custom_store_list(request):
     list = User_Custom_Store.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'name':
+            list = list.filter(name__icontains=search_key)
+        elif search_type == 'vegan_step':
+            list = list.filter(vegan_step__icontains=search_key)
+        elif search_type == 'address':
+            list = list.filter(address__icontains=search_key)
+        elif search_type == 'field':
+            list = list.filter(field__icontains=search_key)
     context = {
         'list': list,
     }
@@ -164,6 +211,18 @@ def custom_store_update(request, id):
 
 def food_list(request):
     list = Food.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'name':
+            list = list.filter(name__icontains=search_key)
+        elif search_type == 'all_nutrition':
+            list = list.filter(all_nutrition__icontains=search_key)
+        elif search_type == 'allegy_nutrition':
+            list = list.filter(allegy_nutrition__icontains=search_key)
+        elif search_type == 'Feature':
+            list = list.filter(Feature__icontains=search_key)
     context = {
         'list': list,
     }
@@ -199,6 +258,14 @@ def food_review_create(request, id):
 
 def food_review_list(request):
     list = Food_Review.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'food':
+            list = list.filter(food__icontains=search_key)
+        elif search_type == 'star':
+            list = list.filter(star__icontains=search_key)
     context = {
         'list': list,
     }
@@ -235,6 +302,16 @@ def food_update(request, id):
 
 def good_list(request):
     list = Market_Goods.objects.all()
+    search_type = request.GET.get('search_type')
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        if search_type == 'user_name':
+            list = list.filter(user_name__icontains=search_key)
+        elif search_type == 'food_name':
+            list = list.filter(food_name__icontains=search_key)
+        elif search_type == 'feature':
+            list = list.filter(feature__icontains=search_key)
     context = {
         'list': list,
     }
@@ -270,6 +347,10 @@ def comment_create(request, id):
 
 def comment_list(request):
     list = Goods_Comment.objects.all()
+    search_key = request.GET.get('search_key')
+
+    if search_key:
+        list = list.filter(goods__icontains=search_key)
     context = {
         'list': list,
     }
