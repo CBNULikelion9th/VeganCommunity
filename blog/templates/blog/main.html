@@ -1,18 +1,99 @@
 {% load static %}
-
 <html>
 <head>
 <title>Main Map Page</title>
 
-<link href="{% static 'blog/main.css' %}" rel="stylesheet" />
+<link href="{% static 'blog/map.css' %}" rel="stylesheet" />
 </head>
 
 <body>  
+  <!-- 지도 불러오는 부분 시작 / 키 발급 카드 등록 전 -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <style type="text/css">
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+        }  
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+  
+    </head>
+      <div id="map"></div>
+  
+      Async script executes immediately and must be after any DOM elements used in callback. -->
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
+  
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjM9mpO9_qqSTjiOSnyPy5ssVsAfb3NsY&callback=initMap&libraries=&v=weekly"  async></script>
+        <script>
+          (() => {
+            "use strict";
+            var e = {
+                d: (o, t) => {
+                  for (var a in t)
+                    e.o(t, a) &&
+                      !e.o(o, a) &&
+                      Object.defineProperty(o, a, { enumerable: !0, get: t[a] });
+                },
+                o: (e, o) => Object.prototype.hasOwnProperty.call(e, o),
+                r: (e) => {
+                  "undefined" != typeof Symbol &&
+                    Symbol.toStringTag &&
+                    Object.defineProperty(e, Symbol.toStringTag, {
+                      value: "Module",
+                    }),
+                    Object.defineProperty(e, "__esModule", { value: !0 });
+                },
+              },
+              o = {};
+            function t() {
+              const e = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: { lat: -33, lng: 151 },
+              });
+              
+              // 위도와 경도 입력해서 핀 추가하는 부분 
+              new google.maps.Marker({
+                position: { lat: 36.6290439, lng:127.4563401 },
+                map: e,
+              });
+              new google.maps.Marker({
+                position: { lat:36.6418464, lng:127.4865707 },
+                map: e,
+              });
+              //
+            }
+            e.r(o), e.d(o, { initMap: () => t });
+            var a = window;
+            for (var n in o) a[n] = o[n];
+            o.__esModule && Object.defineProperty(a, "__esModule", { value: !0 });
+          })();
+        </script>
+    </body>
+  </html>  
+   <!-- 지도 불러오는 부분 끝-->
 
-    <section id="mainfunc">
+   <!-- 왼쪽 배너 -->
+   <leftbody>
+    <section id="up-mainfunc">
         <div class="maplogo">
           We are Vegan
         </div>
     </section>
-</body>
-</html> 
+    <section id="down-mainfunc">
+      <div class="maplogo">
+          We are Vegan       
+      </div>
+  </section>   
+</leftbody>
+
+</html>  
