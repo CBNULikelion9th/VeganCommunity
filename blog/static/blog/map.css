@@ -40,18 +40,25 @@ body {
     font-size: 45px;
     font-weight: 1000;
 }
-.menu-list {
-  position: absolute;
-  margin-top: 18%;
-  left: 130;
-  font-size: 30px;
-}
-.menu-list .menu a {
-
+.add_store {
+  top: 20;
+  font-size: 15px;
   text-decoration: none;
   color: white;
   padding: 0 38px;
 }
+.menu-list {
+  position: absolute;
+  margin-top: 15%;
+  left: 130;
+  font-size: 30px;
+}
+.menu-list .menu a {
+  text-decoration: none;
+  color: white;
+  padding: 0 38px;
+}
+
 /* 초록 아래 배너 */
 #down-mainfunc {
     background-color: rgb(83, 188, 78);  
@@ -79,7 +86,7 @@ body {
   position: absolute;
   color: white;
   width: 400;
-  top: 80;
+  top: 100;
   left: 13%;
   transform: translateY(-50%);
   margin-left: 20px;
@@ -90,30 +97,22 @@ body {
   width: 600px;
 }
 
-p, h4,h6 {
+p, h4 {
   margin: 0;
 }
 .store_text p {
   top: 30;
   margin-top: 40px;
   font-size: 30px;
+  font-weight: 550;
   color: rgb(21, 99, 56);
 }
 .store_text h4 {
   
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 450;
   color: white;
 }
-
-.store_text h6 {
-  /* margin-top: 20px; */
-  font-size: 22px;
-  font-weight: lighter;
-  color: white;
-}
-
-
 
 
 
