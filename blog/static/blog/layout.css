@@ -136,3 +136,9 @@ body {
   font-weight: 545;
   transform: translateX(-50%);
 }
+.form-main{
+  margin-top: 500;
+  margin-left: -150;
+  font-size: 50;
+  font-weight: 545;
+}

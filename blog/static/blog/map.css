@@ -21,7 +21,7 @@ body {
 #up-mainfunc {
   background-color: rgb(83, 188, 78);  
   height: 300;
-  width: 400;
+  width: 420;
   position: fixed;
   top: 0;
   right: 0;
@@ -63,7 +63,7 @@ body {
 #down-mainfunc {
     background-color: rgb(83, 188, 78);  
     height: 590;
-    width: 400;
+    width: 420;
     position: fixed;
     top: 310;
     right: 0;
