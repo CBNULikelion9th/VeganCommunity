@@ -40,9 +40,9 @@ def market_new(request):
 
         if form.is_valid():
             title = form.cleaned_data['title']
-            content = form.cleaned_data['content']
+            body = form.cleaned_data['body']
             image = form.cleaned_data['image']
-            post = Post.objects.create(title=title, content=content, image=image)
+            post = Post.objects.create(title=title, body=body, image=image)
             return redirect('market_detail', post_id=post.id)
     return render(request, 'market/market_new.html',{'form':form })
 
@@ -63,9 +63,19 @@ def market_create(request):
 
 def market_edit(request, post_id):
     market_edit = Post.objects.get(id=post_id)
-    return render(request, 'market_edit.html', {'market_edit':market_edit})
+    return render(request, 'market/market_edit.html', {'post':market_edit})
 
-def post_delete(request, post_id) :
+def market_update(request, post_id) :
+    market_update = Post.objects.get(id = post_id)
+    market_update.title = request.POST['title']
+    market_update.writer = request.POST['writer']
+    market_update.body = request.POST['body']
+    market_update.post.image = request.FILES['image']
+    market_update.post.pub_date = timezone.now()
+    market_update.post.save()
+    return redirect('market_detail', market_update.id)
+
+def market_delete(request, post_id) :
     post = Post.objects.get (id=post_id)
     post.delete()
     return redirect('market_list')

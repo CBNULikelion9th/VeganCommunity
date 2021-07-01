@@ -1,20 +1,33 @@
 {% extends 'market/base.html' %}
 
 {% block content %}
+{% load static %}
 
-<h1>수정페이지</h1>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="new_form">
+<h3> 게시물 수정하기 </h3>
 
-<form action="{% url 'market_edit' post.id %}" method="POST">
+<form action="{% url 'market_update' post.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
+    <span>
+        <input type="checkbox" id="check_button1" class="check" name="organic">
+        <label for="check_button1">유기농</label>
+    </span>
+    <span>
+        <input type="checkbox" id="check_button2" class="check" name="nature">
+        <label for="check_button2">자연농</label>
+    </span>
+    <span>
+        <input type="checkbox" id="check_button3" class="check" name="usual">
+        <label for="check_button2">일반농</label>
+    </span>
 
-    {{ form.as_p }}
-    <input type= "submit" value='수정'>
-    <!-- <a href= "http://127.0.0.1:8000/blog/posts/"><input type= "button" value='취소'></a> -->
-    <a href="{% url 'market_list' %}"><input type= "button" value='취소'></a>
-    <!-- <a href="{% url 'post_detail' post.id %}"><input type= "button" value='취소'></a> -->
-    <!-- <a href= "post_list.html"><button type="button">취소</button></a>? -->
+    <p>제목 : <input type="text" name ="title" value = "{{ post.title }}"></p>
+    <p>작성자 : <input type="text" name ="writer" value = "{{ post.writer }}"></p>
+    <p> 농부님의 농작물을 소개해주세요! </p> 
+    <textarea name ="body" id="" cols="60" rows="30">{{ post.body }}</textarea>
+     <br>
+    <input type="submit" value='수정 완료' class=button>
 </form>
-
+</div>
 {% endblock content %}
-<!-- <input type="button" value="취소">
-<a href= "http://127.0.0.1:8000/blog/posts/"><button type="button">취소</button></a> -->
