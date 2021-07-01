@@ -19,9 +19,9 @@ def market_list(request):
 
 def market_detail(request, post_id ):
     post = Post.objects.get(id=post_id)
-    post.save()
     default_view_count = post.view_count
     post.view_count = default_view_count + 1
+    post.save()
     return render(request, 'market/market_detail.html', {
         'post':post,
     })
@@ -31,27 +31,33 @@ def market_detail(request, post_id ):
 #     return render(request, 'market/market_new.html',{'form':form })
 
 def market_new(request):
-    form = PostForm(request.POST, request.FILES)
+    form = Post(request.POST, request.FILES)
     if request.method == 'GET':
-        form = PostForm()
+        form = Post()
     
     elif request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = Post(request.POST, request.FILES)
 
         if form.is_valid():
-            title = form.cleaned_data['title']
-            body = form.cleaned_data['body']
-            image = form.cleaned_data['image']
-            post = Post.objects.create(title=title, body=body, image=image)
+            # title = form.cleaned_data['title']
+            # content = form.cleaned_data['content']
+            # image = form.cleaned_data['image']
+            form.title = request.POST['title']
+            form.writer = request.POST['writer']
+            form.content = request.POST['content']
+            form.image = request.POST['image']
+
+            market_new = Post.objects.create(title=title, writer=writer, content=content, image=image)
+            print(market_new)
             return redirect('market_detail', post_id=post.id)
+            
     return render(request, 'market/market_new.html',{'form':form })
 
 def market_create(request):
-    
     new_post= Post()
     new_post.title = request.POST['title']
     new_post.writer = request.POST['writer']
-    new_post.body = request.POST['body']
+    new_post.content = request.POST['content']
 
     # new_post.organic = request.POST['organic']
     # new_post.nature = request.POST['nature']
@@ -59,20 +65,22 @@ def market_create(request):
     new_post.image = request.FILES['image']
     new_post.pub_date = timezone.now()
     new_post.save()
+    print(market_create)
     return redirect('market_detail', new_post.id)
 
 def market_edit(request, post_id):
     market_edit = Post.objects.get(id=post_id)
+    print(market_edit)
     return render(request, 'market/market_edit.html', {'post':market_edit})
 
 def market_update(request, post_id) :
     market_update = Post.objects.get(id = post_id)
     market_update.title = request.POST['title']
     market_update.writer = request.POST['writer']
-    market_update.body = request.POST['body']
-    market_update.post.image = request.FILES['image']
-    market_update.post.pub_date = timezone.now()
-    market_update.post.save()
+    market_update.content = request.POST['content']
+    market_update.image = request.FILES['image']
+    market_update.pub_date = timezone.now()
+    market_update.save()
     return redirect('market_detail', market_update.id)
 
 def market_delete(request, post_id) :
@@ -126,10 +134,10 @@ def market_comment(request,  post_id):
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('visit_detail', post_id=post.id)
+            return redirect('market_detail', post_id=post.id)
     else:
         form = CommentForm()
-    return render(request, 'blog/comment2.html',{
+    return render(request, 'market/comment.html',{
         'form': form,
     })
 

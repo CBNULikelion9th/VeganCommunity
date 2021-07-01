@@ -11,7 +11,7 @@
 <body>
 <div class = "parent">
 <div class = "image_contents">
-<h2 class = "title">{{post.title}}</h2>
+<h2 class = "title">{{ post.title }}</h2>
 <small class = "writer">작성자 : {{ post.writer }}</small>
 
 {% if post.image %}
@@ -30,7 +30,7 @@
 </p>
     <hr>
 
-<h4>{{post.body}}</h4>
+<h4>{{post.content}}</h4>
 
 <small>{{ post.updated_at}}</small>
 <h5>조회수 : {{post.view_count}}</h5>
