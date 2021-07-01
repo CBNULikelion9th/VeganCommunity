@@ -10,6 +10,16 @@ body {
 
 }
 
+.title {
+    /* text-align: center; */
+    padding-left : 20px;
+}
+
+.writer{
+    padding-left :20px;
+
+}
+
 .title1 {
     font-family: 'Black Han Sans', sans-serif;
     font-size: 34px;
@@ -52,7 +62,8 @@ body {
 }
 
 h1{
-    color:rgb(207, 238, 149);
+    /* color:rgb(207, 238, 149); */
+    color:rgb(200, 350, 50);
     font-size: 60px;
     position: relative;
     font-style: bold;
@@ -167,14 +178,17 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
     display: flex;
 }
 .image_contents {
-    border: 1px solid rgb(206, 112, 112);
+    border: 2.5px dashed rgb(191, 219, 134);
+    border-radius: 10px;
     flex:1;
     width:30%;
     box-sizing: border-box;
+    /* margin: 10px, 10px, 10px, 10px; */
 }
 
 .contents{
-    border: 1px solid green;
+    border: 2.5px dashed rgb(142, 209, 142);
+    border-radius: 15px;
     flex:1;
     margin: 0px 5%;
     width:30%;
@@ -182,9 +196,13 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
 }
 
 .table-striped{
-    border-radius: 30px;
+    border-radius: 24px;
     width: 100%;
     background-color: rgba(252, 243, 225, 0.769);
+    background-origin: content-box;
+    background-attachment: scroll;
+
+
 }
 
 .rounded_image{
@@ -211,3 +229,33 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
     
 
 } */
+
+.notice_contents{
+    border: 2px, white;
+
+}
+
+.button2{
+    color:darkolivegreen;
+    background-color: ivory;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+    border: 1px solid rgb(13, 105, 36);
+    margin-top: 3px;
+    margin-right: 25px;
+    height: 34px;
+    float: right;
+    padding-right: 8px;
+}
+
+/* .farmer_notice .h1{
+    font-size: 40px;
+    color: red;
+
+} */
+
+.detail_image{
+    width: 500px;
+    height: 450px;
+    padding-left: 20px;
+}
