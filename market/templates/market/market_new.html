@@ -1,0 +1,33 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="new_form">
+<h3> Uproad New product </h3>
+
+<form action="{% url 'market_create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <span>
+        <input type="checkbox" id="check_button1" class="check" name="organic">
+        <label for="check_button1">유기농</label>
+    </span>
+    <span>
+        <input type="checkbox" id="check_button2" class="check" name="nature">
+        <label for="check_button2">자연농</label>
+    </span>
+    <span>
+        <input type="checkbox" id="check_button3" class="check" name="usual">
+        <label for="check_button2">일반농</label>
+    </span>
+    <p>사진 : <input type="file" name ="image"></p>
+    <p>제목 : <input type="text" name ="title"></p>
+    <p>작성자 : <input type="text" name ="writer"></p>
+    <p> 농부님의 농작물을 소개해주세요! </p>
+     <textarea name ="body" id="" cols="75" rows="30"></textarea>
+     <br>
+    <input type="submit" value='생성' class=button>
+</form>
+</div>
+{% endblock content %}

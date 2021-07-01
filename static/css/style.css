@@ -1,0 +1,261 @@
+body {
+    /* padding: 0;
+    margin: 0; */
+    margin: 0, auto;
+    vertical-align: middle;
+    background-image: url("../img/grass.jpg");
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+
+}
+
+.title {
+    /* text-align: center; */
+    padding-left : 20px;
+}
+
+.writer{
+    padding-left :20px;
+
+}
+
+.title1 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 34px;
+    color:rgb(225, 247, 235);
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 20px;
+
+}
+
+
+.main_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    /* background-color: rgb(210, 250, 237); */
+}
+
+.farmer_home{
+    padding-right: 20px;
+    border: 3.5px solid ivory;
+    border-radius: 15px;
+    margin-right: 50px;
+}
+
+.home_market{
+    padding-left: 20px;
+    margin-left: 50px;
+    border: 3.5px solid ivory;
+    border-radius: 15px;
+}
+.main_tag{
+
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: bold;
+    font-size: 24px;
+    color:lightgoldenrodyellow;
+}
+
+h1{
+    /* color:rgb(207, 238, 149); */
+    color:rgb(200, 350, 50);
+    font-size: 60px;
+    position: relative;
+    font-style: bold;
+    text-align: center;
+    font-family:cursive;
+    margin-top: 15px;
+    height: 100px;
+}
+
+h3 {
+    color:darkolivegreen;
+    font-size:37px;
+    font-family: 'Black Han Sans', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h4 {
+    color:rgb(5, 56, 58);
+    font-size: 20px;
+    font-family: 'Nanum Myeongjo', serif;
+    
+}
+
+h5.contents {
+    text-align: center;
+}
+
+.button{
+    color:darkolivegreen;
+    background-color: ivory;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+    border: 1px solid rgb(13, 105, 36);
+    margin-top: 3px;
+    height: 34px;
+}
+
+.new_form{
+    color: lightyellow;
+    /* color: dodgerblue; */
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.check{
+    color: gold;
+    text-align: center;
+}
+
+
+
+.verticalLine {
+
+    border-left-color:goldenrod;
+
+}
+hr.vertical {
+    width: 0px;
+    height: 100%;
+    /* or height in PX */
+  }
+
+
+
+input[type='checkbox'] { /* input 감추기 */
+    position: absolute;
+    overflow:hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    opacity: 0;
+  }
+
+
+input[type='checkbox'] + label {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 36px;
+    height: 21px;
+    border-radius: 10px;
+    background: #666;
+    vertical-align: top;
+    color: transparent; /* label font 안보이게 설정 */
+}
+input[type='checkbox'] + label:after { /* 버튼 생성 */
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 19px;
+    height: 19px;
+    background: #fff;
+    border-radius: 50%; /* 원 형태의 border */
+}
+input[type='checkbox']:checked + label { 
+    background-color: #62a7ee; /* 버튼 체크 시 배경색 변경 */
+}
+input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위치 변경 */
+    left: auto;
+    right: 1px;
+}
+
+
+
+.parent{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+}
+.image_contents {
+    border: 2.5px dashed rgb(191, 219, 134);
+    border-radius: 10px;
+    flex:1;
+    width:30%;
+    box-sizing: border-box;
+    /* margin: 10px, 10px, 10px, 10px; */
+}
+
+.contents{
+    border: 2.5px dashed rgb(142, 209, 142);
+    border-radius: 15px;
+    flex:1;
+    margin: 0px 5%;
+    width:30%;
+    box-sizing: border-box;
+}
+
+.table-striped{
+    border-radius: 24px;
+    width: 100%;
+    background-color: rgba(252, 243, 225, 0.769);
+    background-origin: content-box;
+    background-attachment: scroll;
+
+
+}
+
+.rounded_image{
+    border: 0.2px solid ivory;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+
+}
+
+.list_title{
+
+    width: 400px;
+    height: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-style: bold;
+    color: black;
+    padding-top: -10px;
+
+}
+
+/* .td_1 {
+    
+
+} */
+
+.notice_contents{
+    border: 2px, white;
+
+}
+
+.button2{
+    color:darkolivegreen;
+    background-color: ivory;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+    border: 1px solid rgb(13, 105, 36);
+    margin-top: 3px;
+    margin-right: 25px;
+    height: 34px;
+    float: right;
+    padding-right: 8px;
+}
+
+/* .farmer_notice .h1{
+    font-size: 40px;
+    color: red;
+
+} */
+
+.detail_image{
+    width: 500px;
+    height: 450px;
+    padding-left: 20px;
+}
