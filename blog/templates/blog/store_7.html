@@ -1,7 +1,7 @@
 {% load static %}
 <html>
 <head>
-<title>오프리 상세페이지</title>
+<title>비건바닐라 상세페이지</title>
 
 <link href="{% static 'blog/mapdetail.css' %}" rel="stylesheet" />
 </head>
@@ -61,11 +61,12 @@
               });
               
               // 위도와 경도 입력해서 핀 추가하는 부분 
-             //2. 청주 오프리 - 비건 채식 레스토랑
-             new google.maps.Marker({
-                position: { lat:36.6202716, lng:127.4210539 },
+           
+              // //7. 대전 비건바닐라 - 제과점
+              new google.maps.Marker({
+                position: { lat:36.3055498, lng:127.3254307 },
                 map: e,
-              });      
+              });    
 
             }
             e.r(o), e.d(o, { initMap: () => t });
@@ -84,15 +85,14 @@
         <div class="maplogo">
           We are Vegan
           <div class="photo">
-          <img src="{% static 'img/1.png' %}"/>
+          <img src="{% static 'img/5.png' %}"/>
           <div class="store_text">
-            <p>오프리</p>
+            <p>비건바닐라</p>
             <h3>VEGAN</h3>
             <h4>평점 : 4.9<h4>
-            <h4>충청북도 청주시 흥덕구 가경동 번지 1층</h4>
-            <h4>1929 KR 일부호</h4>
+            <h4>대전광역시 서구 갈마동 781</h4>
             <p></p>
-            <h4>매장 내 식사 ○</h4>
+            <h4>매장 내 식사 x </h4>
             <h4>테이크아웃 ○ <h4>
             
                 <section id="under"> 

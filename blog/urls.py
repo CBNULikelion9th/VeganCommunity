@@ -6,7 +6,7 @@ urlpatterns = [
     path('vegan_info/', views.vegan_info, name='vegan_info'),
     path('store_save/', views.store_save, name='store_save'),
     path('area_report/', views.area_report, name='area_report'),
-    path('area_add/', views.vegan_area_add, name='vegan_area_add'),
+    path('vegan_area_add/', views.vegan_area_add, name='vegan_area_add'),
     path('exception/', views.exception, name='exception'),
 
     path('store_1/', views.store_1, name='store_1'),

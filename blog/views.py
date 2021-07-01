@@ -25,14 +25,15 @@ def area_report(request):
         return render(request, 'blog/report.html', {
            'form' : form,
     })
-
 def vegan_area_add(request):
     if request.method == 'GET':
         form = PostForm()
 
         return render(request, 'blog/add.html', {
-            'form' : form,
+           'form' : form,
     })
+
+
 
 #여누
 def store_1(request):
