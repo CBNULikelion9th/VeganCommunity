@@ -29,32 +29,33 @@ body {
   z-index: 10;
 }
 /* we are vegan 글씨 */
-.maplogo {
+.maplogo_up {
     position: absolute;
     color: white;
     width: 400;
-    top: 30;
-    left: 40%;
+    top: 40;
+    left: 15%;
     transform: translateY(-50%);
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 45px;
     font-weight: 1000;
 }
-.search_store {
+.menu-list {
   position: absolute;
-  color: white;
-  width: 400;
-  top: 60;
-  left: -10%;
-  transform: translateY(-50%);
-  margin-left: 20px;
+  margin-top: 18%;
+  left: 130;
   font-size: 30px;
-  font-weight: 1000;
+}
+.menu-list .menu a {
+
+  text-decoration: none;
+  color: white;
+  padding: 0 38px;
 }
 /* 초록 아래 배너 */
 #down-mainfunc {
     background-color: rgb(83, 188, 78);  
-    height: 800;
+    height: 590;
     width: 400;
     position: fixed;
     top: 310;
@@ -63,4 +64,56 @@ body {
     z-index: 10;
     scroll-behavior: smooth;
 }
+.sort_store {
+  position: absolute;
+  color: white;
+  width: 400;
+  left: 250;
+  top: 30;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.search_store {
+  position: absolute;
+  color: white;
+  width: 400;
+  top: 80;
+  left: 13%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 1000;
+}
+.store_text {
+  width: 600px;
+}
+
+p, h4,h6 {
+  margin: 0;
+}
+.store_text p {
+  top: 30;
+  margin-top: 40px;
+  font-size: 30px;
+  color: rgb(21, 99, 56);
+}
+.store_text h4 {
+  
+  font-size: 15px;
+  font-weight: 450;
+  color: white;
+}
+
+.store_text h6 {
+  /* margin-top: 20px; */
+  font-size: 22px;
+  font-weight: lighter;
+  color: white;
+}
+
+
+
+
 

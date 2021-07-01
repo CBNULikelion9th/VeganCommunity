@@ -28,7 +28,7 @@
   
     </head>
       <div id="map"></div>  
-      Async script executes immediately and must be after any DOM elements used in callback. -->
+      <!-- Async script executes immediately and must be after any DOM elements used in callback. --> -->
       <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
   
       <script
@@ -63,59 +63,59 @@
               // 위도와 경도 입력해서 핀 추가하는 부분 
               //1. 청주 여누 - 비건 채식 레스토랑
               new google.maps.Marker({
-                position: { lat: 36.6341916, lng:127.4249196 },
+                position: { lat:36.6202716, lng:127.4210539 },
                 map: e,                
               });
 
               //2. 청주 오프리 - 비건 채식 레스토랑
               new google.maps.Marker({
-                position: { lat:36.6343191, lng:127.4249196 },
+                position: { lat:36.6202716, lng:127.4210539 },
                 map: e,
               });       
               
-              //3. 청주 늘푸른식당 - 음식점             
+              // //3. 청주 늘푸른식당 - 음식점             
               new google.maps.Marker({
                 position: { lat:36.6341916, lng:127.4249196 },
                 map: e,
               });  
               
-              //4. 스토리          
+              // //4. 스토리          
               new google.maps.Marker({
-                position: { lat:36.6341916, lng:127.4249196 },
+                position: { lat:36.6316732, lng:127.4318127 },
                 map: e,
               });    
 
-              //5. 청주 하일 - 카페
+              // //5. 청주 하일 - 카페
               new google.maps.Marker({
-                position: { lat:36.6341916, lng:127.4249196 },
+                position: { lat:36.6325008, lng:127.4755167 },
                 map: e,
               });    
 
-              //6. 대전 러빙헛 - 비건 채식 레스토랑
+              // //6. 대전 러빙헛 - 비건 채식 레스토랑
               new google.maps.Marker({
-                position: { lat:36.3593959, lng:127.403795 },
+                position: { lat:36.4765097, lng:127.3171913 },
                 map: e,
               });    
 
-              //7. 대전 비건바닐라 - 제과점
+              // //7. 대전 비건바닐라 - 제과점
               new google.maps.Marker({
-                position: { lat:36.3562582, lng:127.3363213 },
+                position: { lat:36.3055498, lng:127.3254307 },
                 map: e,
               });     
 
-              //8. 대전 세이비건 - 식료품점
+              // //8. 대전 세이비건 - 식료품점
               new google.maps.Marker({
-                position: { lat:36.3745656, lng:127.2863375 },
+                position: { lat:36.3051598, lng:127.325431 },
                 map: e,
               });      
 
-               //9. 대전 에이블리 - 비건 채식 레스토랑
+              //  //9. 대전 에이블리 - 비건 채식 레스토랑
                new google.maps.Marker({
                 position: { lat:36.3975042, lng:127.367005 },
                 map: e,
               });       
 
-               //10. 전주 채식주의자의무화과 - 비건 채식 레스토랑
+              //  //10. 전주 채식주의자의무화과 - 비건 채식 레스토랑
                new google.maps.Marker({
                 position: { lat:35.8157252, lng:126.8928893 },
                 map: e,
@@ -134,19 +134,98 @@
 
    <!-- 왼쪽 배너 -->
    <leftbody>
+
     <section id="up-mainfunc">
-        <div class="maplogo">
+        <div class="maplogo_up">
           We are Vegan
           <div class="search_store">
             <input type="search" value="" >
             <input type="submit" value="검색">
           </div>
+          <div class="menu-list">
+            <div class="menu">
+                <a href="#">음식점</a>
+            </div>
+            <div class="menu">
+              <a href="#">카페</a>
+            </div>
+            <div class="menu">
+              <a href="#">제과점</a>
+            </div>          
         </div>
+
     </section>
     <section id="down-mainfunc">
-      <div class="maplogo">
-          We are Vegan       
+      <!-- 정렬 기능 아직, 링크만 걸어뒀어요 -->      
+      <div class="sort_store"> 
+        <a href="{% url 'map_main' %}">최신순</a>
+        <a href="{% url 'map_main' %}">별점순</a>
+        <!-- 이렇게 위로 두줄 링크 건 부분 -->
       </div>
+      <div style=
+      "overflow:scroll; 
+      width:390px; 
+      height:650px; 
+      padding:10px; 
+      background-color:rgb(83, 188, 78);  ">
+
+          <div class="store_text">
+            <a href="{% url 'map_main' %}"><p>여누</p></a>            
+            <h4>평점 : 4.5<h4>
+            <h4>충청북도 청주시 흥덕구 복대동 990번지 KR 1층<h4>
+            <h4>매장 내 식사 / 테이크아웃 <h4>
+          
+            <a href="{% url 'map_main' %}"><p>오프리<p></a>            
+            <h4>평점 : 4.9<h4>
+            <h4>충청북도 청주시 흥덕구 가경동 번지 1층</h4>
+            <h4>1929 KR 일부호<h4>
+            <h4>매장 내 식사 / 테이크아웃 <h4>
+
+            <a href="{% url 'map_main' %}"><p>늘푸른식당<p></a>            
+            <h4>평점 : 3.8<h4>
+            <h4>충청북도 청주시 상당구 우암동 325-6<h4>
+            <h4>매장 내 식사 <h4>
+
+            <a href="{% url 'map_main' %}"><p>스토리<p></a>            
+            <h4>충청북도 청주시 흥덕구 복대2동<h4>
+
+            <a href="{% url 'map_main' %}"><p>하일<p></a>            
+            <h4>충청북도 청주시 상당구 북문로1가 번지 3층</h4>
+            <h4> 4-1 KR 반비반트<h4>
+            <h4>테이크아웃<h4>        
+
+            <a href="{% url 'map_main' %}"><p>러빙헛<p></a>            
+            <h4>평점 : 3.9<h4>
+            <h4>채식(Vegan) / 대전광역시 대덕구 중리동 493-6<h4>
+            <h4>매장 내 식사 / 테이크아웃 <h4>
+    
+            <a href="{% url 'map_main' %}"><p>비건바닐라<p></a>            
+            <h4>평점 : 4.9<h4>
+            <h4>제과점, 대전광역시 서구 갈마동 781<h4>
+            <h4>테이크아웃 <h4>              
+
+            <a href="{% url 'map_main' %}"><p>세이비건<p></a>      
+            <h4>평점 : 5.0<h4>      
+            <h4>식료품점, 대전광역시 유성구 노은2동 917-5<h4>
+    
+            <a href="{% url 'map_main' %}"><p>에이블리<p></a>            
+            <h4>평점 : 4.0<h4>
+            <h4>대전광역시 유성구 전민동 364-4번지 1층<h4>
+            <h4>매장 내 식사 / 테이크아웃 <h4>
+       
+            <a href="{% url 'map_main' %}"><p>채식주의자의무화과<p></a>            
+            <h4>평점 : 4.8<h4>
+            <h4>전라북도 전주시 완산구 중화산동2가 번지 1층</h4>
+            <h4> 20-10 KR<h4>
+            <h4>매장 내 식사 / 테이크아웃 <h4>
+    
+            
+
+          </div>
+      </div>
+
+
+      
   </section>   
 </leftbody>
 
