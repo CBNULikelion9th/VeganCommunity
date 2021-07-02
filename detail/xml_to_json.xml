@@ -1,0 +1,26 @@
+<world>
+    <people>
+        <name>
+            Earth
+        </name>
+        <tall>
+            183cm
+        </tall>
+    </people>
+    <people>
+        <name>
+            Jupiter
+        </name>
+        <tall>
+            175cm
+        </tall>
+    </people>
+    <people>
+        <name>
+            Mars
+        </name>
+        <tall>
+            168cm
+        </tall>
+    </people>
+</world>

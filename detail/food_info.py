@@ -1,5 +1,3 @@
-from django.shortcuts import render, redirect
-from django.conf import settings
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode, unquote, quote_plus
 from urllib import parse
@@ -12,8 +10,8 @@ import xmltodict
 import sys
 import io
 
-# def main(request):
-#     return render(request, 'detail/main.html')
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
 def info(request):
     url = 'http://apis.data.go.kr/1470000/FoodRwmatrInfoService/getFoodRwmatrList'
@@ -29,6 +27,6 @@ def info(request):
     dictionary = xmltodict.parse(response_body)
     json_object = json.dumps(dictionary)
 
-    # context = {'json_object':json_object.decode("utf-8")}
-    # return render(request,'detail/main.html', context = {'json_object':json_object})
+    # context = {'food_info':json_object}
+    # return render(request,'detail/main.html',context)
     print(json_object)
