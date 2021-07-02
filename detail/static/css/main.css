@@ -3,13 +3,16 @@ ul,li {
     list-style-type: none;
 }
 
+h1{
+    margin: 0px auto;
+}
+
 footer p {
     margin-top: 18px;
     font-size: 11px;
     color: #c7c7c7;
     line-height: 18px;
 }
-
 /* nav */
 nav {
     width: 100%;
@@ -52,7 +55,7 @@ main {
 }
 .feeds {
     width: 1000px;
-    margin: 0px auto;
+    margin-left: 260px;
     height: 600px;
     overflow: scroll;
 }
@@ -65,7 +68,6 @@ main {
 }
 
 .container-2{
-    /* width: 635px; */
     height: 250px;
 }
 
@@ -74,7 +76,6 @@ main {
     margin: 0%;
     display: table;
     border: 1px solid black;
-    /* border-collapse: collapse; */
 }
 
 .category-list {
@@ -124,8 +125,15 @@ a {
 }
 
 .food-info li{
+    width: 200px;
+    height: 200px;
     margin: 50px;
     border: 1px solid black;
+}
+
+img {
+    width: 190px;
+    height: 190px;
 }
 
 .sort{
@@ -139,11 +147,11 @@ select{
 }
 
 #food-img{
-    width: 100px;
-    height: 100px;
+    width: 190px;
+    height: 190px;
 }
 
 .tag:hover{
     color: rgb(0, 170, 11);
-    transform: scale(1.2,1.2);
+    transform: scale(1.5,1.5);
 }

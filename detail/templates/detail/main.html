@@ -13,9 +13,7 @@
         <nav>
             <div class="nav-container">
                 <div class="nav-1">
-                    <img class="logo_instagram_txt"
-                        src="{% static 'logo.png' %}"
-                        alt="logo_text">
+                    <h1>Vegania</h1>
                 </div>
                 <div class="nav-2">
                     <input id="searchInput" type="search" class="input-search" placeholder="검색">
@@ -31,23 +29,26 @@
                     <div class="row-6 category">          
                         <ul class="category-list">
                             <li class="category-items">
-                                <form action="" method="POST">
+                                <form action="{% url 'category1' %}" method="POST">
                                     {% csrf_token %}
                                 <input type="submit" name="category-item" value="Vegan">
                                 </form>
                             </li>
                             <li class="category-items">
-                                <form action="" method="POST">
+                                <form action="{% url 'category2' %}" method="POST">
+                                    {% csrf_token %}
                                 <input type="submit" name="category-item" value="시중식품성분">
                                 </form>
                             </li>
                             <li class="category-items">
-                                <form action="" method="POST">
+                                <form action="{% url 'category3' %}" method="POST">
+                                    {% csrf_token %}
                                 <input type="submit" name="category-item" value="농산물">
                                 </form>
                             </li>
                             <li class="category-items">
-                                <form action="" method="POST">
+                                <form action="{% url 'category4' %}" method="POST">
+                                    {% csrf_token %}
                                 <input type="submit" name="category-item" value="쇼핑몰">
                                 </form>
                             </li>
@@ -56,10 +57,10 @@
                     <div class="row-6 filtering">
                        <form action="">
                         <ul class="filtering-list">
-                            <li class="filtering-item"><input type="checkbox" value="">a</li>
-                            <li class="filtering-item"><input type="checkbox" value="">b</li>
-                            <li class="filtering-item"><input type="checkbox" value="">c</li>
-                            <li class="filtering-item"><input type="checkbox" value="">d</li>
+                            <li class="filtering-item"><input type="checkbox" value="Abiu열매">샐러드</li>
+                            <li class="filtering-item"><input type="checkbox" value="감자전분">감자전분</li>
+                            <li class="filtering-item"><input type="checkbox" value="멋쟁이토마토">멋쟁이토마토</li>
+                            <li class="filtering-item"><input type="checkbox" value="야채">야채</li>
                         </ul>
                         </form>
                     </div>
@@ -73,25 +74,25 @@
                             <option value="lowest">최저가순</option>
                         </select>
                     </div>
-                    {{ result }}
+                   
                     <div class="description">
                         <ul class="food-info">
                             <li>
                                 <div>
-                                <img src="" id="food-img" alt="food1">
+                                <img src="{% static 'img/img1.PNG' %}" id="food-img" alt="food1">
                                 </div>
                                 <div>
-                                <p class="tag">#해장라면
+                                <p class="tag">#{{ result_1 }}
                                     
                                 </p>
                                 </div>
                             </li>
                             <li>
-                                <img src="" id="food-img" alt="food2">
+                                <img src="{% static 'img/img2.PNG' %}" id="food-img" alt="food2">
                                 <p class="tag">#감자전분면</p>
                             </li>
                             <li>
-                                <img src="" id="food-img" alt="food3">
+                                <img src="{% static 'img/img3.PNG' %}" id="food-img" alt="food3">
                                 <p class="tag">#멋쟁이토마토</p>
                             </li>
                         </ul>
