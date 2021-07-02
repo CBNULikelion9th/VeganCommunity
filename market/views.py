@@ -44,7 +44,7 @@ def market_new(request):
             form.writer = request.POST['writer']
             form.content = request.POST['content']
             form.image = request.POST['image']
-            form.check = request.POST.getlist('check[]')
+            form.check = request.POST.getlist('check[ ]')
             # form.organic = request.getlist('organic')
             # form.nature = request.getlist('nature')
             # form.nature = request.getlist('usual')
@@ -66,7 +66,7 @@ def market_create(request):
     # new_post.organic = request.getlist['organic']
     # new_post.nature = request.getlist['nature']
     # new_post.nature = request.getlist['usual']
-    new_post.check = request.POST.getlist('check[]')
+    new_post.check = request.POST.getlist('check[ ]')
 
     new_post.image = request.FILES['image']
     new_post.pub_date = timezone.now()
