@@ -37,11 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'blog',
-=======
     'market',
->>>>>>> 2d867b273944ceeb40a917ed3ef45b16748a06bc
 ]
 
 MIDDLEWARE = [
