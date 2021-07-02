@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import *
+from .models import User, Vegan_Store, Store_Review, Food,\
+                    Food_Review, Market_Goods,Goods_Comment
+
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'authority')

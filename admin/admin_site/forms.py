@@ -1,5 +1,6 @@
 from django import forms
-from .models import *
+from .models import User, Vegan_Store, Store_Review, User_Custom_Store, \
+                    Food, Food_Review, Market_Goods,Goods_Comment
 
 class UserForm(forms.ModelForm):
     class Meta:

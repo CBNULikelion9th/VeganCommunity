@@ -16,8 +16,21 @@
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'food_new' %}" class="btn btn-secondary">Add Food</a>
-        <!-- 검색 기능 추가 -->
         <br><br>
+        <form action="{% url 'food_list' %}" method='GET'>
+            <div class="row" style="margin-bottom: 15px;">
+                <div>
+                    <select class="btn btn-primary dropdown-toggle" name="search_type">
+                        <option class="dropdown-item" value="name">상품 이름</option>
+                        <option class="dropdown-item" value="all_nutrition">영양분</option>
+                        <option class="dropdown-item" value="allegy_nutrition">알러지유발가능 영양분</option>
+                        <option class="dropdown-item" value="Feature">특징</option>
+                    </select>
+                    <input type="text" name="search_key" value="{{search_key}}" placeholder="looking for...">
+                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
+                </div>
+            </div>
+        </form>
         <table class="table">
             <thead>
                     <th>Food Name</th>
