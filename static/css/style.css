@@ -131,45 +131,6 @@ hr.vertical {
 
 
 
-input[type='checkbox'] { /* input 감추기 */
-    position: absolute;
-    overflow:hidden;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    opacity: 0;
-  }
-
-
-input[type='checkbox'] + label {
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-    width: 36px;
-    height: 21px;
-    border-radius: 10px;
-    background: #666;
-    vertical-align: top;
-    color: transparent; /* label font 안보이게 설정 */
-}
-input[type='checkbox'] + label:after { /* 버튼 생성 */
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 19px;
-    height: 19px;
-    background: #fff;
-    border-radius: 50%; /* 원 형태의 border */
-}
-input[type='checkbox']:checked + label { 
-    background-color: #62a7ee; /* 버튼 체크 시 배경색 변경 */
-}
-input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위치 변경 */
-    left: auto;
-    right: 1px;
-}
-
 
 
 .parent{
@@ -199,11 +160,25 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
     border-radius: 24px;
     width: 100%;
     background-color: rgba(252, 243, 225, 0.769);
-    background-origin: content-box;
-    background-attachment: scroll;
-
+    /* background-origin: content-box;
+    background-attachment: scroll; */
+    /* display: inline-flex;
+    flex-wrap: wrap; */
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+	grid-template-rows: repeat(2, minmax(50px,auto));
+	grid-auto-flow: dense;
 
 }
+
+/* .td_1{ */
+    
+    /* flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    flex: 1; */
+
 
 .rounded_image{
     border: 0.2px solid ivory;
@@ -214,9 +189,8 @@ input[type='checkbox']:checked + label:after { /* 버튼 체크 시 버튼 위�
 }
 
 .list_title{
-
-    width: 400px;
-    height: 60px;
+    /* width: 400px;
+    height: 60px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
     font-style: bold;
