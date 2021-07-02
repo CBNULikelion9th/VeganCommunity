@@ -88,10 +88,10 @@ def market_edit(request, post_id):
             # form.nature = request.checkbox['nature']
             # form.usual = request.checkbox['usual']
 
-            # form.image = request.POST['image']
+            # form.image = request.FILES['image']
             market_edit = form.save()
             market_edit = Post.objects.get(
-                title=title, writer=writer, content=content, image=image, organic=organic, nature=nature, usual=usual
+                title=title, writer=writer, content=content, image=image
                 )
             print(market_new)
             return redirect('market_detail', post_id=post.id)
@@ -109,7 +109,6 @@ def market_update(request, post_id) :
     market_update.writer = request.POST['writer']
     market_update.content = request.POST['content']
     # market_update.image = request.FILES['image']
-
     # market_update.organic = request.checkbox['organic']
     # market_update.nature = request.checkbox['nature']
     # market_update.nature = request.checkbox['usual']
