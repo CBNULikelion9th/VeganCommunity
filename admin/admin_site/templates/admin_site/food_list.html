@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'layout.css' %}" rel="stylesheet"/> 
+    <title>FOOD LIST</title>
+</head>
+<body>
+    <h1>Select FOOD To Change</h1>
+    <hr>
+    <section>
+        <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
+        <a href="{% url 'food_new' %}" class="btn btn-secondary">Add Food</a>
+        <br><br>
+        <form action="{% url 'food_list' %}" method='GET'>
+            <div class="row" style="margin-bottom: 15px;">
+                <div>
+                    <select class="btn btn-primary dropdown-toggle" name="search_type">
+                        <option class="dropdown-item" value="name">상품 이름</option>
+                        <option class="dropdown-item" value="all_nutrition">영양분</option>
+                        <option class="dropdown-item" value="allegy_nutrition">알러지유발가능 영양분</option>
+                        <option class="dropdown-item" value="Feature">특징</option>
+                    </select>
+                    <input type="text" name="search_key" value="{{search_key}}" placeholder="looking for...">
+                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
+                </div>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+                    <th>Food Name</th>
+                    <th>Feature</th>
+            </thead>
+            <tbody>
+                {% for l in list %}
+                <tr>
+                    <td><a href="{% url 'food_detail' l.id %}">{{l.name}}</a></td>
+                    <td>{{l.Feature}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

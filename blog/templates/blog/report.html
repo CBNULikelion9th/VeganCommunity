@@ -1,0 +1,37 @@
+{% load static %}
+
+<html>
+<head>
+<title>Post Reporting Page</title>
+
+<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="header">
+        <div class="logo">
+            We are Vegan
+            <div class="content-report">
+                _Reporting Posts 
+            </div>
+        </div>
+    </section> 
+
+    <section id="form-outline">
+    <div class="form-inline"></div>
+        <div class = "report-title">
+           신고사유를 입력해주세요           
+           <div class = "form-content">               
+             <form action="{% url 'area_report %'}" method='POST'>
+               {% csrf_token %}
+               {{form.as_p}}   
+               <hr>           
+               <input type="submit" value="신고하기">
+             </form> 
+            </div> 
+        </div>
+    </div>
+    
+    </section>
+</body>
+</html> 

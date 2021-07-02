@@ -1,0 +1,38 @@
+{% load static %}
+
+<html>
+<head>
+<title>Exception Page</title>
+
+<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="header">
+        <div class="logo">
+            We are Vegan
+            <div class="content-report">
+                _Exception PAGE
+            </div>
+        </div>
+    </section> 
+    
+    <section id="form-outline">
+        <div class="form-inline"></div>
+        <div class = "save-title">
+           존재하지 않습니다
+           <div class = "form-content">
+               이용해주셔서 감사합니다               
+               <div class="form-main">
+                   <a href="{% url 'map_main' %}">MAIN화면으로</a>
+                </div>
+              
+            </div>
+        </div>
+    </section>
+
+    <div class="arrow-img">                
+        <a href="{% url 'map_main' %}"><img src="{% static 'img/arrow.png' %}"/></a>
+    </div>
+</body>
+</html> 

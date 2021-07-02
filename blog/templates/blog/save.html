@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<html>
+<head>
+<title>Post Save Page</title>
+
+<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="header">
+        <div class="logo">
+            We are Vegan
+            <div class="content-save">
+                _save
+            </div>
+        </div>
+    </section> 
+
+    <section id="form-outline">
+        <div class="form-inline"></div>
+        <div class = "save-title">
+           저장되었습니다
+           <div class = "form-content">     
+               MYPGAE로 이동하시겠습니까?          
+               <div class="form-button">
+                <p></p>
+                <a href="{% url 'map_main' %}">MAIN으로</a>
+                <a href="{% url 'mypage' %}">MYPAGE로</a>                
+               </div> 
+               
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
