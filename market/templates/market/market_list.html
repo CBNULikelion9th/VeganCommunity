@@ -11,8 +11,7 @@
 </head>
 <body>
     <div class="title1">
-    <!-- <h1>나들목 장터 상품들을 구경하세요:)</h1> -->
-        <p>  나 들 목 장 터  OPEN </p>
+        <p>  직 거 래 장 터  OPEN </p>
         </div>      
         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option selected>Open this select menu</option>
@@ -26,28 +25,24 @@
     <tbody>
         <div class="td_1">
         {% for post in market_list %}
-        <tr>
-            <!-- <td>{{ post.id }}</td> -->
-            <!-- <td><img src="..." class="rounded float-start" alt="..."> -->
+        
             <td>{% if post.image %}
-            <p><a href="{% url 'market_detail' post.id %}" >
+            <a href="{% url 'market_detail' post.id %}" >
                 <img src="{{ post.image.url }}" class="rounded_image" alt="사진이 업로드 되지 않음">
-            </a></p>
-            {% endif %}</td>
-            <!-- <img src="..." class="rounded mx-auto d-block" alt="...">
-            <img src="..." class="rounded float-end" alt="..."> -->
+            </a>
+            {% endif %}
             </td>
-        </tr>
+    
             <!-- <a href="{% url 'market_detail' post.id %}" ></a> -->
             <td class=list_title>
                 {{ post.title }}</td>
         
-        <tr>
-            <td>{{ post.writer }}</td>
-            <td>{{ post.updated_at }}</td>
-            <td>{{ post.body }}</td>
+        
+            <td>작성자 : {{ post.writer }}</td>
+            <td>등록일 : {{ post.updated_at }}</td>
+            <!-- <td>{{ post.content }}</td> -->
             <td>조회수 : {{post.view_count}}</td>
-        </tr>
+    
         </div>
 
         

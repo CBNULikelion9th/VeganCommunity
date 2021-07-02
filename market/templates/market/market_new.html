@@ -10,18 +10,18 @@
 <form action="{% url 'market_create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <span>
-        <input type="checkbox" id="check_button1" class="check" name="organic">
+        <input type="checkbox" id="check_button1" class="check" name="check[ ]" value="유기농">
         <label for="check_button1">유기농</label>
     </span>
     <span>
-        <input type="checkbox" id="check_button2" class="check" name="nature">
+        <input type="checkbox" id="check_button2" class="check" name="check[ ]" value="자연농">
         <label for="check_button2">자연농</label>
     </span>
     <span>
-        <input type="checkbox" id="check_button3" class="check" name="usual">
+        <input type="checkbox" id="check_button3" class="check" name="check[ ]" value="일반농">
         <label for="check_button2">일반농</label>
     </span>
-    <p>사진 : <input type="file" name ="image"></p>
+    <p>사진 : <input type="file" name ="image" multiple></p>
     <!-- 사진, 영상 -->
     <p>제목 : <input type="text" name ="title"></p>
     <p>작성자 : <input type="text" name ="writer"></p>

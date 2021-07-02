@@ -14,15 +14,15 @@
 <h2 class = "title">{{ post.title }}</h2>
 <small class = "writer">작성자 : {{ post.writer }}</small>
 
+
 {% if post.image %}
-<p><img src="{{ post.image.url }}" alt="사진이 불러와지지 않음" class = detail_image></p>
-
+<p><img src="{{ post.image.url }}" alt="사진이 업로드되지 않음" class = detail_image></p>
 {% endif %}
-
-</p>
 </div>
 <!-- {{post.update_counter}} -->
 <hr>
+
+<h4>{{ post.check }}</h4>
 
 <div class ="contents">
 <p>

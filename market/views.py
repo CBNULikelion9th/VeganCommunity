@@ -31,7 +31,8 @@ def market_detail(request, post_id ):
 #     return render(request, 'market/market_new.html',{'form':form })
 
 def market_new(request):
-    form = Post(request.POST, request.FILES)
+    
+    form = Post(request.POST, request.FILES )
     if request.method == 'GET':
         form = Post()
     
@@ -39,15 +40,18 @@ def market_new(request):
         form = Post(request.POST, request.FILES)
 
         if form.is_valid():
-            # title = form.cleaned_data['title']
-            # content = form.cleaned_data['content']
-            # image = form.cleaned_data['image']
             form.title = request.POST['title']
             form.writer = request.POST['writer']
             form.content = request.POST['content']
             form.image = request.POST['image']
+            form.check = request.POST.getlist('check[]')
+            # form.organic = request.getlist('organic')
+            # form.nature = request.getlist('nature')
+            # form.nature = request.getlist('usual')
 
-            market_new = Post.objects.create(title=title, writer=writer, content=content, image=image)
+            market_new = Post.objects.create(
+                title=title, writer=writer, content=content, image=image,
+                )
             print(market_new)
             return redirect('market_detail', post_id=post.id)
             
@@ -59,26 +63,57 @@ def market_create(request):
     new_post.writer = request.POST['writer']
     new_post.content = request.POST['content']
 
-    # new_post.organic = request.POST['organic']
-    # new_post.nature = request.POST['nature']
+    # new_post.organic = request.getlist['organic']
+    # new_post.nature = request.getlist['nature']
+    # new_post.nature = request.getlist['usual']
+    new_post.check = request.POST.getlist('check[]')
 
     new_post.image = request.FILES['image']
     new_post.pub_date = timezone.now()
     new_post.save()
-    print(market_create)
+    print(new_post.check)
     return redirect('market_detail', new_post.id)
 
 def market_edit(request, post_id):
     market_edit = Post.objects.get(id=post_id)
-    print(market_edit)
-    return render(request, 'market/market_edit.html', {'post':market_edit})
+    
+    if request.method == "POST":
+        form = Post(request.POST, request.FILES, request.checkbox)
+        if form.is_valid():
+            form.title = request.POST['title']
+            form.writer = request.POST['writer']
+            form.content = request.POST['content']
+            
+            # form.organic = request.checkbox['organic']
+            # form.nature = request.checkbox['nature']
+            # form.usual = request.checkbox['usual']
+
+            # form.image = request.POST['image']
+            market_edit = form.save()
+            market_edit = Post.objects.get(
+                title=title, writer=writer, content=content, image=image, organic=organic, nature=nature, usual=usual
+                )
+            print(market_new)
+            return redirect('market_detail', post_id=post.id)
+    else:
+        form = Post()            
+        print(market_edit)
+        return render(request, 'market/market_edit.html', {
+            'form':form,
+            'post':market_edit,
+        })
 
 def market_update(request, post_id) :
     market_update = Post.objects.get(id = post_id)
     market_update.title = request.POST['title']
     market_update.writer = request.POST['writer']
     market_update.content = request.POST['content']
-    market_update.image = request.FILES['image']
+    # market_update.image = request.FILES['image']
+
+    # market_update.organic = request.checkbox['organic']
+    # market_update.nature = request.checkbox['nature']
+    # market_update.nature = request.checkbox['usual']
+
     market_update.pub_date = timezone.now()
     market_update.save()
     return redirect('market_detail', market_update.id)
@@ -88,38 +123,8 @@ def market_delete(request, post_id) :
     post.delete()
     return redirect('market_list')
 
-# def market_new(request):
-#     if request.method == 'GET':
-#         form = PostForm()
-#     elif request.method == 'POST':
-#         #포스트 : 사용자가 입력한 데이터를 저장하는 부분
-#         form = PostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             #post = form.save(commit=true) user가 없어서 error
-#             # post = form.save(commit=False)
-#             # print(post)
-#             # post.user = request.user
-#             # post.save() #post.id가 생성됨    
-#             post_after_commit = post.save()
-#             print(post_after_commit)
-#             return redirect('market_detail', post_id = post_after_commit.id)
-            
-#     return render(request, 'market/market_new.html', {
-#         'form' : form,
-#     })
     
-
-
-
-            # title = form.cleaned_data['title']
-            # content = form.cleaned_data['content']
-            # image = form.cleaned_data['image']
-            # post = Post.objects.create(title=title, content=content, image=image)
-
-            # post = Post.objects.create(title = form.cleaned_data['title']
-            # content = form.cleaned_data['content']
-            # title, content=content, image=image)
-            # return redirect('market_detail', post_id=post.id)
+    # post = Post.objects.create(title=title, content=content, image=image)
 
 
 
