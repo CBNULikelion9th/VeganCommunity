@@ -1,0 +1,50 @@
+{% load static %}
+
+<html>
+<head>
+<title> MyPage</title>
+
+<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <section id="header">
+        <div class="logo">
+            We are Vegan
+            <div class="content-report">
+                _MYPAGE            
+
+            </div>
+        </div>
+    </section> 
+        
+        <section id="form-outline">
+            <div class="form-inline"></div>
+            <div class = "save-title">
+                   <a href="{% url 'store_1' %}">MAIN으로</a>           
+               <div class = "form-content">
+                <div class = "text">
+                   <p>ID : likelionjjjjjang</p>
+                   <p>비밀번호 : like*****</p>
+                   <div style=
+                   "overflow:scroll;  width:500px; height:80px; padding:10px; background-color:rgb(177, 219, 174);  ">
+                   <p>저장된 가게</p>
+                   <p>- 오프리</p>
+                   <p>- 여누</p>
+                   </div>
+                   <div style=
+                   "overflow:scroll; width:500px; height:80px; padding:10px; background-color:rgb(177, 219, 174);  ">
+                   <p>신고한 가게</p>
+                   <p>-</p>
+                   <p></p>
+                   
+                   </div>                  
+               </div>   
+                </div>
+            </div>    
+           
+        </section>
+       
+    </body>
+    
+    </html> 
+    

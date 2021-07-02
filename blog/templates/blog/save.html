@@ -22,14 +22,14 @@
         <div class="form-inline"></div>
         <div class = "save-title">
            저장되었습니다
-           <div class = "form-content">
-               MYPAGE로 이동하시겠습니까?               
-               <div class="form-cancel">
-                   <a href="#">cancel</a>
-                  </div>
-               <div class="form-ok">
-                <a href="#">ok</a>
+           <div class = "form-content">     
+               MYPGAE로 이동하시겠습니까?          
+               <div class="form-button">
+                <p></p>
+                <a href="{% url 'map_main' %}">MAIN으로</a>
+                <a href="{% url 'mypage' %}">MYPAGE로</a>                
                </div> 
+               
             </div>
         </div>
     </section>
