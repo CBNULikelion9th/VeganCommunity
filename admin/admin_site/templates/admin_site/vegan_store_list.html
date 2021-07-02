@@ -16,8 +16,21 @@
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'vegan_store_new' %}" class="btn btn-secondary">Add STORE</a>
-        <!-- 검색 기능 추가 -->
         <br><br>
+        <form action="{% url 'vegan_store_list' %}" method='GET'>
+            <div class="row" style="margin-bottom: 15px;">
+                <div>
+                    <select class="btn btn-primary dropdown-toggle" name="search_type">
+                        <option class="dropdown-item" value="name">가게 이름</option>
+                        <option class="dropdown-item" value="vegan_step">비건 단계</option>
+                        <option class="dropdown-item" value="address">주소</option>
+                        <option class="dropdown-item" value="field">종류</option>
+                    </select>
+                    <input type="text" name="search_key" value="{{search_key}}" placeholder="looking for...">
+                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
+                </div>
+            </div>
+        </form>
         <table class="table">
             <thead>
                     <th>Name</th>

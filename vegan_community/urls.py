@@ -18,5 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('blog/', include('blog.urls')),
+=======
+    path('', include('market.urls')),
+
+>>>>>>> 2d867b273944ceeb40a917ed3ef45b16748a06bc
 ]

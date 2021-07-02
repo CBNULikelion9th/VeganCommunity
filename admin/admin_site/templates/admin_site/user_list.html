@@ -16,8 +16,22 @@
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
         <a href="{% url 'user_new' %}" class="btn btn-secondary">Add USER</a>
-        <!-- 검색 기능 추가 -->
         <br><br>
+        <form action="{% url 'user_list' %}" method='GET'>
+            <div class="row">
+                <div>
+                    <select class="btn btn-primary dropdown-toggle" name="search_type">
+                        <option class="dropdown-item" value="authority">권한</option>
+                        <option class="dropdown-item" value="id">ID</option>
+                        <option class="dropdown-item" value="name">이름</option>
+                        <option class="dropdown-item" value="vegan_step">비건 단계</option>
+                    </select>
+                    <input type="text" name="search_key" value="{{search_key}}" placeholder="looking for...">
+                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
+                </div>
+            </div>
+        </form>
+        
         <table class="table">
             <thead>
                     <th>User ID</th>
