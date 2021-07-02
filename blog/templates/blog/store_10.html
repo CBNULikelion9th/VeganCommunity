@@ -1,0 +1,115 @@
+{% load static %}
+<html>
+<head>
+<title>채식주의자의무화과 상세페이지</title>
+
+<link href="{% static 'blog/mapdetail.css' %}" rel="stylesheet" />
+</head>
+
+<body>  
+  <!-- 지도 불러오는 부분 시작 -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <style type="text/css">
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+        }  
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+  
+    </head>
+      <div id="map"></div>  
+      <!-- Async script executes immediately and must be after any DOM elements used in callback. --> -->
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
+  
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjM9mpO9_qqSTjiOSnyPy5ssVsAfb3NsY&callback=initMap&libraries=&v=weekly"  async></script>
+        <script>
+          (() => {
+            "use strict";
+            var e = {
+                d: (o, t) => {
+                  for (var a in t)
+                    e.o(t, a) &&
+                      !e.o(o, a) &&
+                      Object.defineProperty(o, a, { enumerable: !0, get: t[a] });
+                },
+                o: (e, o) => Object.prototype.hasOwnProperty.call(e, o),
+                r: (e) => {
+                  "undefined" != typeof Symbol &&
+                    Symbol.toStringTag &&
+                    Object.defineProperty(e, Symbol.toStringTag, {
+                      value: "Module",
+                    }),
+                    Object.defineProperty(e, "__esModule", { value: !0 });
+                },
+              },
+              o = {};
+            function t() {
+              const e = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: { lat: -33, lng: 151 },
+              });
+              
+              // 위도와 경도 입력해서 핀 추가하는 부분          
+               //  //10. 전주 채식주의자의무화과 - 비건 채식 레스토랑
+               new google.maps.Marker({
+                position: { lat:35.8157252, lng:126.8928893 },
+                map: e,
+              });      
+
+            }
+            e.r(o), e.d(o, { initMap: () => t });
+            var a = window;
+            for (var n in o) a[n] = o[n];
+            o.__esModule && Object.defineProperty(a, "__esModule", { value: !0 });
+          })();
+        </script>
+    </body>
+  </html>  
+   <!-- 지도 불러오는 부분 끝-->
+
+   <!-- 왼쪽 배너 -->
+   <leftbody>
+    <section id="mainfunc">
+        <div class="maplogo">
+          We are Vegan
+          <div class="photo">
+          <img src="{% static 'img/8.png' %}"/>
+          <div class="store_text">
+            <p>채식주의자의무화과</p>
+            <h3>VEGAN</h3>
+            <h4>평점 : 4.8<h4>
+            <h4>전라북도 전주시 완산구 중화산동2가 번지 </h4>
+            <h4>1층 20-10 KR</h4>
+            <p></p>
+            <h4>매장 내 식사 ○ </h4>
+            <h4>테이크아웃 ○ <h4>
+            
+                <section id="under"> 
+                        <div class="underimg">
+                            <a href="{% url 'map_main' %}"><img src="{% static 'img/a.png' %}"/></a>
+                            <a href="{% url 'store_save' %}"><img src="{% static 'img/b.png' %}"/></a>
+                            <a href="{% url 'area_report' %}"><img src="{% static 'img/c.png' %}"/></a>
+                            <a href="{% url 'exception' %}"><img src="{% static 'img/d.png' %}"/></a>
+                        </div>                           
+            </div>   
+            </div>          
+        </div>
+
+    </section>
+    
+
+  </section>   
+</leftbody>
+
+</html>  

@@ -22,7 +22,7 @@
         <div class = "report-title">
            신고사유를 입력해주세요           
            <div class = "form-content">               
-             <form action="{% url 'post_report %'}" method='POST'>
+             <form action="{% url 'area_report %'}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}   
                <hr>           

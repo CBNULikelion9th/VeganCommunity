@@ -1,0 +1,118 @@
+/* 오른쪽 지도 들어갈 부분 */
+body {
+  background-color: white;
+  left: 0%;
+  padding: 0;
+  margin: 0;
+  min-width: 1000px;
+}
+
+/* 초록 위 배너 */
+.leftbody {
+    background-color: white;
+    width: 300;
+    left: 500;
+    padding: 0;
+    margin: 0;
+    min-width: 300px;
+}
+
+/* 검색창 초록 배너 */
+#up-mainfunc {
+  background-color: rgb(83, 188, 78);  
+  height: 300;
+  width: 420;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+}
+/* we are vegan 글씨 */
+.maplogo_up {
+    position: absolute;
+    color: white;
+    width: 400;
+    top: 40;
+    left: 15%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+    font-size: 45px;
+    font-weight: 1000;
+}
+.add_store {
+  top: 20;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  padding: 0 38px;
+}
+.menu-list {
+  position: absolute;
+  margin-top: 15%;
+  left: 130;
+  font-size: 30px;
+}
+.menu-list .menu a {
+  text-decoration: none;
+  color: white;
+  padding: 0 38px;
+}
+
+/* 초록 아래 배너 */
+#down-mainfunc {
+    background-color: rgb(83, 188, 78);  
+    height: 590;
+    width: 420;
+    position: fixed;
+    top: 310;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    scroll-behavior: smooth;
+}
+.sort_store {
+  position: absolute;
+  color: white;
+  width: 400;
+  left: 250;
+  top: 30;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.search_store {
+  position: absolute;
+  color: white;
+  width: 400;
+  top: 100;
+  left: 13%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 1000;
+}
+.store_text {
+  width: 600px;
+}
+
+p, h4 {
+  margin: 0;
+}
+.store_text p {
+  top: 30;
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 550;
+  color: rgb(21, 99, 56);
+}
+.store_text h4 {
+  
+  font-size: 17px;
+  font-weight: 450;
+  color: white;
+}
+
+
+
