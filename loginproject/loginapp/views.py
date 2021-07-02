@@ -8,7 +8,7 @@ from django.contrib import auth
 def signup(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['confirm']:
-            user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'], email=request.POST['email'])
+            user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'], email=request.POST['email'], first_name=request.POST['first_name'])
             auth.login(request, user)
             #회원가입 성공페이지
             return render(request, 'success.html')
