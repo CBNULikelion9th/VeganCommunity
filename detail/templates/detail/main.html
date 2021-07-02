@@ -1,12 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{ json_object }}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Main</title>
+        <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!-- navigation -->
+        <nav>
+            <div class="nav-container">
+                <div class="nav-1">
+                    <img class="logo_instagram_txt"
+                        src="{% static 'logo.png' %}"
+                        alt="logo_text">
+                </div>
+                <div class="nav-2">
+                    <input id="searchInput" type="search" class="input-search" placeholder="검색">
+                    <button id="btn-search">Search</button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="feeds">
+                <!-- filtering list -->
+                <article class="container-1">
+                    <div class="row-6 category">          
+                        <ul class="category-list">
+                            <li class="category-items">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                <input type="submit" name="category-item" value="Vegan">
+                                </form>
+                            </li>
+                            <li class="category-items">
+                                <form action="" method="POST">
+                                <input type="submit" name="category-item" value="시중식품성분">
+                                </form>
+                            </li>
+                            <li class="category-items">
+                                <form action="" method="POST">
+                                <input type="submit" name="category-item" value="농산물">
+                                </form>
+                            </li>
+                            <li class="category-items">
+                                <form action="" method="POST">
+                                <input type="submit" name="category-item" value="쇼핑몰">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row-6 filtering">
+                       <form action="">
+                        <ul class="filtering-list">
+                            <li class="filtering-item"><input type="checkbox" value="">a</li>
+                            <li class="filtering-item"><input type="checkbox" value="">b</li>
+                            <li class="filtering-item"><input type="checkbox" value="">c</li>
+                            <li class="filtering-item"><input type="checkbox" value="">d</li>
+                        </ul>
+                        </form>
+                    </div>
+                </article>
+                <!-- food list -->
+                <article class="container-2">
+                    <div class="sort">
+                        <select name="" id="">
+                            <option value="recent">최신순</option>
+                            <option value="popular">인기순</option>
+                            <option value="lowest">최저가순</option>
+                        </select>
+                    </div>
+                    {{ result }}
+                    <div class="description">
+                        <ul class="food-info">
+                            <li>
+                                <div>
+                                <img src="" id="food-img" alt="food1">
+                                </div>
+                                <div>
+                                <p class="tag">#해장라면
+                                    
+                                </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="" id="food-img" alt="food2">
+                                <p class="tag">#감자전분면</p>
+                            </li>
+                            <li>
+                                <img src="" id="food-img" alt="food3">
+                                <p class="tag">#멋쟁이토마토</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
 </body>
 </html>
