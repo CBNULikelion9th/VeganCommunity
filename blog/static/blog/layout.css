@@ -79,6 +79,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+
 .report-title {
     position: absolute;
     display: flex;
@@ -93,9 +94,9 @@ body {
   position: absolute;
   display: flex;
   margin-top: -430;
-  margin-left: 300;
+  margin-left: 230;
   font-size: 35;
-  font-weight: 500;
+  font-weight: 545;
   transform: translateX(-50%);
 }
 .save-title {
@@ -131,17 +132,10 @@ body {
   transform: translateX(-50%);
 }
 
-.form-cancel{
-  margin-top: 190;
-  margin-left: -150;
-  font-size: 35;
-  font-weight: 545;
-  transform: translateX(-50%);
-}
-.form-ok{
-  margin-top: 190;
+.form-button{
+  margin-top: 500;
   margin-left: 250;
-  font-size: 35;
+  font-size: 40;
   font-weight: 545;
   transform: translateX(-50%);
 }
@@ -151,3 +145,24 @@ body {
   font-size: 50;
   font-weight: 545;
 }
+.text {
+  width: 600px;
+}
+
+p, h4 {
+  margin: 0;
+}
+.text p {
+  top: 0%;
+  margin-top: 40px;
+  font-size: 50px;
+  font-weight: 550;
+  color: rgb(21, 99, 56);
+}
+.text h4 {
+  
+  font-size: 17px;
+  font-weight: 450;
+  color: white;
+}
+
