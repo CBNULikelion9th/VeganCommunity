@@ -8,6 +8,8 @@ urlpatterns = [
     path('area_report/', views.area_report, name='area_report'),
     path('vegan_area_add/', views.vegan_area_add, name='vegan_area_add'),
     path('exception/', views.exception, name='exception'),
+    path('mypage/', views.mypage, name='mypage'),
+
 
     path('store_1/', views.store_1, name='store_1'),
     path('store_2/', views.store_2, name='store_2'),

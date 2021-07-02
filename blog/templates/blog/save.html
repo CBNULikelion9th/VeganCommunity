@@ -23,13 +23,12 @@
         <div class = "save-title">
            저장되었습니다
            <div class = "form-content">
-               MYPAGE로 이동하시겠습니까?               
                <div class="form-cancel">
-                   <a href="{% url 'map_main' %}">cancel</a>
+                   <a href="{% url 'map_main' %}">뒤로가기</a>
                   </div>
                <div class="form-ok">
-                <a href="#">ok</a>
-               </div> 
+                <a href="{% url 'map_main' %}">MAIN으로</a>
+            </div> 
             </div>
         </div>
     </section>

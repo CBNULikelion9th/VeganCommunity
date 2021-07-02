@@ -87,8 +87,17 @@ body {
     font-size: 35;
     font-weight: 500;
     transform: translateX(-50%);
-}
 
+}
+.mypage-title {
+  position: absolute;
+  display: flex;
+  margin-top: -430;
+  margin-left: 300;
+  font-size: 35;
+  font-weight: 500;
+  transform: translateX(-50%);
+}
 .save-title {
   position: absolute;
   display: flex;

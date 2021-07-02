@@ -18,6 +18,9 @@ def store_save(request):
 def exception(request):
     return render(request, 'blog/exception.html')
 
+def mypage(request):
+    return render(request, 'blog/mypage.html')
+
 def area_report(request):
     if request.method == 'GET':
         form = ReportForm()
