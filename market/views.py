@@ -26,10 +26,6 @@ def market_detail(request, post_id ):
         'post':post,
     })
 
-# def market_new(request):
-#     form = PostForm()
-#     return render(request, 'market/market_new.html',{'form':form })
-
 def market_new(request):
     
     form = Post(request.POST, request.FILES )
@@ -44,15 +40,31 @@ def market_new(request):
             form.writer = request.POST['writer']
             form.content = request.POST['content']
             form.image = request.POST['image']
-            form.check = request.POST.getlist('check[ ]')
-            # form.organic = request.getlist('organic')
-            # form.nature = request.getlist('nature')
-            # form.nature = request.getlist('usual')
+            # form.organic =request.POST['organic']
+        
+            if 'organic' in request.POST:
+                print ("유기농")
+            else:
+                form = Post()
+                print (" ")  
+
+            if 'nature' in request.POST:
+                print ("자연농")
+            else:
+                form = Post()
+                print (" ")   
+
+            if 'usual' in request.POST:
+                print ("일반농")
+            else:
+                form = Post()
+                print (" ")   
+
+            # if request.POST.has_key("organic"):
 
             market_new = Post.objects.create(
                 title=title, writer=writer, content=content, image=image,
                 )
-            print(market_new)
             return redirect('market_detail', post_id=post.id)
             
     return render(request, 'market/market_new.html',{'form':form })
@@ -63,15 +75,26 @@ def market_create(request):
     new_post.writer = request.POST['writer']
     new_post.content = request.POST['content']
 
-    # new_post.organic = request.getlist['organic']
-    # new_post.nature = request.getlist['nature']
-    # new_post.nature = request.getlist['usual']
-    new_post.check = request.POST.getlist('check[ ]')
+    if 'organic' in request.POST:
+        print ('유기농')
+    else:
+        print (" ")  
+        # return redirect('market_detail', post_id=new_post.id)
+        # return None
 
+    if 'nature' in request.POST:
+        print ("자연농")
+    else:
+        print (" ") 
+
+    if 'usual' in request.POST:
+        print ("일반농")
+    else:
+        print (" ")   
+        
     new_post.image = request.FILES['image']
     new_post.pub_date = timezone.now()
     new_post.save()
-    print(new_post.check)
     return redirect('market_detail', new_post.id)
 
 def market_edit(request, post_id):
@@ -83,21 +106,33 @@ def market_edit(request, post_id):
             form.title = request.POST['title']
             form.writer = request.POST['writer']
             form.content = request.POST['content']
-            
-            # form.organic = request.checkbox['organic']
-            # form.nature = request.checkbox['nature']
-            # form.usual = request.checkbox['usual']
+            form.image = request.POST['image']
 
-            # form.image = request.FILES['image']
+            if 'organic' in request.POST:
+                print ("유기농")
+            else:
+                market_edit = Post()
+                print (" ")  
+
+            if 'nature' in request.POST:
+                print ("자연농")
+            else:
+                market_edit = Post()
+                print (" ")   
+
+            if 'usual' in request.POST:
+                print ("일반농")
+            else:
+                market_edit = Post()
+                print (" ")   
+
             market_edit = form.save()
             market_edit = Post.objects.get(
-                title=title, writer=writer, content=content, image=image
+                title=title, writer=writer, content=content, image=image, organic=organic, nature=nature, usual=usual
                 )
-            print(market_new)
             return redirect('market_detail', post_id=post.id)
     else:
         form = Post()            
-        print(market_edit)
         return render(request, 'market/market_edit.html', {
             'form':form,
             'post':market_edit,
@@ -108,10 +143,24 @@ def market_update(request, post_id) :
     market_update.title = request.POST['title']
     market_update.writer = request.POST['writer']
     market_update.content = request.POST['content']
-    # market_update.image = request.FILES['image']
-    # market_update.organic = request.checkbox['organic']
-    # market_update.nature = request.checkbox['nature']
-    # market_update.nature = request.checkbox['usual']
+    market_update.image = request.FILES['image']
+
+    if 'organic' in request.POST:
+        print ("유기농")
+    else:
+        form = Post()
+        print (" ")  
+
+    if 'nature' in request.POST:
+        print ("자연농")
+    else:
+        form = Post()
+        print (" ")  
+    if 'usual' in request.POST:
+        print ("일반농")
+    else:
+        form = Post()
+        print (" ")   
 
     market_update.pub_date = timezone.now()
     market_update.save()
@@ -144,31 +193,3 @@ def market_comment(request,  post_id):
     return render(request, 'market/comment.html',{
         'form': form,
     })
-
-
-
-# def detail(request, post_id) :
-#     post_detail = get_object_or_404(Post, pk=post_id)
-#     comment_form = ComentForm()
-#     return render(request, 'comment2.html', {'post_detail':post_detail, 'comment_form':comment_form})
-
-# def new_comment(request, post_id) :
-#     filled_form = CommentForm(request.POST)
-#     if filled_form.is_valid() :
-#         finished_form = filled_form.save(commit=False)
-#         finished_form.post = get_object_or_404(Post, pk=post_id)
-#         finished_form.save()
-#     return redirect('visit_detail', post_id)
-
-
-
-# def new_comment(request, post_id) :
-#     filled_form = CommentForm(request.POST)
-#     if filled_form.is_valid() :
-#         finished_form = filled_form.save(commit=False)
-#         finished_form.post = get_object_or_404(Post, pk=post_id)
-#         finished_form.save()
-#     # return redirect('visit_detail', post_id)
-#     return render(request, 'comment2.html',{
-#         'form':form,
-#     })

@@ -13,7 +13,7 @@
 <div class = "image_contents">
 <h2 class = "title">{{ post.title }}</h2>
 <small class = "writer">작성자 : {{ post.writer }}</small>
-
+<br><br>
 
 {% if post.image %}
 <p><img src="{{ post.image.url }}" alt="사진이 업로드되지 않음" class = detail_image></p>
@@ -29,7 +29,11 @@
     <h4>상 품 설 명</h4>
 </p>
     <hr>
-<h4>{{ post.check }}</h4>
+<small>유기농 : {{ post.organic }}</small>
+<small>자연농 : {{ post.nature }}</small>
+<small>일반농 : {{ post.usual }}</small>
+
+
 <h4>{{post.content}}</h4>
 
 <small>{{ post.updated_at}}</small>

@@ -158,17 +158,19 @@ hr.vertical {
 
 .table-striped{
     border-radius: 24px;
-    width: 100%;
     background-color: rgba(252, 243, 225, 0.769);
-    /* background-origin: content-box;
-    background-attachment: scroll; */
-    /* display: inline-flex;
-    flex-wrap: wrap; */
-    display: grid;
-    
-    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
-	grid-template-rows: repeat(2, minmax(50px,auto));
-	grid-auto-flow: dense;
+    background-origin: content-box;
+    background-attachment: scroll;
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+    /* display: grid; */
+
+    /* grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+	grid-template-rows: repeat(3, minmax(60px,auto));
+	grid-auto-flow: dense; */
 
 }
 
@@ -181,10 +183,11 @@ hr.vertical {
 
 
 .rounded_image{
-    border: 0.2px solid ivory;
-    border-radius: 10px;
+    /* border: 0.2px solid ivory; */
+    border-radius: 30px;
     width: 400px;
     height: 300px;
+    
 
 }
 
@@ -201,7 +204,6 @@ hr.vertical {
 
 /* .td_1 {
     
-
 } */
 
 .notice_contents{
@@ -225,11 +227,13 @@ hr.vertical {
 /* .farmer_notice .h1{
     font-size: 40px;
     color: red;
-
 } */
 
 .detail_image{
-    width: 500px;
-    height: 450px;
-    padding-left: 20px;
+    border-radius: 20px;
+    width: 480px;
+    height: 430px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
 }

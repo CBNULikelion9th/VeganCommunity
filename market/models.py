@@ -13,7 +13,10 @@ class Post(models.Model):
     #question = models.ForeignKey(Question, Null=True, blank=True ,on_delete=models.CASCADE) 
     #answer = models.ForeignKey(Answer, Null=True, blank=True, on_delete=models.CASCADE)
     view_count = models.IntegerField(default=0)
-
+    organic = models.BooleanField(default=True)
+    nature = models.BooleanField(default=True)
+    usual = models.BooleanField(default=True)
+    
 
     def __str__(self): 
         return f'{self.title}'

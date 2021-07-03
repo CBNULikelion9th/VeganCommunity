@@ -14,45 +14,48 @@
         <p>  직 거 래 장 터  OPEN </p>
         </div>      
         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option selected>Open this select menu</option>
+            <option selected> [ 정렬 선택 ]</option>
             <option value="1">최신순</option>
             <option value="2">저가순</option>
             <option value="3">고가순</option>
           </select>
           <br>
-    <table class="table-striped">
 
+    <table class="table-striped">
     <tbody>
         <div class="td_1">
         {% for post in market_list %}
-        
-            <td>{% if post.image %}
+        <tr>
+            <td>
+            {% if post.image %}
             <a href="{% url 'market_detail' post.id %}" >
-                <img src="{{ post.image.url }}" class="rounded_image" alt="사진이 업로드 되지 않음">
+                <img src="{{ post.image.url }}" class = "rounded_image" alt="사진이 업로드 되지 않음">
             </a>
             {% endif %}
             </td>
-    
+        </tr>
             <!-- <a href="{% url 'market_detail' post.id %}" ></a> -->
-            <td class=list_title>
-                {{ post.title }}</td>
-        
+        <div class = list_2>   
+            <td class=list_title>{{ post.title }}</td>
         
             <td>작성자 : {{ post.writer }}</td>
+        <tr>
+            <td>상품설명 : {{ post.content |truncatechars:50 }}</td>
             <td>등록일 : {{ post.updated_at }}</td>
-            <!-- <td>{{ post.content }}</td> -->
             <td>조회수 : {{post.view_count}}</td>
-    
+        </tr>
+        </div> 
         </div>
 
         
         {% endfor %}
     </tbody>
 </table>
-</body>
+
 <br>
 <br>
 <a href="{% url 'market_new' %}"><input type="button" value="상품 등록하기" class=button></a>
+</body>
 <hr>
 </div>
 
