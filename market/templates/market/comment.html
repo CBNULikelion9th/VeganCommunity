@@ -1,0 +1,26 @@
+{% load static %}
+<div class=all>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+</head>
+<div class=title2>
+<h1>[ 댓글 작성하기 ]</h1>
+</div>
+<form action="{% url 'market_comment' %}" method="POST" class=table>
+    { % for comment in comments % }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        { % endfor % }
+    
+    <!-- {% csrf_token %}
+
+     {{ form.as_p }}    
+    <div><input type="submit" value='생성' class=submit></div> -->
+</form>
+
+</div>
+

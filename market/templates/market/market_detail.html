@@ -23,7 +23,6 @@
 <hr>
 
 
-
 <div class ="contents">
 <p>
     <h4>상 품 설 명</h4>
@@ -42,8 +41,16 @@
 </div>
 </div>
 <a href="{% url 'market_list' %}"><input type="button" value="장터로 돌아가기" class=button></a>
-<br>
+<br><br>
 <a href="{% url 'market_edit' post.id %}"><input type="button" value="게시글 수정하기" class=button></a>
 <a href="{% url 'market_delete' post.id %}"><input type="button" value="게시글 삭제" class=button></a>
+<br>
+<input type="button" value="구매하기" class=button>
+<input type="button" value="문의하기" class=button>
+
+<br>
+<hr>
+
+
 </body>
 {% endblock content %}

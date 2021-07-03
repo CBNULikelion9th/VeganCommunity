@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm #CommentForm
 from django.utils import timezone
@@ -61,7 +61,6 @@ def market_new(request):
                 print (" ")   
 
             # if request.POST.has_key("organic"):
-
             market_new = Post.objects.create(
                 title=title, writer=writer, content=content, image=image,
                 )
@@ -170,11 +169,6 @@ def market_delete(request, post_id) :
     post = Post.objects.get (id=post_id)
     post.delete()
     return redirect('market_list')
-
-    
-    # post = Post.objects.create(title=title, content=content, image=image)
-
-
 
 def market_comment(request,  post_id):
     post = get_object_or_404(Post, pk=post_id)
