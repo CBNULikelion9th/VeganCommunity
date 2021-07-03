@@ -13,13 +13,13 @@ from . import food_info
 from .models import Vegan, Ingredient, Product, Shopping
 
 def info(request):
-    result = food_info.info()
-    context ={
-        'result_1' : result["response"]["body"]["items"]["item"][1]["RPRSNT_RAWMTRL_NM"],
-        'result_2' : result["response"]["body"]["items"]["item"][0]["RPRSNT_RAWMTRL_NM"]
-    }
+    # result = food_info.info()
+    # context ={
+    #     'result_1' : result["response"]["body"]["items"]["item"][1]["RPRSNT_RAWMTRL_NM"],
+    #     'result_2' : result["response"]["body"]["items"]["item"][0]["RPRSNT_RAWMTRL_NM"]
+    # }
     
-    return render(request,'detail/main.html', context)
+    return render(request,'detail/main.html')
 
 def category1(request):
     category = Vegan.objects.get(pk=1)
