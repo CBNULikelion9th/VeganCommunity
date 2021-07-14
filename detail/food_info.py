@@ -22,3 +22,5 @@ def info():
     dictionary = json.loads(json_object)
     # print(type(json_object))
     return dictionary
+
+# info()

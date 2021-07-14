@@ -55,6 +55,7 @@
                         </ul>
                     </div>
                     <div class="row-6 filtering">
+                        <p>보고싶은 요소를 선택하세요 !</p>
                        <form action="">
                         <ul class="filtering-list">
                             <li class="filtering-item"><input type="checkbox" value="Abiu열매">샐러드</li>
@@ -79,10 +80,10 @@
                         <ul class="food-info">
                             <li>
                                 <div>
-                                <img src="{% static 'img/img1.PNG' %}" id="food-img" alt="food1">
+                                <img src="../../static/img/img{{ index }}.jpg" id="food-img" alt="food1">
                                 </div>
                                 <div>
-                                <p class="tag">#해장라면
+                                <p class="tag">#{{ result_1 }}
                                     
                                 </p>
                                 </div>

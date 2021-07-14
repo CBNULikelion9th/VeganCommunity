@@ -10,6 +10,7 @@ import json
 import urllib.request as ul
 import xmltodict
 from . import food_info
+from . import foodapi
 from .models import Vegan, Ingredient, Product, Shopping
 
 def info(request):
@@ -18,8 +19,14 @@ def info(request):
     #     'result_1' : result["response"]["body"]["items"]["item"][1]["RPRSNT_RAWMTRL_NM"],
     #     'result_2' : result["response"]["body"]["items"]["item"][0]["RPRSNT_RAWMTRL_NM"]
     # }
+
+    result = foodapi.read_data()
+    context ={
+        'index' : result["I2790"]["row"][3]["NUM"],
+        'result_1' : result["I2790"]["row"][4]["DESC_KOR"]
+    }
     
-    return render(request,'detail/main.html')
+    return render(request,'detail/main.html',context)
 
 def category1(request):
     category = Vegan.objects.get(pk=1)
