@@ -31,38 +31,56 @@
                             <li class="category-items">
                                 <form action="{% url 'category1' %}" method="POST">
                                     {% csrf_token %}
-                                <input type="submit" name="category-item" value="Vegan">
+                                <input type="submit" name="category-item" value="Ingredient">
                                 </form>
                             </li>
                             <li class="category-items">
                                 <form action="{% url 'category2' %}" method="POST">
                                     {% csrf_token %}
-                                <input type="submit" name="category-item" value="시중식품성분">
+                                <input type="submit" name="category-item" value="Food Nutrients">
                                 </form>
                             </li>
                             <li class="category-items">
                                 <form action="{% url 'category3' %}" method="POST">
                                     {% csrf_token %}
-                                <input type="submit" name="category-item" value="농산물">
+                                <input type="submit" name="category-item" value="Agricultural Products">
                                 </form>
                             </li>
                             <li class="category-items">
                                 <form action="{% url 'category4' %}" method="POST">
                                     {% csrf_token %}
-                                <input type="submit" name="category-item" value="쇼핑몰">
+                                <input type="submit" name="category-item" value="Shopping Mall">
                                 </form>
                             </li>
                         </ul>
                     </div>
                     <div class="row-6 filtering">
                         <p>보고싶은 요소를 선택하세요 !</p>
-                       <form action="">
+                       <form action="" method="POST">
+                        {% csrf_token %}
+                        {% if category %}
                         <ul class="filtering-list">
-                            <li class="filtering-item"><input type="checkbox" value="Abiu열매">샐러드</li>
-                            <li class="filtering-item"><input type="checkbox" value="감자전분">감자전분</li>
-                            <li class="filtering-item"><input type="checkbox" value="멋쟁이토마토">멋쟁이토마토</li>
-                            <li class="filtering-item"><input type="checkbox" value="야채">야채</li>
+                            {% if category.f1 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f1 }}</li>
+                            {% endif %}
+                            {% if category.f2 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f2 }}</li>
+                            {% endif %}
+                            {% if category.f3 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f3 }}</li>
+                            {% endif %}
+                            {% if category.f4 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f4 }}</li>
+                            {% endif %}
+                            {% if category.f5 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f5 }}</li>
+                            {% endif %}
+                            {% if category.f6 %}
+                            <li class="filtering-item"><input type="checkbox">{{ category.f6 }}</li>
+                            {% endif %}
                         </ul>
+                        {% endif %}
+                        <input type="submit" value="선택하기">
                         </form>
                     </div>
                 </article>
@@ -80,7 +98,7 @@
                         <ul class="food-info">
                             <li>
                                 <div>
-                                <img src="../../static/img/img{{ index }}.jpg" id="food-img" alt="food1">
+                                <img src="../../static/img-index/food-img{{ index }}.jpg" id="food-img" alt="food1">
                                 </div>
                                 <div>
                                 <p class="tag">#{{ result_1 }}
