@@ -9,6 +9,8 @@ urlpatterns = [
     path('vegan_area_add/', views.vegan_area_add, name='vegan_area_add'),
     path('exception/', views.exception, name='exception'),
     path('mypage/', views.mypage, name='mypage'),
+    path('search/', views.search, name='search'),
+
 
 
     path('store_1/', views.store_1, name='store_1'),

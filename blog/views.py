@@ -9,6 +9,9 @@ from .models import Post
 def map_main(request):
     return render(request, 'blog/main.html')
 
+def search(request):
+    return render(request, 'blog/search.html')
+
 def vegan_info(request):
     return render(request, 'blog/info.html')
 
