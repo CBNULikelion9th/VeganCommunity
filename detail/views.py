@@ -20,17 +20,20 @@ def info(request):
     #     'result_2' : result["response"]["body"]["items"]["item"][0]["RPRSNT_RAWMTRL_NM"]
     # }
     category = Ingredient(f1="나물",f2="생선",f3="떡",f4="국",f5="면")
-    # category2 = FoodNutrients.objects.get()
-    # category3 = Products.objects.get()
-    # category4 = ShoppingMall.objects.get()
     result = foodapi.read_data()
+
+    foodset = result["I2790"]["row"]
+    index = [4]
+
+    for i in range(0,3):
+        if "닭" in foodset[i]["DESC_KOR"]:
+            result_1=foodset[i]["DESC_KOR"]
+            index.append(i)
+
     context ={
         'category':category,
-        # 'category':category2,
-        # 'category':category3,
-        # 'category':category4,
-        'index' : result["I2790"]["row"][3]["NUM"],
-        'result_1' : result["I2790"]["row"][4]["DESC_KOR"]
+        'index' : index,
+        'result_1':result_1
     }
     
     return render(request,'detail/main.html',context)

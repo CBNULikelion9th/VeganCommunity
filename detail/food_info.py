@@ -20,7 +20,7 @@ def info():
     dictionary = xmltodict.parse(response_body)
     json_object = json.dumps(dictionary)
     dictionary = json.loads(json_object)
-    # print(type(json_object))
+    print(type(json_object))
     return dictionary
 
 # info()
