@@ -16,14 +16,6 @@
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
         <br><br>
-        <form action="{% url 'comment_list' %}" method='GET'>
-            <div class="row" style="margin-bottom: 15px;">
-                <div>
-                    <input type="text" name="search_key" value="{{search_key}}" placeholder="댓글 보고싶은 상품명을 입력하세요.">
-                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
-                </div>
-            </div>
-        </form>
 
         <table class="table">
             <thead>
@@ -32,11 +24,11 @@
                     <th>Comment</th>
             </thead>
             <tbody>
-                {% for l in list %}
+                {% for c in comment %}
                 <tr>
-                    <td>{{l.goods.food_name}}</td>
-                    <td><a href="{% url 'good_detail' l.id %}">{{l.name}}</a></td>
-                    <td>{{l.comment}}</td>
+                    <td>{{c.good_name}}</td>
+                    <td><a href="{% url 'good_detail' c.id %}">{{c.name}}</a></td>
+                    <td>{{c.comment}}</td>
                 </tr>
                 {% endfor%}
             </tbody>

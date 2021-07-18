@@ -1,27 +1,25 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from .models import User, Vegan_Store, Store_Review, User_Custom_Store, \
-                    Food, Food_Review, Market_Goods,Goods_Comment
+                    Food, Food_Review, Market_Goods, Goods_Comment
 from .forms import UserForm, ReviewForm, VeganStoreForm, CustomStoreForm, \
-                    FoodReviewForm, FoodForm, CommentForm, GoodForm
+                   FoodReviewForm, FoodForm, CommentForm, GoodForm
+from django.db import connection
+
+def dictfetchall(cursor):
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 def main(request):
     return render(request, 'admin_site/main.html')
 
 def user_list(request):
-    list = User.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
-    
-    if search_key:
-        if search_type == 'authority':
-            list = list.filter(authority__icontains=search_key)
-        elif search_type == 'id':
-            list = list.filter(user_id__icontains=search_key)
-        elif search_type == 'name':
-            list = list.filter(name__icontains=search_key)
-        elif search_type == 'vegan_step':
-            list = list.filter(vegan_step__icontains=search_key)
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_user")
+        list = dictfetchall(cursor)
 
     context = {
         'list': list,
@@ -30,10 +28,14 @@ def user_list(request):
     return render(request, 'admin_site/user_list.html', context)
 
 def user_detail(request, id):
-    user = User.objects.get(id=id)
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_user WHERE ID=" + str(id))
+        user = dictfetchall(cursor)
+
     context = {
         'user': user,
     }
+
     return render(request, 'admin_site/user_detail.html', context)
 
 def user_delete(request, id):
@@ -66,22 +68,14 @@ def user_update(request, id):
     return render(request, 'admin_site/user_update.html', {'user':user, 'form':form})
 
 def vegan_store_list(request):
-    list = Vegan_Store.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_vegan_store")
+        list = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'name':
-            list = list.filter(name__icontains=search_key)
-        elif search_type == 'vegan_step':
-            list = list.filter(vegan_step__icontains=search_key)
-        elif search_type == 'address':
-            list = list.filter(address__icontains=search_key)
-        elif search_type == 'field':
-            list = list.filter(field__icontains=search_key)
     context = {
         'list': list,
     }
+
     return render(request, 'admin_site/vegan_store_list.html', context)
 
 def vegan_store_detail(request, id):
@@ -113,18 +107,20 @@ def review_create(request, id):
     return render(request, 'admin_site/review_create.html', context)
 
 def review_list(request):
-    list = Store_Review.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_store_review")
+        review = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'store':
-            list = list.filter(store__icontains=search_key)
-        elif search_type == 'star':
-            list = list.filter(star__icontains=search_key)
+    for r in review:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT name FROM admin_site_vegan_store WHERE id=" + str(r['store_id']))
+            name = cursor.fetchone()
+            r['store_name'] = name[0]
+
     context = {
-        'list': list,
+        'review': review,
     }
+
     return render(request, 'admin_site/review_list.html', context)
 
 def vegan_store_delete(request, id):
@@ -157,29 +153,24 @@ def vegan_store_update(request, id):
     return render(request, 'admin_site/vegan_store_update.html', {'store':store, 'form':form})
 
 def custom_store_list(request):
-    list = User_Custom_Store.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_user_custom_store")
+        list = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'name':
-            list = list.filter(name__icontains=search_key)
-        elif search_type == 'vegan_step':
-            list = list.filter(vegan_step__icontains=search_key)
-        elif search_type == 'address':
-            list = list.filter(address__icontains=search_key)
-        elif search_type == 'field':
-            list = list.filter(field__icontains=search_key)
     context = {
         'list': list,
     }
     return render(request, 'admin_site/custom_store_list.html', context)
 
 def custom_store_detail(request, id):
-    store = User_Custom_Store.objects.get(id=id)
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_user_custom_store WHERE ID=" + str(id))
+        store = dictfetchall(cursor)
+
     context = {
         'store': store,
     }
+
     return render(request, 'admin_site/custom_store_detail.html', context)
 
 def custom_store_delete(request, id):
@@ -212,19 +203,10 @@ def custom_store_update(request, id):
     return render(request, 'admin_site/custom_store_update.html', {'store':store, 'form':form})
 
 def food_list(request):
-    list = Food.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_food")
+        list = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'name':
-            list = list.filter(name__icontains=search_key)
-        elif search_type == 'all_nutrition':
-            list = list.filter(all_nutrition__icontains=search_key)
-        elif search_type == 'allegy_nutrition':
-            list = list.filter(allegy_nutrition__icontains=search_key)
-        elif search_type == 'Feature':
-            list = list.filter(Feature__icontains=search_key)
     context = {
         'list': list,
     }
@@ -259,17 +241,18 @@ def food_review_create(request, id):
     return render(request, 'admin_site/food_review_create.html', context)
 
 def food_review_list(request):
-    list = Food_Review.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_food_review")
+        review = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'food':
-            list = list.filter(food__icontains=search_key)
-        elif search_type == 'star':
-            list = list.filter(star__icontains=search_key)
+    for r in review:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT name FROM admin_site_food WHERE id=" + str(r['food_id']))
+            name = cursor.fetchone()
+            r['food_name'] = name[0]
+
     context = {
-        'list': list,
+        'review': review,
     }
     return render(request, 'admin_site/food_review_list.html', context)
 
@@ -303,17 +286,10 @@ def food_update(request, id):
     return render(request, 'admin_site/food_update.html', {'food':food, 'form':form})
 
 def good_list(request):
-    list = Market_Goods.objects.all()
-    search_type = request.GET.get('search_type')
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_market_goods")
+        list = dictfetchall(cursor)
 
-    if search_key:
-        if search_type == 'user_name':
-            list = list.filter(user_name__icontains=search_key)
-        elif search_type == 'food_name':
-            list = list.filter(food_name__icontains=search_key)
-        elif search_type == 'feature':
-            list = list.filter(feature__icontains=search_key)
     context = {
         'list': list,
     }
@@ -348,13 +324,18 @@ def comment_create(request, id):
     return render(request, 'admin_site/comment_create.html', context)
 
 def comment_list(request):
-    list = Goods_Comment.objects.all()
-    search_key = request.GET.get('search_key')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_goods_comment")
+        comment = dictfetchall(cursor)
 
-    if search_key:
-        list = list.filter(goods__icontains=search_key)
+    for c in comment:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT food_name FROM admin_site_market_goods WHERE id=" + str(c['goods_id']))
+            name = cursor.fetchone()
+            c['good_name'] = name[0]
+
     context = {
-        'list': list,
+        'comment': comment,
     }
     return render(request, 'admin_site/comment_list.html', context)
 
