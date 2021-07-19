@@ -55,28 +55,28 @@
                         </ul>
                     </div>
                     <div class="row-6 filtering">
-                        <p>보고싶은 요소를 선택하세요 !</p>
-                       <form action="" method="POST">
+                        <p style="margin-left: 5%;">보고싶은 요소를 선택하세요 !</p>
+                       <form action="{% url 'filter' %}" method="POST">
                         {% csrf_token %}
                         {% if category %}
                         <ul class="filtering-list">
                             {% if category.f1 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f1 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f1 }}">{{ category.f1 }}</li>
                             {% endif %}
                             {% if category.f2 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f2 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f2 }}">{{ category.f2 }}</li>
                             {% endif %}
                             {% if category.f3 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f3 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f3 }}">{{ category.f3 }}</li>
                             {% endif %}
                             {% if category.f4 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f4 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f4 }}">{{ category.f4 }}</li>
                             {% endif %}
                             {% if category.f5 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f5 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f5 }}">{{ category.f5 }}</li>
                             {% endif %}
                             {% if category.f6 %}
-                            <li class="filtering-item"><input type="checkbox">{{ category.f6 }}</li>
+                            <li class="filtering-item"><input type="checkbox" name="selected[]" value="{{ category.f6 }}">{{ category.f6 }}</li>
                             {% endif %}
                         </ul>
                         {% endif %}
@@ -101,18 +101,22 @@
                                 <img src="../../static/img-index/food-img{{ index.0 }}.jpg" id="food-img" alt="food1">
                                 </div>
                                 <div>
-                                <p class="tag">#{{ result_1 }}
-                                    
+                                <p class="tag">
+                                    #{{ result  }}
                                 </p>
                                 </div>
                             </li>
                             <li>
                                 <img src="{% static 'img/img2.PNG' %}" id="food-img" alt="food2">
-                                <p class="tag">#감자전분면</p>
+                                <p class="tag">
+                                    #{{ result.1 }}
+                                </p>
                             </li>
                             <li>
                                 <img src="{% static 'img/img3.PNG' %}" id="food-img" alt="food3">
-                                <p class="tag">#멋쟁이토마토</p>
+                                <p class="tag">
+                                    #{{ result.2 }}
+                                </p>
                             </li>
                         </ul>
                     </div>
