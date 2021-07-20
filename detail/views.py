@@ -97,6 +97,7 @@ def category4(request):
     return render(request,'detail/main.html',context)
 
 def filter(request):
+    result=[]
     if request.method == "POST":
         selected = request.POST.getlist('selected[]')
         print(selected)
@@ -112,13 +113,12 @@ def filter(request):
             print(type(result_1))
             for i in range(1,len(result_1)):    
                 if item in result_1[i]:
-                    result=[]
                     result.append(result_1[i])
-                    context = {
-                        'category':category,
-                        'result':result,
-                        'check':check
-                    }
+    context = {
+        'category':category,
+        'result':result,
+        'check':check
+    }
 
     return render(request,'detail/main.html',context)
 
