@@ -9,8 +9,7 @@ from django.db import connection
 def dictfetchall(cursor):
     columns = [col[0] for col in cursor.description]
     return [
-        dict(zip(columns, row))
-        for row in cursor.fetchall()
+        dict(zip(columns, row)) for row in cursor.fetchall()
     ]
 
 def main(request):
@@ -20,7 +19,6 @@ def user_list(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM admin_site_user")
         list = dictfetchall(cursor)
-
     context = {
         'list': list,
     }
@@ -31,7 +29,6 @@ def user_detail(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM admin_site_user WHERE ID=" + str(id))
         user = dictfetchall(cursor)
-
     context = {
         'user': user,
     }
@@ -39,8 +36,8 @@ def user_detail(request, id):
     return render(request, 'admin_site/user_detail.html', context)
 
 def user_delete(request, id):
-    user = User.objects.get(id=id)
-    user.delete()
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM admin_site_user WHERE ID=" + str(id))
     return redirect('user_list')
 
 def user_new(request):
@@ -79,17 +76,14 @@ def vegan_store_list(request):
     return render(request, 'admin_site/vegan_store_list.html', context)
 
 def vegan_store_detail(request, id):
-    store = Vegan_Store.objects.get(id=id)
-    if request.method == "POST":
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            reviews = review_form.save()
-    
-    review_form = ReviewForm()
-    reviews = store.reviews.all()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM admin_site_vegan_store WHERE ID=" + str(id))
+        store = dictfetchall(cursor)
+        cursor.execute("SELECT * FROM admin_site_store_review WHERE store_id=" + str(store[0]['id']))
+        reviews = dictfetchall(cursor)
 
     return render(request, 'admin_site/vegan_store_detail.html', {
-        'store': store, 'review_form': review_form, 'reviews': reviews,
+        'store': store, 'reviews': reviews,
     })
 
 def review_create(request, id):
@@ -124,8 +118,8 @@ def review_list(request):
     return render(request, 'admin_site/review_list.html', context)
 
 def vegan_store_delete(request, id):
-    store = Vegan_Store.objects.get(id=id)
-    store.delete()
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM admin_site_vegan_store WHERE ID=" + str(id))
     return redirect('vegan_store_list')
 
 def vegan_store_new(request):
@@ -174,8 +168,8 @@ def custom_store_detail(request, id):
     return render(request, 'admin_site/custom_store_detail.html', context)
 
 def custom_store_delete(request, id):
-    store = User_Custom_Store.objects.get(id=id)
-    store.delete()
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM admin_site_user_custom_store WHERE ID=" + str(id))
     return redirect('custom_store_list')
 
 def custom_store_new(request):
@@ -257,8 +251,8 @@ def food_review_list(request):
     return render(request, 'admin_site/food_review_list.html', context)
 
 def food_delete(request, id):
-    food = Food.objects.get(id=id)
-    food.delete()
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM admin_site_food WHERE ID=" + str(id))
     return redirect('food_list')
 
 def food_new(request):
@@ -340,8 +334,8 @@ def comment_list(request):
     return render(request, 'admin_site/comment_list.html', context)
 
 def good_delete(request, id):
-    good = Market_Goods.objects.get(id=id)
-    good.delete()
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM admin_site_market_goods WHERE ID=" + str(id))
     return redirect('good_list')
 
 def good_new(request):
