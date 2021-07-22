@@ -1,43 +1,28 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
-from urllib.request import Request, urlopen
-from urllib.parse import urlencode, unquote, quote_plus
-from urllib import parse
-import urllib
-import requests
-import json
-
 import urllib.request as ul
 from . import foodapi
 from .models import Ingredient, FoodNutrients, Products, ShoppingMall
+from . import crawl
 
-index = []
-result_1= []
-check=1
+index = []      # 해당 음식의 인덱스
+food_list= []   # api로 가져온 전체 음식리스트
+check=1         # 카테고리 구분
+filter_list=["더덕구이", "도미구이","병어구이"]  # 필터링 요소에 따른 음식리스트
 
 def info(request):
-    # result = food_info.info()
-    # context ={
-    #     'result_1' : result["response"]["body"]["items"]["item"][1]["RPRSNT_RAWMTRL_NM"],
-    #     'result_2' : result["response"]["body"]["items"]["item"][0]["RPRSNT_RAWMTRL_NM"]
-    # }
-    category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")
-    result = foodapi.read_data()
-
+    category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")  # 처음엔 카테고리 1을 보여줌
+    result = foodapi.read_data()    # json 읽어옴
     foodset = result["I2790"]["row"]
-    # index = []
-    # result_1= []
-    # check=1
-    for i in range(3,50):
-        if "구이" in foodset[i]["DESC_KOR"]:
-            result_1.append(foodset[i]["DESC_KOR"])
-            index.append(i)
-            # print(type(index))
 
+    for i in range(0,len(result["I2790"]["row"])):
+        food_list.append(foodset[i]["DESC_KOR"])
+        index.append(i)
+    print(food_list)
     context ={
         'category':category,
         'index' : index,
-        'result_1':result_1,
+        'food_list':food_list,
         'check':check
     }
     
@@ -52,7 +37,7 @@ def category1(request):
         context = {
             'category':category,
             'index' : index,
-            'result_1':result_1,
+            'food_list':food_list,
             'check':check
         }
     return render(request,'detail/main.html',context)
@@ -65,7 +50,7 @@ def category2(request):
         context = {
             'category':category,
             'index' : index,
-            'result_1':result_1,
+            'food_list':food_list,
             'check':check
         }
     return render(request,'detail/main.html',context)
@@ -78,7 +63,7 @@ def category3(request):
         context = {
             'category':category,
             'index' : index,
-            'result_1':result_1,
+            'food_list':food_list,
             'check':check
         }
     return render(request,'detail/main.html',context)
@@ -91,16 +76,15 @@ def category4(request):
         context = {
             'category':category,
             'index' : index,
-            'result_1':result_1,
+            'food_list':food_list,
             'check':check
         }
     return render(request,'detail/main.html',context)
 
 def filter(request):
-    result=[]
     if request.method == "POST":
         selected = request.POST.getlist('selected[]')
-        print(selected)
+        # print(selected)
         if check == 1:
             category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")
         elif check == 2:
@@ -109,14 +93,18 @@ def filter(request):
             category = Products(f1="채소류",f2="과일류",f3="곡류")
         elif check == 4:
             category = ShoppingMall(f1="마켓컬리",f2="쿠팡",f3="푸드슈퍼마켓",f4="G마켓")
+
         for item in selected:
-            print(type(result_1))
-            for i in range(1,len(result_1)):    
-                if item in result_1[i]:
-                    result.append(result_1[i])
+            # print(type(food_list))
+            for i in range(1,len(food_list)):    
+                if item in food_list[i]:        # selected로부터 선택된 item이 전체리스트에 있을 경우
+                    filter_list.append(food_list[i]) # 필터링값에 따라 보여줄 리스트
+
+    for item in filter_list:
+        crawl.crawling(item)   # 이미지 크롤링
     context = {
         'category':category,
-        'result':result,
+        'filter_list':filter_list,
         'check':check
     }
 
