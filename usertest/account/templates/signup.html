@@ -1,0 +1,33 @@
+{% load static %}
+
+<html>
+<head>
+    <link href= "{% static './css/home.css' %}" rel="stylesheet">
+</head>
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <p1>회원가입페이지</p1>
+    <h4>username
+    <input type="text" name="username"></h4>
+    <br>
+    <h5>비건종류선택
+    <select name = "vegan">
+        <option value="unselcted">선택안함</option>
+        <option value="vegan">비건</option>
+        <option value="lacto">락토</option>
+        <option value="ovo">오보</option>
+        <option value="lacto_ovo">락토오보</option>
+        <option value="pesco">페스코</option>
+        <option value="flexiterian">플렉시테리언</option>
+    </select></h5>
+    <h6>googleemail
+    <input type="text" name="email"></h6>
+    <br>
+    <h7>password
+    <input type="password" name="password"></h7>
+    <br>
+    <h8>confirm
+    <input type="password" name="confirm"></h8>
+    <br>
+    <h9><input type="submit" value="회원가입"></h9>
+</form>
