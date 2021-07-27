@@ -45,8 +45,8 @@ body {
 .info-img {
     position: absolute;
     display: flex;
-    bottom: 100;
-    left: 40%;
+    top: 50;
+    margin-left: 30;
     transform: translateX(-50%);
 }
 
@@ -55,8 +55,8 @@ body {
   width: 100;
   position: absolute;
   display: flex;
+  left:20;
   bottom: -30;
-  left: -20%;
   transform: translateX(-50%);
 }
 
@@ -124,7 +124,7 @@ body {
   display: flex;
   height: 525;
   width: 1000;
-  bottom: 5%;
+  
   margin-left: 600;
   font-size: 20;
   font-weight: 300;
