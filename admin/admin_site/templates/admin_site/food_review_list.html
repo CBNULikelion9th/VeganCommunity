@@ -16,18 +16,6 @@
     <section>
         <a href="{% url 'main' %}" class="btn btn-secondary">Home</a>
         <br><br>
-        <form action="{% url 'food_review_list' %}" method='GET'>
-            <div class="row" style="margin-bottom: 15px;">
-                <div>
-                    <select class="btn btn-primary dropdown-toggle" name="search_type">
-                        <option class="dropdown-item" value="food">상품 이름</option>
-                        <option class="dropdown-item" value="star">별점</option>
-                    </select>
-                    <input type="text" name="search_key" value="{{search_key}}" placeholder="looking for...">
-                    <span><input class="btn btn-primary" type="submit" value="Search"></span>
-                </div>
-            </div>
-        </form>
         <table class="table">
             <thead>
                     <th>Food</th>
@@ -35,11 +23,11 @@
                     <th>Review</th>
             </thead>
             <tbody>
-                {% for l in list %}
+                {% for r in review %}
                 <tr>
-                    <td>{{l.food.name}}</td>
-                    <td><a href="{% url 'food_detail' l.id %}">{{l.star}}</a></td>
-                    <td>{{l.review}}</td>
+                    <td>{{r.food_name}}</td>
+                    <td><a href="{% url 'food_detail' r.id %}">{{r.star}}</a></td>
+                    <td>{{r.review}}</td>
                 </tr>
                 {% endfor%}
             </tbody>
