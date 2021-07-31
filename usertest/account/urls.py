@@ -10,4 +10,5 @@ urlpatterns = [
     path('signup/', account.views.signup, name='signup'),
     path('home/', account.views.home, name='home'),
     path('reset_password/', account.views.reset_password, name='reset_password' ),
+    path('send_email/', account.views.send_email, name='send_email'),
         ]
