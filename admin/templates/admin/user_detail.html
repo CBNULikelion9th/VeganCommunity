@@ -8,21 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{% static 'layout.css' %}" rel="stylesheet"/> 
-    <title>{{user.0.name}} USER DETAIL</title>
+    <title>{{user.username}} USER DETAIL</title>
 </head>
 <body>
-    <h1>{{user.0.name}} USER DETAIL</h1>
+    <h1>{{user.username}} USER DETAIL</h1>
     <hr>
     <section>
-        <p>Authority: {{user.0.authority}}</p>
-        <p>ID: {{user.0.user_id}}</p>
-        <p>Name: {{user.0.name}}</p>
-        <p>Password: {{user.0.password}}</p>
-        <p>Vegan_Step: {{user.0.vegan_step}}</p>
+        <p>User Name: {{user.username}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Password: {{user.password}}</p>
+        <p>Last Login: {{user.last_login}}</p>
+        <p>활동 중: {{user.is_active}}</p>
+        <p>Admin 권한: {{user.is_admin}}</p>
+        <p>Superuser 권한: {{user.is_superuser}}</p>
+        <p>Staff 권한: {{user.is_staff}}</p>
         <br>
         <a href="{% url 'user_list' %}" class="btn btn-secondary">리스트</a>
-        <a href="{% url 'user_update' user.0.id %}" class="btn btn-secondary">수정</a>
-        <a href="{% url 'user_delete' user.0.id %}" class="btn btn-secondary">삭제</a>
+        <a href="{% url 'user_update' user.id %}" class="btn btn-secondary">수정</a>
+        <a href="{% url 'user_delete' user.id %}" class="btn btn-secondary">삭제</a>
     </section>
 </body>
 </html>
