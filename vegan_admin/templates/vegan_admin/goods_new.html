@@ -8,17 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{% static 'layout.css' %}" rel="stylesheet"/> 
-    <title>GOODS EDIT</title>
+    <title>CREATE GOODS</title>
 </head>
 <body>
-    <h1>GOODS EDIT</h1>
+    <h1>CREATE GOODS</h1>
     <hr><br>
-
     <section>
-        <form action="{% url 'good_update' good.id %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="btn btn-secondary" value="상품 수정"/>
+    <form action="{% url 'goods_new' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-secondary" value="상품 추가"/>
     </section>
 </body>
 </html>

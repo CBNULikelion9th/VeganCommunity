@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'layout.css' %}" rel="stylesheet"/> 
+    <title>GOODS DETAIL</title>
+</head>
+<body>
+    <h1>GOODS DETAIL</h1>
+    <hr>
+    <section>
+        <p>Title: {{good.title}}</p>
+        <p>Writer: {{good.writer}}</p>
+        <p>만든 날짜: {{good.created_at}}</p>
+        <p>수정 날짜: {{good.updated_at}}</p>
+        <p>조회 수: {{good.view_count}}</p>
+        {% if good.image %}
+        <img src="{{good.image.url}}">
+        {% endif %}
+        <p>내용: {{good.content}}</p>
+        <br>
+        <a href="{% url 'goods_list' %}" class="btn btn-secondary">리스트</a>
+        <a href="{% url 'goods_update' good.id %}" class="btn btn-secondary">수정</a>
+        <a href="{% url 'goods_delete' good.id %}" class="btn btn-secondary">삭제</a>
+
+        <hr>
+        <h3>Comments</h3>
+        <a href="{% url 'comment_create' good.id %}" class="btn btn-secondary">댓글 작성</a>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for comment in comments %}
+              <tr>
+                  <td>{{comment.name}}</td>
+                  <td>{{comment.comment}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+          </table>
+    </section>
+</body>
+</html>

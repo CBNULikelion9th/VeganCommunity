@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'detail',
     'blog',
     'market',
+    'vegan_admin',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
+
+AUTH_USER_MODEL = 'vegan_admin.User' # 수정 필요
