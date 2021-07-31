@@ -6,7 +6,7 @@ import urllib
 def read_data():
     apikey = '807d295ff3754e9ba9d9'
     startRow = 1
-    endRow = 50
+    endRow = 150
     url = 'http://openapi.foodsafetykorea.go.kr/api/'+apikey+'/I2790/json/'+str(startRow)+'/'+str(endRow)
 
     data = urllib.request.urlopen(url).read()
@@ -52,4 +52,4 @@ def read_data():
         # "NUTR_CONT4":"","NUTR_CONT5":"","NUTR_CONT6":"","NUTR_CONT7":"","NUTR_CONT8":"","NUTR_CONT9":""
         # },
 
-read_data()
+# read_data()
