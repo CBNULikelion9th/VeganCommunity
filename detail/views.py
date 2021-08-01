@@ -9,6 +9,7 @@ index = []      # 해당 음식의 인덱스
 food_list= []   # api로 가져온 전체 음식리스트
 check=1         # 카테고리 구분
 filter_list=["더덕구이", "도미구이","병어구이"]  # 필터링 요소에 따른 음식리스트
+imglink = []
 
 # result = foodapi.read_data()    # json 읽어옴
 # foodset = result["I2790"]["row"]
@@ -92,6 +93,7 @@ def category4(request):
 
 def filter(request):
     filter_list.clear()
+    imglink.clear()
     if request.method == "POST":
         selected = request.POST.getlist('selected[]')
         # print(selected)
@@ -114,12 +116,14 @@ def filter(request):
     print(filter_list)
     for item in filter_list:
         print(1)
-        crawl.crawling(item)   # 이미지 크롤링
+        imglink.append(str(crawl.crawling(item)))   # 이미지 크롤링
     context = {
         'category':category,
         'filter_list':filter_list,
-        'check':check
+        'check':check,
+        'imglink' : imglink
     }
+    print(imglink)
 
     return render(request,'detail/main.html',context)
 

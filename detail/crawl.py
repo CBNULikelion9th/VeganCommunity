@@ -1,3 +1,41 @@
+import requests as r
+import urllib.request as ur
+
+def crawling(item):
+    apikey = "AIzaSyDG_htb8KLimgQvNbngBjYHL-Pv0vZQnUo"
+
+    engineid = "e885abd5f563ddafb"
+
+    url = "https://www.googleapis.com/customsearch/v1"
+
+    param = {
+        "key":apikey,
+
+        "cx":engineid,
+
+        "fileType":"jpg",
+
+        "imgType" : "face",
+
+        "q" : item,
+
+        "searchType" : "image",
+
+        "num" : 10,
+
+        "start" : 1
+
+        }
+
+    s = r.Session()
+
+    test = s.get(url,params=param).json()
+
+    imglink = test.get('items')[1].get('link')
+
+    return imglink
+
+
 # import requests
 # from bs4 import BeautifulSoup
 # from urllib.request import urlopen
@@ -78,50 +116,3 @@
 #     #         break
 #     # driver.quit()
 
-import requests as r
-import urllib.request as ur
-
-def crawling(item):
-    apikey = "AIzaSyDG_htb8KLimgQvNbngBjYHL-Pv0vZQnUo"
-
-    engineid = "e885abd5f563ddafb"
-
-    url = "https://www.googleapis.com/customsearch/v1"
-
-    param = {
-        "key":apikey,
-
-        "cx":engineid,
-
-        "fileType":"jpg",
-
-        "imgType" : "face",
-
-        "q" : item,
-
-        "searchType" : "image",
-
-        "num" : 10,
-
-        "start" : 1
-
-        }
-
-    s = r.Session()
-
-    # test = s.get(url,params=param)
-    test = s.get(url,params=param).json()
-    print(test)
-
-    for i in range(0,len(test.get('items'))):
-        print(test.get('items')[i].get('title'))
-
-        print(test.get('items')[i].get('link'))
-
-        ur.urlretrieve(test.get('items')[i].get('link'), 'C:/Users/happy/Desktop/vegan/VeganCommunity/detail/static/img/' + test.get('queries').get('request')[0].get('searchTerms')+".jpg")
-
-    # print(test.get('queries').get('request')[0].get('searchTerms'))
-    # print(test.get('queries.request')[i].get('link'))
-
-    # ur.urlretrieve('https://www.google.com/search?q='+test.get('queries').get('request')[0].get('searchTerms'), 'C:/Users/happy/Desktop/vegan/VeganCommunity/detail/static/img/' + test.get('queries').get('request')[0].get('searchTerms')+".jpg")
-    # print(test.json())
