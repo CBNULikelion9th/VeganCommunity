@@ -18,8 +18,8 @@
     </section> 
 
     <section id="form-outline">
-    <div class="form-inline"></div>     
-        <div class = "form-add">   
+    <div class="form-inline"></div>         
+    <div class = "form-add">           
              <form action="{% url 'area_add %'}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}                  

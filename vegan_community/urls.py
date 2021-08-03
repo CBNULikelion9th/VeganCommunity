@@ -5,5 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('detail/', include("detail.urls")),
     path('blog/', include('blog.urls')),
-    path('', include('market.urls')),
+    path('signup/', include('signup.urls')),
+    path('vegan_admin/', include('vegan_admin.urls')),
 ]
