@@ -53,7 +53,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     flexiterian = 'fx'
 
 
-    vegan_choice = (
+    vegan_choice = [
         (unselected, 'unselected'),
         (vegan, 'vegan'),
         (lacto, 'lacto'),
@@ -61,9 +61,10 @@ class User(AbstractBaseUser,PermissionsMixin):
         (lacto_ovo, 'lacto_ovo'),
         (pesco, 'pesco'),
         (flexiterian, 'flexiterian'),
-    )
+    ]
     
     vegan = models.CharField(
+        
         max_length=225,
         unique=False
     )  

@@ -1,7 +1,7 @@
 from .models import User
 from django.shortcuts import render
 from django.contrib import auth
-
+from django.core.mail.message import EmailMessage
 # Create your views here.
 
 # 회원 가입
@@ -9,6 +9,7 @@ def signup(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['confirm']:
             user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'], email=request.POST['email'], vegan=request.POST['vegan'])
+
             auth.login(request, user)
             #회원가입 성공페이지
             return render(request, 'success.html')
@@ -56,3 +57,9 @@ def reset_password(request):
 def index(request):
     return render(request, 'index.html')
 
+def send_email(request):
+    subject = "message"
+    to = ["yukmj1123@gmail.com"]
+    from_email = "veganiateam@gmail.com"
+    message = "메시지 테스트"
+    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
