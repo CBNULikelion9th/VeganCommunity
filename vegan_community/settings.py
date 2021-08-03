@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blog',
     'market',
     'signup',
+    'vegan_admin',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'signup.User'
@@ -144,3 +146,6 @@ EMAIL_USE_TLS = True
 # TLS 보안 방법
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # 사이트와 관련한 자동응답을 받을 이메일 주소
+
+
+AUTH_USER_MODEL = 'vegan_admin.User' # 수정 필요

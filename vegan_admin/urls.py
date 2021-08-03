@@ -15,11 +15,11 @@ urlpatterns = [
     path('custom_store_new/', views.custom_store_new, name="custom_store_new"),
     path('custom_store_update/<int:id>/', views.custom_store_update, name="custom_store_update"),
     
-    path('good_list/', views.good_list, name="good_list"),
-    path('good_detail/<int:id>/', views.good_detail, name="good_detail"),
-    path('good_detail/<int:id>/delete/', views.good_delete, name="good_delete"),
-    path('good_new/', views.good_new, name="good_new"),
-    path('good_update/<int:id>/', views.good_update, name="good_update"),
+    path('goods_list/', views.goods_list, name="goods_list"),
+    path('goods_detail/<int:id>/', views.goods_detail, name="goods_detail"),
+    path('goods_detail/<int:id>/delete/', views.goods_delete, name="goods_delete"),
+    path('goods_new/', views.goods_new, name="goods_new"),
+    path('goods_update/<int:id>/', views.goods_update, name="goods_update"),
     path('goods/comment/<int:id>', views.comment_create, name="comment_create"),
     path('goods/comment_list/', views.comment_list, name="comment_list"),
 ]
