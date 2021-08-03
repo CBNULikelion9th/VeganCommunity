@@ -1,5 +1,6 @@
 from django import forms
-from .models import User, Post, Market_Post, Market_Comment
+from .models import Post, Market_Post, Market_Comment
+from signup.models import User, UserManager
 
 # login
 class UserForm(forms.ModelForm):
