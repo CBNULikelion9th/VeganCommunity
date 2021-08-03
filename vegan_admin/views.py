@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import User, Post, Market_Post, Market_Comment
+from .models import Post, Market_Post, Market_Comment
+from signup.models import User, UserManager
 from .forms import UserForm, PostForm, MarketPostForm, MarketCommentForm
 
 def main(request):
