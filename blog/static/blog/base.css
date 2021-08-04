@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(83, 188, 78);
+    background-color: rgb(129,152, 97);
     padding: 0;
     margin: 0;
     min-width: 1000px;
@@ -16,7 +16,7 @@ body {
 }
 .logo {
     position: absolute;
-    color: white;
+    color: rgb(245,246,247);
     top: 50%;
     transform: translateY(-50%);
     margin-left: 20px;
@@ -25,7 +25,7 @@ body {
 }
 .content-save {
   position: absolute;
-  color: white;
+  color: rgb(245,246,247);
   top: 100%;
   transform: translateY(-3%);
   margin-left: 420px;
@@ -34,7 +34,7 @@ body {
 }
 .content-report {
   position: absolute;
-  color: white;
+  color: rgb(245,246,247);
   top: 100%;
   width: 500px;
   transform: translateY(-3%);
@@ -64,7 +64,7 @@ body {
 #form-outline {
   height: 600px;
   width: 800px;
-  background-color: rgba(117, 117, 117, 0.452);
+  background-color: rgb(117, 117, 117, 0.452);
   margin-top: 275px;
   margin-left: 590px;
   position: relative;
@@ -74,7 +74,7 @@ body {
 .form-inline{
   height: 500px;
   width: 700px;
-  background-color: white;
+  background-color: rgb(245,246,247);
   margin-top: 50px;
   margin-left: 50px;
   position: relative;
@@ -167,12 +167,12 @@ h2, h4 {
   margin-top: 40px;
   font-size: 20px;
   font-weight: 550px;
-  color: rgb(21, 99, 56);
+  color: rgb(129,152, 97);
 }
 .text h4 {
   
   font-size: 17px;
   font-weight: 450px;
-  color: rgb(21, 104, 28);
+  color: rgb(129,152, 97);
 }
 
