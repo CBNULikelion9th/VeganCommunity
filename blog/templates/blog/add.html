@@ -4,7 +4,7 @@
 <head>
 <title>Vegan Store Add Page</title>
 
-<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+<link href="{% static 'blog/blog.css' %}" rel="stylesheet" />
 </head>
 
 <body>
@@ -17,10 +17,10 @@
         </div>
     </section> 
 
-    <section id="form-outline">
+    <!-- <section id="form-outline"> -->
     <div class="form-inline"></div>         
     <div class = "form-add">           
-             <form action="{% url 'area_add %'}" method='POST'>
+             <form action="{% url 'area_add %'}" method='Add'>
                {% csrf_token %}
                {{form.as_p}}                  
                <input type="submit" value="추가하기">
