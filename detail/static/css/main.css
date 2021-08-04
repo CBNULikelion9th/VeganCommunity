@@ -43,7 +43,7 @@ nav div.nav-1, nav div.nav-2 {
 
 #btn-search{
     height: 30px;
-    background-color: rgba(255, 160, 71, 0.647);
+    background-color: rgb(129,152, 97);
     border: 1px solid rgb(92, 92, 92);
     border-radius: 5px;
 }
@@ -62,7 +62,7 @@ main {
 
 .container-1{
     height: 250px;
-    background-color: #fff;
+    background-color: rgb(129,152, 97);
     border-radius: 3px;
     border: 1px solid #DBDBDB;
 }
@@ -85,7 +85,7 @@ main {
     display: inline-flex;
     padding: 0% 5%;
     margin: 0%;
-    background-color: rgba(255, 160, 71, 0.647);
+    background-color: rgb(129,152, 97);
     /* border: 1px solid black; */
 }
 

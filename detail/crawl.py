@@ -1,8 +1,11 @@
 import requests as r
 import urllib.request as ur
+import os
+from dotenv import load_dotenv
 
 def crawling(item):
-    apikey = ""
+    load_dotenv(verbose=True)
+    apikey = os.getenv('apikey')
 
     engineid = "e885abd5f563ddafb"
 
@@ -34,5 +37,3 @@ def crawling(item):
     imglink = test.get('items')[1].get('link')
 
     return imglink
-
-

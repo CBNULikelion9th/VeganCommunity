@@ -56,7 +56,7 @@
                     </div>
                     <div class="row-6 filtering">
                         <p style="margin-left: 5%;">보고싶은 요소를 선택하세요 !</p>
-                       <form action="{% url 'filter' %}" method="POST">
+                       <form action="{% url 'filter' check %}" method="POST">
                         {% csrf_token %}
                         {% if category %}
                         <ul class="filtering-list">
@@ -102,20 +102,92 @@
                                 </div>
                                 <div>
                                 <p class="tag">
+                                    {% if check == 1 %}
                                     #{{ filter_list.0  }}
+                                    {% elif check == 2 %}
+                                    #{{ filter_list2.0.name  }}<br>
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                열량 : {{ filter_list2.0.열량  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                탄수화물 : {{ filter_list2.0.탄수화물  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                단백질 : {{ filter_list2.0.단백질  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                지방 : {{ filter_list2.0.지방  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                당류 : {{ filter_list2.0.당류  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                콜레스테롤 : {{ filter_list2.0.콜레스테롤  }}<br>
+                                            {% endif %}
+                                        {% endfor %}        
+                                    {% endif %}
                                 </p>
                                 </div>
                             </li>
                             <li>
                                 <img src={{ imglink.1 }} id="food-img" alt="food2">
                                 <p class="tag">
-                                    #{{ filter_list.1 }}
+                                    {% if check == 1 %}
+                                    #{{ filter_list.1  }}
+                                    {% elif check == 2 %}
+                                    #{{ filter_list2.1.name  }}<br>
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                열량 : {{ filter_list2.1.열량  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                탄수화물 : {{ filter_list2.1.탄수화물  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                단백질 : {{ filter_list2.1.단백질  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                지방 : {{ filter_list2.1.지방  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                당류 : {{ filter_list2.1.당류  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                콜레스테롤 : {{ filter_list2.1.콜레스테롤  }}<br>
+                                            {% endif %}
+                                        {% endfor %}        
+                                    {% endif %}
                                 </p>
                             </li>
                             <li>
                                 <img src={{ imglink.2 }} id="food-img" alt="food3">
                                 <p class="tag">
-                                    #{{ filter_list.2 }}
+                                    {% if check == 1 %}
+                                    #{{ filter_list.2  }}
+                                    {% elif check == 2 %}
+                                    #{{ filter_list2.2.name  }}<br>
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                열량 : {{ filter_list2.2.열량  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                탄수화물 : {{ filter_list2.2.탄수화물  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                단백질 : {{ filter_list2.2.단백질  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                지방 : {{ filter_list2.2.지방  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                당류 : {{ filter_list2.2.당류  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                콜레스테롤 : {{ filter_list2.2.콜레스테롤  }}<br>
+                                            {% endif %}
+                                        {% endfor %}        
+                                    {% endif %}
                                 </p>
                             </li>
                         </ul>
