@@ -3,7 +3,7 @@
 <head>
 <title>Main Map Page</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<link href="{% static 'blog/map.css' %}" rel="stylesheet" />
+<link  rel="stylesheet" />
 </head>
 
 <body>  
@@ -18,7 +18,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <style>
           body {
-              overflow: hidde6;
+              overflow: hidden;
           }
           div#map {
               width: 100vw; height: 100vh;
@@ -134,7 +134,128 @@
           .gmnoprint, .gm-control-active.gm-fullscreen-control {
               display: none;
           }
-          
+
+        /* 오른쪽 지도 들어갈 부분 */
+body {
+  background-color: rgb(245,246,247);
+  left: 0%;
+  padding: 0px;
+  margin: 0px;
+  min-width: 1000px;
+  
+}
+
+/* 초록 위 배너 */
+.leftbody {
+    background-color: rgb(245,246,247);
+    width: 300px;
+    left: 500px;
+    padding: 0px;
+    margin: 0px;
+    min-width: 300px;
+}
+
+/* 검색창 초록 배너 */
+#up-mainfunc {
+  background-color: rgb(129,152, 97) ;  
+  height: 300px;
+  width: 420px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 10px;
+}
+/* we are vegan 글씨 */
+.maplogo_up {
+    position: absolute;
+    color: rgb(245,246,247);
+    width: 400px;
+    top: 40px;
+    left: 15%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+    font-size: 45px;
+    font-weight: 1000px;
+}
+.add_store {
+  top: 20;
+  font-size: 15px;
+  text-decoration: none;
+  color: rgb(245,246,247);
+  padding: 0 38px;
+}
+.menu-list {
+  position: absolute;
+  margin-top: 15%;
+  left: 130;
+  font-size: 30px;
+}
+.menu-list .menu a {
+  text-decoration: none;
+  color: rgb(245,246,247);
+  padding: 0 38px;
+}
+
+/* 초록 아래 배너 */
+#down-mainfunc {
+    background-color: rgb(129,152, 97) ;  
+    height: 800px;
+    width: 420px;
+    position: fixed;
+    top: 310px;
+    right: 0px;
+    left: 0px;
+    z-index: 10px;
+    scroll-behavior: smooth;
+    
+}
+.sort_store {
+  position: absolute;
+  color: rgb(245,246,247);
+  width: 400px;
+  left: 250px;
+  top: 30px;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500px;
+}
+.search_store {
+  position: absolute;
+  color: rgb(245,246,247);
+  width: 400px;
+  top: 100px;
+  left: 13%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 1000px;
+}
+
+.store_text {
+  width: 600px;
+  color: rgb(245,246,247);
+}
+
+p, h4 {
+  margin: 0;
+}
+.store_text p {
+  top: 30;
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 550;
+  color: rgb(245,246,247);
+}
+.store_text h4 {
+  
+  font-size: 17px;
+  font-weight: 450;
+  color: white;
+}
+
+        
       </style>
   </head>
    
@@ -365,10 +486,9 @@
               <a href="#">카페</a>
             </div>
                   
-        </div>
-    
-        
+        </div>   
     </section>
+
     <section id="down-mainfunc">
       <!-- 정렬 기능 아직, 링크만 걸어뒀어요 -->      
       <div class="sort_store"> 
@@ -377,7 +497,7 @@
         <!-- 이렇게 위로 두줄 링크 건 부분 -->
       </div>
       <div style=
-      "overflow:scroll; width:410px; height:650px; padding:10px; background-color:rgb(83, 188, 78);  ">
+      "overflow:scroll; width:410px; height:800px; padding:10px; background-color:rgb(129,152, 97) ; ">
 
           <div class="store_text">
             <a href="{% url 'map_main' %}"><p>여누</p></a>            
