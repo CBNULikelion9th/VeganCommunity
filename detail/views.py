@@ -4,7 +4,8 @@ import urllib.request as ul
 from . import foodapi
 from .models import Ingredient, FoodNutrients, Products, ShoppingMall
 from . import crawl
-from .jsondata.cate2_data import filter_list2
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
 index = []      # 해당 음식의 인덱스
 food_list= []   # api로 가져온 전체 음식리스트
@@ -12,24 +13,24 @@ food_list= []   # api로 가져온 전체 음식리스트
 filter_list1=["더덕구이", "도미구이","병어구이"]  # 필터링 요소에 따른 음식리스트
 imglink = []
 
-# result = foodapi.read_data()    # json 읽어옴
-# foodset = result["I2790"]["row"]
-# for i in range(0,len(result["I2790"]["row"])):
-#     # for i in range(0,len(temp)):
-#     food_list.append(foodset[i]["DESC_KOR"])
-#     # food_list.append(foodset[i])
-#     index.append(i)
-#     print(food_list)
+result = foodapi.read_data()    # json 읽어옴
+foodset = result["I2790"]["row"]
+for i in range(0,len(result["I2790"]["row"])):
+    # for i in range(0,len(temp)):
+    food_list.append(foodset[i]["DESC_KOR"])
+    # food_list.append(foodset[i])
+    index.append(i)
+    print(food_list)
 
 def info(request):
     category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")  # 처음엔 카테고리 1을 보여줌
-    result = foodapi.read_data()    # json 읽어옴
-    foodset = result["I2790"]["row"]
+    # result = foodapi.read_data()    # json 읽어옴
+    # foodset = result["I2790"]["row"]
     check=1 
-    for i in range(0,len(result["I2790"]["row"])):
-        food_list.append(foodset[i]["DESC_KOR"])
-        index.append(i)
-    print(food_list)
+    # for i in range(0,len(result["I2790"]["row"])):
+    #     food_list.append(foodset[i]["DESC_KOR"])
+    #     index.append(i)
+    # print(food_list)
     context ={
         'category':category,
         'index' : index,
@@ -92,12 +93,13 @@ def category4(request):
         }
     return render(request,'detail/main.html',context)
 
-def filter(request, check):
+def filter(request, check):    
     filter_list1.clear()
     imglink.clear()
     if request.method == "POST":
         selected = request.POST.getlist('selected[]')
         # print(selected)
+
         if check == 1:
             category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")
         
@@ -116,11 +118,12 @@ def filter(request, check):
                 'category':category,
                 'filter_list':filter_list1,
                 'check':check,
-                'imglink' : imglink
+                'imglink' : imglink,
             }
             print(imglink)
 
         elif check == 2:
+            from .jsondata.cate2_data import filter_list2
             print(2)
             print(filter_list2)
             filter_check = []
@@ -142,15 +145,73 @@ def filter(request, check):
                 'check':check,
                 'category':category,
                 'filter_check':filter_check,
-                'filter_list2':filter_list2
+                'filter_list2':filter_list2,
             }
 
         elif check == 3:
-            category = Products(f1="채소류",f2="과일류",f3="곡류")
+            from .jsondata.cate3_data import filter_list2
+            print(3)
+            print(selected)
+            print(filter_list2)
+            
+            filter_check = []
+            category =  Products(f1="채소류",f2="과일류",f3="곡류")
+            for item in selected:
+                if item == "채소류":
+                    filter_check.append(1)
+                if item == "과일류":
+                    filter_check.append(2)
+                if item == "곡류":
+                    filter_check.append(3)
+            context = {
+                'check':check,
+                'category':category,
+                'filter_check':filter_check,
+                'filter_list2':filter_list2,
+            }
 
         elif check == 4:
-            category = ShoppingMall(f1="마켓컬리",f2="쿠팡",f3="푸드슈퍼마켓",f4="G마켓")
+            # from .jsondata.cate4_data import filter_list2
+            print(4)
+            print(filter_list2)
+            filter_check = []
+            category =  ShoppingMall(f1="마켓컬리",f2="쿠팡",f3="푸드슈퍼마켓",f4="G마켓")
+            for item in selected:
+                if item == "마켓컬리":
+                    filter_check.append(1)
+                if item == "쿠팡":
+                    filter_check.append(2)
+                if item == "푸드슈퍼마켓":
+                    filter_check.append(3)
+                if item == "G마켓":
+                    filter_check.append(4)
+            print(filter_check)
+            context = {
+                'check':check,
+                'category':category,
+                'filter_check':filter_check,
+                'filter_list2':filter_list2,
+            }
 
 
     return render(request,'detail/main.html',context)
 
+def getshop(request):
+    from .jsondata.cate4_data import url_list, getClassValue, getNameValue
+
+    titles = []
+    tag = 'a'
+    className = 'basicList_link__1MaTN'
+    for url in url_list :
+        titles.append(getClassValue(url, tag, className))
+    print(titles)
+
+    prices = []
+    tag = 'span'
+    # className = 'basicList_price__2r23_'
+    className = "price_num__2WUXn"
+    for url in url_list :
+        prices.append(getNameValue(url, tag, className))
+    print(prices)
+
+    return render(request, 'detail/main.html')
