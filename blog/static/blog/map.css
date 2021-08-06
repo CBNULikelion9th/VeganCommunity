@@ -71,6 +71,7 @@ body {
     left: 0px;
     z-index: 10px;
     scroll-behavior: smooth;
+    
 }
 .sort_store {
   position: absolute;
@@ -94,6 +95,7 @@ body {
   font-size: 30px;
   font-weight: 1000px;
 }
+
 .store_text {
   width: 600px;
 }
