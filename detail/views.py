@@ -6,6 +6,7 @@ from .models import Ingredient, FoodNutrients, Products, ShoppingMall
 from . import crawl
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import random
 
 index = []      # 해당 음식의 인덱스
 food_list= []   # api로 가져온 전체 음식리스트
@@ -126,11 +127,13 @@ def filter(request, check):
             from .jsondata.cate2_data import filter_list2
             print(2)
             print(filter_list2)
+            # filter_list = []
             filter_check = []
             category =  FoodNutrients(f1="열량",f2="탄수화물",f3="단백질",f4="지방",f5="당류",f6="콜레스테롤")
             for item in selected:
                 if item == "열량":
                     filter_check.append(1)
+                    # filter_list.append(filter_list2[0]["열량"])
                 if item == "탄수화물":
                     filter_check.append(2)
                 if item == "단백질":
@@ -153,65 +156,106 @@ def filter(request, check):
             print(3)
             print(selected)
             print(filter_list2)
-            
+            filter_list = []
             filter_check = []
             category =  Products(f1="채소류",f2="과일류",f3="곡류")
             for item in selected:
                 if item == "채소류":
                     filter_check.append(1)
+                    filter_list.append(filter_list2[0][random.randrange(1,8)])
                 if item == "과일류":
                     filter_check.append(2)
+                    filter_list.append(filter_list2[1][random.randrange(1,8)])
                 if item == "곡류":
                     filter_check.append(3)
+                # if len(filter_check) < 2:
+                #     filter_list.append(filter_list2[1])
+                    filter_list.append(filter_list2[2][random.randrange(1,8)])
+                #     filter_list.append(filter_list2[2])
+                # if len(filter_check) < 3:
+                #     filter_list.append(filter_list2[2])
+                print(filter_list)
             context = {
                 'check':check,
                 'category':category,
                 'filter_check':filter_check,
-                'filter_list2':filter_list2,
+                'filter_list':filter_list,
             }
 
         elif check == 4:
-            # from .jsondata.cate4_data import filter_list2
+            from .jsondata.cate4_data import titles, prices, getshop
             print(4)
-            print(filter_list2)
+            getshop()           
+            print(titles)
+            # filter_list2 = getshop()
             filter_check = []
+            filter_list = []
+            filter_name  = []
             category =  ShoppingMall(f1="마켓컬리",f2="쿠팡",f3="푸드슈퍼마켓",f4="G마켓")
             for item in selected:
                 if item == "마켓컬리":
                     filter_check.append(1)
+                    filter_name.append("마켓컬리")
                 if item == "쿠팡":
                     filter_check.append(2)
+                    filter_name.append("쿠팡")
                 if item == "푸드슈퍼마켓":
                     filter_check.append(3)
+                    filter_name.append("푸드슈퍼마켓")
                 if item == "G마켓":
                     filter_check.append(4)
+                    filter_name.append("G마켓")
+            if len(filter_check) < 3:
+                filter_name.append(item)
+                filter_name.append(item)
             print(filter_check)
+            # for item in filter_check:
+            #     filter_list.append(titles[item])
+            #     filter_list.append(titles[item])
+            # print(filter_list)
+            sample = []
+            for item in filter_check:
+                sample.append(random.sample(titles[item], 1))
+            if len(sample) < 2:
+                sample.append(random.sample(titles[2], 1))
+                sample.append(random.sample(titles[3], 1))
+            elif len(sample) < 3:
+                sample.append(random.sample(titles[3], 1))
+            print(sample)
             context = {
                 'check':check,
                 'category':category,
                 'filter_check':filter_check,
-                'filter_list2':filter_list2,
+                'sample':sample,
+                'prices':prices,
+                'filter_name':filter_name
             }
+            return render(request,'detail/main.html',context)
 
 
     return render(request,'detail/main.html',context)
 
-def getshop(request):
-    from .jsondata.cate4_data import url_list, getClassValue, getNameValue
+# def getshop():
+#     from .jsondata.cate4_data import url_list, getClassValue, getNameValue
 
-    titles = []
-    tag = 'a'
-    className = 'basicList_link__1MaTN'
-    for url in url_list :
-        titles.append(getClassValue(url, tag, className))
-    print(titles)
+#     titles = []
+#     tag = 'a'
+#     className = 'basicList_link__1MaTN'
+#     for url in url_list :
+#         titles.append(getClassValue(url, tag, className))
+#     print(titles)
 
-    prices = []
-    tag = 'span'
-    # className = 'basicList_price__2r23_'
-    className = "price_num__2WUXn"
-    for url in url_list :
-        prices.append(getNameValue(url, tag, className))
-    print(prices)
+#     prices = []
+#     tag = 'span'
+#     # className = 'basicList_price__2r23_'
+#     className = "price_num__2WUXn"
+#     for url in url_list :
+#         prices.append(getNameValue(url, tag, className))
+#     print(prices)
 
-    return render(request, 'detail/main.html')
+#     context = {
+#         'titles':titles,
+#         'prices':prices
+#     }
+
+#     return context
