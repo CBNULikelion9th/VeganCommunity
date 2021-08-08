@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Post
-from .forms import PostForm #CommentForm
+from .models import Market_Post
+from .forms import PostForm, CommentForm
 from django.utils import timezone
 
 def market_home(request):
@@ -11,24 +11,20 @@ def farmer_notice(request):
     return render(request, 'market/farmer_notice.html')
 
 def market_list(request):
-    market_list = Post.objects.all()
+    market_list = Market_Post.objects.all()
     context = {
         'market_list': market_list,
     }
     return render(request, 'market/market_list.html', context)
 
 def market_detail(request, post_id ):
-    post = Post.objects.get(id=post_id)
+    post = Market_Post.objects.get(id=post_id)
     post.save()
     default_view_count = post.view_count
     post.view_count = default_view_count + 1
     return render(request, 'market/market_detail.html', {
         'post':post,
     })
-
-# def market_new(request):
-#     form = PostForm()
-#     return render(request, 'market/market_new.html',{'form':form })
 
 def market_new(request):
     form = PostForm(request.POST, request.FILES)
@@ -42,13 +38,13 @@ def market_new(request):
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
             image = form.cleaned_data['image']
-            post = Post.objects.create(title=title, content=content, image=image)
+            post = Market_Post.objects.create(title=title, content=content, image=image)
             return redirect('market_detail', post_id=post.id)
     return render(request, 'market/market_new.html',{'form':form })
 
 def market_create(request):
     
-    new_post= Post()
+    new_post= Market_Post()
     new_post.title = request.POST['title']
     new_post.writer = request.POST['writer']
     new_post.body = request.POST['body']
@@ -94,8 +90,7 @@ def market_create(request):
 
 
 def market_comment(request,  post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    # post = Post.objects.get(id=post.id)#(post_id=post_id)
+    post = Market_Post.objects.get(id=post_id)
 
     if request.method == 'POST':
         form = CommentForm(request.POST)

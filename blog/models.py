@@ -11,7 +11,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
-
     
 class Report(models.Model):
     report_title = models.CharField(max_length=100)
