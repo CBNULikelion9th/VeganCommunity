@@ -1,4 +1,5 @@
 {% load static %}
+
 <html>
 <head>
 <title>Main Map Page</title>
@@ -12,11 +13,11 @@
   <html> 
   <head>
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">      
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <style>
+
           body {
               overflow: hidden;
           }
@@ -29,8 +30,7 @@
           }
           div.text-box {
               text-align: center;
-          }
-          
+          }          
           h4 {
               margin: 10px auto 0;
               font-size:large;
@@ -47,15 +47,14 @@
           img {
               width: 300px;
               margin: -20px auto 0;
-          }
-        
+          }        
           a {
               text-decoration: none;
               color: #000;
           }
           #map {
         height: 100%;
-      }
+          }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
@@ -137,7 +136,7 @@
 
         /* 오른쪽 지도 들어갈 부분 */
 body {
-  background-color: rgb(245,246,247);
+  background-color: #f5f6f7;
   left: 0%;
   padding: 0px;
   margin: 0px;
@@ -166,6 +165,7 @@ body {
   left: 0px;
   z-index: 10px;
 }
+
 /* we are vegan 글씨 */
 .maplogo_up {
     position: absolute;
@@ -208,8 +208,8 @@ body {
     left: 0px;
     z-index: 10px;
     scroll-behavior: smooth;
-    
 }
+
 .sort_store {
   position: absolute;
   color: rgb(245,246,247);
@@ -253,10 +253,8 @@ p, h4 {
   font-size: 17px;
   font-weight: 450;
   color: white;
-}
-
-        
-      </style>
+}        
+  </style>
   </head>
    
   <body>
@@ -277,7 +275,7 @@ p, h4 {
    
             <input type="radio" name="type" id="changetype-geocode">
             <label for="changetype-geocode">Geocodes</label>
-          </div>
+         </div>
           <div id="strict-bounds-selector" class="pac-controls">
             <input type="checkbox" id="use-strict-bounds" value="">
             <label for="use-strict-bounds">Strict Bounds</label>
@@ -297,8 +295,8 @@ p, h4 {
 
       <div id="map"></div>   
       <script type="text/javascript">
-          function initMap() {
-   
+          
+          function initMap() {   
               //지도 스타일
               //var : 자바스크립트에서 모든 변수의 데이터타입을 표현
               var map = new google.maps.Map(document.getElementById('map'), {
@@ -311,6 +309,7 @@ p, h4 {
                   //처음 줌 값. 숫자가 작을수록 낮은 배율
                   zoom: 8
               });
+
         var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
         var types = document.getElementById('type-selector');
@@ -431,8 +430,8 @@ p, h4 {
           radioButton.addEventListener('click', function() {
             autocomplete.setTypes(types);
           });
-        }
- 
+        } 
+
         setupClickListener('changetype-all', []);
         setupClickListener('changetype-address', ['address']);
         setupClickListener('changetype-establishment', ['establishment']);
@@ -442,15 +441,16 @@ p, h4 {
             .addEventListener('click', function() {
               console.log('Checkbox clicked! New state=' + this.checked);
               autocomplete.setOptions({strictBounds: this.checked});
-            });
-      
+            });      
         }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjM9mpO9_qqSTjiOSnyPy5ssVsAfb3NsY&libraries=places&callback=initMap"
-        async defer></script> 
-     
-      
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap"
+        async defer></script> -->
+        
+        <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap">
+</script>
   </body></html>
   
 
