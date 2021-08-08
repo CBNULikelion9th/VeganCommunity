@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Post, Market_Post, Market_Comment
-from signup.models import User, UserManager
-from .forms import UserForm, PostForm, MarketPostForm, MarketCommentForm
+from signup.models import User
+from blog.models import Post, Report, Add
+from market.models import Market_Post, Market_Comment
+from .forms import UserForm, PostForm, ReportForm, AddForm, \
+                   MarketPostForm, MarketCommentForm
 
 def main(request):
     return render(request, 'vegan_admin/main.html')
@@ -91,6 +93,92 @@ def custom_store_update(request, id):
         form = PostForm(instance=store)
 
     return render(request, 'vegan_admin/custom_store_update.html', {'store':store, 'form':form})
+
+def report_store_list(request):
+    list = Report.objects.all()
+    context = {
+        'list': list,
+    }
+    return render(request, 'vegan_admin/report_store_list.html', context)
+
+def report_store_detail(request, id):
+    store = Report.objects.get(id=id)
+    context = {
+        'store': store,
+    }
+    return render(request, 'vegan_admin/report_store_detail.html', context)
+
+def report_store_delete(request, id):
+    store = Report.objects.get(id=id)
+    store.delete()
+    return redirect('report_store_list')
+
+def report_store_new(request):
+    if request.method == "POST":
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            store = form.save()
+        return redirect('report_store_detail', store.id)
+    else:
+        form = ReportForm()
+    
+    return render(request, 'vegan_admin/report_store_new.html', {'form': form})
+
+def report_store_update(request, id):
+    store = Report.objects.get(id=id)
+
+    if request.method == "POST":
+        form = ReportForm(request.POST, instance=store)
+        if form.is_valid():
+            form.save()
+            return redirect('report_store_detail', store.id)
+    else:
+        form = ReportForm(instance=store)
+
+    return render(request, 'vegan_admin/report_store_update.html', {'store':store, 'form':form})
+
+def add_store_list(request):
+    list = Add.objects.all()
+    context = {
+        'list': list,
+    }
+    return render(request, 'vegan_admin/add_store_list.html', context)
+
+def add_store_detail(request, id):
+    store = Add.objects.get(id=id)
+    context = {
+        'store': store,
+    }
+    return render(request, 'vegan_admin/add_store_detail.html', context)
+
+def add_store_delete(request, id):
+    store = Add.objects.get(id=id)
+    store.delete()
+    return redirect('add_store_list')
+
+def add_store_new(request):
+    if request.method == "POST":
+        form = AddForm(request.POST)
+        if form.is_valid():
+            store = form.save()
+        return redirect('add_store_detail', store.id)
+    else:
+        form = AddForm()
+    
+    return render(request, 'vegan_admin/add_store_new.html', {'form': form})
+
+def add_store_update(request, id):
+    store = Add.objects.get(id=id)
+
+    if request.method == "POST":
+        form = AddForm(request.POST, instance=store)
+        if form.is_valid():
+            form.save()
+            return redirect('add_store_detail', store.id)
+    else:
+        form = AddForm(instance=store)
+
+    return render(request, 'vegan_admin/add_store_update.html', {'store':store, 'form':form})
 
 def goods_list(request):
     list = Market_Post.objects.all()
