@@ -118,12 +118,12 @@
       }
  
       #pac-input:focus {
-        border-color: #4d90fe;
+        border-color: rgb(129,152, 97) ;
       }
  
       #title {
         color: #fff;
-        background-color: #4d90fe;
+        background-color: rgb(129,152, 97) ;
         font-size: 25px;
         font-weight: 500;
         padding: 6px 12px;
@@ -253,10 +253,10 @@ p, h4 {
   font-size: 17px;
   font-weight: 450;
   color: white;
-}        
-  </style>
+}  
+</style>
   </head>
-   
+  
   <body>
     <div class="pac-card" id="pac-card">
         <div>
@@ -443,6 +443,21 @@ p, h4 {
               autocomplete.setOptions({strictBounds: this.checked});
             });      
         }
+        var request = {
+  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+  fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+};
+
+service = new google.maps.places.PlacesService(map);
+service.getDetails(request, callback);
+
+function callback(place, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    createMarker(place);
+  }
+}        
+       
+        
     </script>
 
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap"
@@ -483,13 +498,13 @@ p, h4 {
         </div>   
     </section>
 
-    <section id="down-mainfunc">
+    <section id="down-mainfunc"> -->
       <!-- 정렬 기능 아직, 링크만 걸어뒀어요 -->      
-      <div class="sort_store"> 
+  <div class="sort_store">  -->
         <a href="{% url 'map_main' %}">최신순</a>
-        <a href="{% url 'map_main' %}">별점순</a>
+        <a href="{% url 'map_main' %}">별점순</a> -->
         <!-- 이렇게 위로 두줄 링크 건 부분 -->
-      </div>
+     </div>
       <div style=
       "overflow:scroll; width:410px; height:800px; padding:10px; background-color:rgb(129,152, 97) ; ">
 
@@ -548,4 +563,4 @@ p, h4 {
   </section>   
 </leftbody>
 
-</html>  
+</html>
