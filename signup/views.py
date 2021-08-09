@@ -2,6 +2,7 @@ from .models import User
 from django.shortcuts import render
 from django.contrib import auth
 from django.core.mail.message import EmailMessage
+
 # Create your views here.
 
 # 회원 가입
@@ -30,7 +31,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             #로그인 성공시 메인화면
-            return render('/')
+            return render(request, 'loginsucess.html')
 
         else:
 
@@ -63,3 +64,5 @@ def send_email(request):
     from_email = "veganiateam@gmail.com"
     message = "메시지 테스트"
     EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
+
+

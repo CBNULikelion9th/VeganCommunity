@@ -135,13 +135,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'signup.User'
 
+#비밀번호변경이메일 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 # 메일을 호스트하는 서버
 EMAIL_PORT = '587'
 # gmail과의 통신하는 포트
 EMAIL_HOST_USER = 'veganiateam@gmail.com'
 # 발신할 이메일
-EMAIL_HOST_PASSWORD = '/'
+EMAIL_HOST_PASSWORD = '125125aa!!'
 # 발신할 메일의 비밀번호
 EMAIL_USE_TLS = True
 # TLS 보안 방법
