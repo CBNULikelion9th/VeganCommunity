@@ -8,4 +8,6 @@ urlpatterns = [
     path('signup/', include('signup.urls')),
     path('vegan_admin/', include('vegan_admin.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('market/', include('market.urls')),
+    path('', include('main.urls')),
 ]

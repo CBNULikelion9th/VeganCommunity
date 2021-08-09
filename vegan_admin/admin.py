@@ -1,18 +1,19 @@
 from django.contrib import admin
-from .models import Post, Market_Post, Market_Comment
-from signup.models import User, UserManager
+from signup.models import User
+from blog.models import Report, Add
+from market.models import Market_Comment
 
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'is_admin', 'is_superuser')
     fields = ('__all__',)
 
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('store_name', 'location')
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('report_title', 'report_content')
     fields = ('__all__',)
 
-class MarketPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'writer')
+class AddAdmin(admin.ModelAdmin):
+    list_display = ('add_title', 'add_content')
     fields = ('__all__',)
 
 class MarketCommentAdmin(admin.ModelAdmin):
@@ -20,6 +21,6 @@ class MarketCommentAdmin(admin.ModelAdmin):
     fields = ('__all__',)
 
 admin.site.register(User, UserAdmin)
-admin.site.register(Post, PostAdmin)
-admin.site.register(Market_Post, MarketPostAdmin)
+admin.site.register(Report, ReportAdmin)
+admin.site.register(Add, AddAdmin)
 admin.site.register(Market_Comment, MarketCommentAdmin)

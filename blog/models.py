@@ -4,7 +4,6 @@ from django.db import models
 class Post(models.Model):
     
     store_name =  models.CharField(max_length=100)
-    reportcontent = models.TextField(default = '')
     location = models.TextField(default = '')
     image = models.ImageField(blank=True, upload_to='blog')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -12,3 +11,19 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+    
+class Report(models.Model):
+    report_title = models.CharField(max_length=100)
+    report_content = models.TextField(default = '')
+
+    def __str__(self):
+        return self.title
+
+
+class Add(models.Model):
+    add_title = models.CharField(max_length=100)
+    add_content = models.TextField(default = '')
+    image = models.ImageField(blank=True, upload_to='blog')
+
+    def __str__(self):
+        return self.title
