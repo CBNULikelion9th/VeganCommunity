@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>Main Map Page</title>
+<title>TEST</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link  rel="stylesheet" />
 </head>
@@ -30,6 +30,10 @@
           }
           div.text-box {
               text-align: center;
+          }
+          h3 {
+              color: rgb(129,152, 97) ;              
+              font-size:large;
           }          
           h4 {
               margin: 10px auto 0;
@@ -80,6 +84,7 @@
       }
  
       .pac-card {
+        height: 300px;
         margin: 10px 10px 0 0;
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
@@ -96,6 +101,7 @@
       }
  
       .pac-controls {
+        
         display: inline-block;
         padding: 5px 11px;
       }
@@ -144,146 +150,32 @@ body {
   
 }
 
-/* 초록 위 배너 */
-.leftbody {
-    background-color: rgb(245,246,247);
-    width: 300px;
-    left: 500px;
-    padding: 0px;
-    margin: 0px;
-    min-width: 300px;
-}
 
-/* 검색창 초록 배너 */
-#up-mainfunc {
-  background-color: rgb(129,152, 97) ;  
-  height: 300px;
-  width: 420px;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  z-index: 10px;
-}
-
-/* we are vegan 글씨 */
-.maplogo_up {
-    position: absolute;
-    color: rgb(245,246,247);
-    width: 400px;
-    top: 40px;
-    left: 15%;
-    transform: translateY(-50%);
-    margin-left: 20px;
-    font-size: 45px;
-    font-weight: 1000px;
-}
-.add_store {
-  top: 20;
-  font-size: 15px;
-  text-decoration: none;
-  color: rgb(245,246,247);
-  padding: 0 38px;
-}
-.menu-list {
-  position: absolute;
-  margin-top: 15%;
-  left: 130;
-  font-size: 30px;
-}
-.menu-list .menu a {
-  text-decoration: none;
-  color: rgb(245,246,247);
-  padding: 0 38px;
-}
-
-/* 초록 아래 배너 */
-#down-mainfunc {
-    background-color: rgb(129,152, 97) ;  
-    height: 800px;
-    width: 420px;
-    position: fixed;
-    top: 310px;
-    right: 0px;
-    left: 0px;
-    z-index: 10px;
-    scroll-behavior: smooth;
-}
-
-.sort_store {
-  position: absolute;
-  color: rgb(245,246,247);
-  width: 400px;
-  left: 250px;
-  top: 30px;
-  transform: translateY(-50%);
-  margin-left: 20px;
-  font-size: 15px;
-  font-weight: 500px;
-}
-.search_store {
-  position: absolute;
-  color: rgb(245,246,247);
-  width: 400px;
-  top: 100px;
-  left: 13%;
-  transform: translateY(-50%);
-  margin-left: 20px;
-  font-size: 30px;
-  font-weight: 1000px;
-}
-
-.store_text {
-  width: 600px;
-  color: rgb(245,246,247);
-}
-
-p, h4 {
-  margin: 0;
-}
-.store_text p {
-  top: 30;
-  margin-top: 40px;
-  font-size: 30px;
-  font-weight: 550;
-  color: rgb(245,246,247);
-}
-.store_text h4 {
-  
-  font-size: 17px;
-  font-weight: 450;
-  color: white;
-}        
-  </style>
+</style>
   </head>
-   
+  
   <body>
     <div class="pac-card" id="pac-card">
         <div>
           <div id="title">
-            We are VEGAN
+            WE ARE VEGAN
           </div>
           <div id="type-selector" class="pac-controls">
-            <input type="radio" name="type" id="changetype-all" checked="checked">
-            <label for="changetype-all">All</label>
-   
-            <input type="radio" name="type" id="changetype-establishment">
-            <label for="changetype-establishment">Establishments</label>
-   
-            <input type="radio" name="type" id="changetype-address">
-            <label for="changetype-address">Addresses</label>
-   
-            <input type="radio" name="type" id="changetype-geocode">
-            <label for="changetype-geocode">Geocodes</label>
+            <!-- <input type="button" name="type"> -->
+            <a href="{% url 'vegan_info' %}"><h3>INFO</h3></a>
+            <a href="{% url 'vegan_area_add' %}"><h3>ADD</h3></a>
+            <a href="{% url 'store_save' %}"><h3>SAVE</h3></a>
+            <a href="{% url 'area_report' %}"><h3>REPORT</h3></a>                       
          </div>
-          <div id="strict-bounds-selector" class="pac-controls">
+          <!-- <div id="strict-bounds-selector" class="pac-controls">
             <input type="checkbox" id="use-strict-bounds" value="">
             <label for="use-strict-bounds">Strict Bounds</label>
-          </div>
+          </div> -->
         </div>
         <div id="pac-container">
           <input id="pac-input" type="text"
               placeholder="Enter a location">
+          
         </div>
       </div>
       <div id="map"></div>
@@ -369,7 +261,7 @@ p, h4 {
                       return function() {
                           
                           //html로 표시될 인포 윈도우의 내용
-                          // infowindow.setContent(locations[i][0]);
+                          infowindow.setContent(locations[i][0]);
                           
                           //인포윈도우가 표시될 위치
                           infowindow.open(map, marker);
@@ -428,19 +320,6 @@ p, h4 {
         function setupClickListener(id, types) {
           var radioButton = document.getElementById(id);
           radioButton.addEventListener('click', function() {
-            var request = {
-  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-  fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
-};
-
-service = new google.maps.places.PlacesService(map);
-service.getDetails(request, callback);
-
-function callback(place, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    createMarker(place);
-  }
-}
             autocomplete.setTypes(types);
           });
         } 
@@ -456,13 +335,33 @@ function callback(place, status) {
               autocomplete.setOptions({strictBounds: this.checked});
             });      
         }
-       
+        var request = {
+  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+  fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+};
 
+service = new google.maps.places.PlacesService(map);
+service.getDetails(request, callback);
+
+function callback(place, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    createMarker(place);
+  }
+}        
+       
         
     </script>
 
-   
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap"
+        async defer></script> -->
+        
         <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap">
 </script>
   </body></html>
+  
+
+   <!-- 지도 불러오는 부분 끝-->
+
+
+</html>
