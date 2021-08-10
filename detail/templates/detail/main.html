@@ -101,7 +101,7 @@
                                 <img src={{ imglink.0 }} id="food-img" onerror="this.style.display='none'" alt="food1">
                                 </div>
                                 <div>
-                                <p class="tag">
+                                <a href="{% url 'detail_info' %}" class="tag">
                                     {% if check == 1 %}
                                     #{{ filter_list.0  }}
                                     {% elif check == 4 %}
@@ -135,15 +135,14 @@
                                     {% elif check == 3 %}
                                         {% if filter_list.0 %}
                                             #{{ filter_list.0  }}<br>
-                                        {% endif %}                               
-                                                                                 
+                                        {% endif %}                                                             
                                     {% endif %}
-                                </p>
+                                </a>
                                 </div>
                             </li>
                             <li>
                                 <img src={{ imglink.1 }} id="food-img" onerror="this.style.display='none'" alt="food2">
-                                <p class="tag">
+                                <a href="{% url 'detail_info' %}" class="tag">
                                     {% if check == 1 %}
                                     #{{ filter_list.1  }}
                                     {% elif check == 4 %}
@@ -180,11 +179,11 @@
                                         {% endif %}                               
                                                  
                                     {% endif %}
-                                </p>
+                                </a>
                             </li>
                             <li>
                                 <img src={{ imglink.2 }} id="food-img" onerror="this.style.display='none'" alt="food3">
-                                <p class="tag">
+                                <a href="{% url 'detail_info' %}" class="tag">
                                     {% if check == 1 %}
                                     #{{ filter_list.2  }}
                                     {% elif check == 4 %}
@@ -221,7 +220,7 @@
                                         {% endif %}                               
                                                  
                                     {% endif %}
-                                </p>
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -7,6 +7,7 @@ from . import crawl
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import random
+from django.views.generic import TemplateView
 
 index = []      # 해당 음식의 인덱스
 food_list= []   # api로 가져온 전체 음식리스트
@@ -235,27 +236,6 @@ def filter(request, check):
 
     return render(request,'detail/main.html',context)
 
-# def getshop():
-#     from .jsondata.cate4_data import url_list, getClassValue, getNameValue
+def detail_info(request):
+    return render(request, 'detail/info.html')
 
-#     titles = []
-#     tag = 'a'
-#     className = 'basicList_link__1MaTN'
-#     for url in url_list :
-#         titles.append(getClassValue(url, tag, className))
-#     print(titles)
-
-#     prices = []
-#     tag = 'span'
-#     # className = 'basicList_price__2r23_'
-#     className = "price_num__2WUXn"
-#     for url in url_list :
-#         prices.append(getNameValue(url, tag, className))
-#     print(prices)
-
-#     context = {
-#         'titles':titles,
-#         'prices':prices
-#     }
-
-#     return context
