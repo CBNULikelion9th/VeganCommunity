@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>TEST</title>
+<title>MAIN PAGE</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link  rel="stylesheet" />
 </head>
@@ -150,7 +150,6 @@ body {
   
 }
 
-
 </style>
   </head>
   
@@ -174,7 +173,7 @@ body {
         </div>
         <div id="pac-container">
           <input id="pac-input" type="text"
-              placeholder="Enter a location">
+              placeholder="Enter a VEGAN store name">
           
         </div>
       </div>
@@ -195,8 +194,8 @@ body {
                   
                   //처음 중심 좌표
                   center: {
-                      lat: 37, 
-                      lng: 126 
+                      lat: 36.605671, 
+                      lng: 128.1073013,
                   },                  
                   //처음 줌 값. 숫자가 작을수록 낮은 배율
                   zoom: 8
@@ -224,15 +223,97 @@ body {
               var locations = [
   
                   //place:"청주 여누",
-                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5> 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><h5>별점 4.5</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6341916, 127.4249196],
+                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5>사진출처 : 구글 / 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6341916, 127.4249196],
                    //place:"청주 오프리",
-                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><h5>별점 4.8</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>',36.6196166,127.4296442],
+                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.6196166,127.4296442],
                     //place:"청주 늘푸른식당",
-                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><h5>별점 - </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a target="_blank" href="#/""><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6481218, 127.479121],
+                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 상당구 우암동 325-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
                    //place:"청주 스토리",
-                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5>충청북도 청주시 흥덕구 복대2동 </h5><h5>별점 4.9</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/""><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6316732, 127.4318127],
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 흥덕구 복대2동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6316732, 127.4318127],
                    //place:"청주 하일",
-                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><h5>별점 5.0</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6481164,127.4528564],
+                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"러빙헛 송촌점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 송촌점</h4><div class="img-box"><img src="{% static "img/6.png" %}"/></div><h5> 사진출처 : 구글 / 대전광역시 대덕구 중리동 493-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.3645182,127.4363881],
+                  //place:"Vegan Buffet",
+                  ['<div class="wrap"><div class="text-box"><h4>Vegan Buffet</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 사진출처 : 구글 / 충청남도 천안시 동남구 신방동 530-4 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 -</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.793931,127.1510345,],
+                  //place:"배지그린",
+                  ['<div class="wrap"><div class="text-box"><h4>배지그린</h4><div class="img-box"><img src="{% static "img/9.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 강남구 개포동 개포로20길 24-10 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.4769333,127.0474939,],
+                  //place:"러빙헛카페",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛카페</h4><div class="img-box"><img src="{% static "img/10.png" %}"/></div><h5> 서울특별시 강남구 개포동 개포로22길 35 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4768848,127.0492398,],
+                   //place:"도반",
+                  ['<div class="wrap"><div class="text-box"><h4>도반</h4><div class="img-box"><img src="{% static "img/11.png" %}"/></div><h5> 서울특별시 서초구 양재동 263-15번지 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4762512,127.0425508,],
+                  //place:"러빙헛 스마일점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 스마일점</h4><div class="img-box"><img src="{% static "img/12.png" %}"/></div><h5> 서울특별시 강남구 개포4동 논현로 18 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4734806,127.0508364,],
+                  //place:"남미플랜트랩",
+                  ['<div class="wrap"><div class="text-box"><h4>남미플랜트랩</h4><div class="img-box"><img src="{% static "img/13.png" %}"/></div><h5> 2층 455-20, 방배동 서초구 서울특별시 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4805678,126.983086,],
+                  //place:"플랜트",
+                  ['<div class="wrap"><div class="text-box"><h4>플랜트</h4><div class="img-box"><img src="{% static "img/14.png" %}"/></div><h5> 2 floor, 117 보광로 이태원1동 용산구 서울특별시 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5330759,126.9940922,],
+                  //place:"스프라우트",
+                  ['<div class="wrap"><div class="text-box"><h4>스프라우트</h4><div class="img-box"><img src="{% static "img/15.png" %}"/></div><h5> 서울특별시 용산구 이태원2동 회나무로13길 36 </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5408594,126.9896319,],
+                  //place:"베제투스",
+                  ['<div class="wrap"><div class="text-box"><h4>베제투스</h4><div class="img-box"><img src="{% static "img/16.png" %}"/></div><h5> 서울특별시 용산구 용산2가동 22-12 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5436344,126.9871621,],
+                  //place:"비건스페이스",
+                  ['<div class="wrap"><div class="text-box"><h4>비건스페이스</h4><div class="img-box"><img src="{% static "img/17.png" %}"/></div><h5> 서울특별시 용산구 용산동2가 46-1번지 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5541168,126.9298092,],
+                  //place:"드렁큰비건",
+                  ['<div class="wrap"><div class="text-box"><h4>드렁큰비건</h4><div class="img-box"><img src="{% static "img/19.png" %}"/></div><h5> 서울특별시 마포구 창전동 와우산로30길 13 </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"소이로움",
+                  ['<div class="wrap"><div class="text-box"><h4>소이로움</h4><div class="img-box"><img src="{% static "img/18.png" %}"/></div><h5> 서울특별시 종로구 누하동 필운대로 41 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5797021,126.9684406,],
+                  //place:"비건키친",
+                  ['<div class="wrap"><div class="text-box"><h4>비건키친</h4><div class="img-box"><img src="{% static "img/20.png" %}"/></div><h5> 서울특별시 서대문구 연희동 연희로26가길 15 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5736557,126.935996,],
+                   //place:"반 BAAN",
+                  ['<div class="wrap"><div class="text-box"><h4>반 BAAN</h4><div class="img-box"><img src="{% static "img/21.png" %}"/></div><h5> 서울특별시 서대문구 신촌동 연세로11길 21 2층 </h5><hr><h5>임시휴업</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5588313,126.9354202,],
+                  //place:"셰발레리 Chez Valerie",
+                  ['<div class="wrap"><div class="text-box"><h4>셰발레리 Chez Valerie</h4><div class="img-box"><img src="{% static "img/22.png" %}"/></div><h5> KR 서울특별시 마포구 포은로 52 1층 VEGAN </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5520304,126.9067351,],
+                   //place:"마지",
+                  ['<div class="wrap"><div class="text-box"><h4>마지</h4><div class="img-box"><img src="{% static "img/23.png" %}"/></div><h5> 서울특별시 종로구 체부동 자하문로5길 19 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5776465,126.9708093,],
+                   //place:"채식주의자",
+                  ['<div class="wrap"><div class="text-box"><h4>채식주의자</h4><div class="img-box"><img src="{% static "img/24.png" %}"/></div><h5> 서울특별시 종로구 통인동 102번지 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.580283,126.9707694,],
+                  //place:"Vegan Cafe",
+                  ['<div class="wrap"><div class="text-box"><h4>Vegan Cafe</h4><div class="img-box"><img src="{% static "img/25.png" %}"/></div><h5> 서울특별시 종로구 통인동 자하문로13길 4-7 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5803349,126.9707633,],
+                  //place:"오세계향",
+                  ['<div class="wrap"><div class="text-box"><h4>오세계향</h4><div class="img-box"><img src="{% static "img/26.png" %}"/></div><h5> 서울특별시 종로구 관훈동 인사동12길 14-5 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5746333,126.9851174,],
+                  //place:"한과채",
+                  ['<div class="wrap"><div class="text-box"><h4>한과채</h4><div class="img-box"><img src="{% static "img/27.png" %}"/></div><h5> 서울특별시 종로구 관훈동 인사동10길 13 </h5><hr><h5>매장 내 식사 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5743048,126.9855713,],
+
+                    //place:"청주 늘푸른식당",
+                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
+                   //place:"청주 스토리",
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5>충청북도 청주시 흥덕구 복대2동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6316732, 127.4318127],
+                   //place:"청주 하일",
+                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"러빙헛 송촌점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 송촌점</h4><div class="img-box"><img src="{% static "img/6.png" %}"/></div><h5> 대전광역시 대덕구 중리동 493-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.3645182,127.4363881],
+                  //place:"청주 여누",
+                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5> 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6341916, 127.4249196],
+                   //place:"청주 오프리",
+                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.6196166,127.4296442],
+                    //place:"청주 늘푸른식당",
+                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
+                   //place:"청주 스토리",
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5>충청북도 청주시 흥덕구 복대2동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6316732, 127.4318127],
+                   //place:"청주 하일",
+                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"러빙헛 송촌점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 송촌점</h4><div class="img-box"><img src="{% static "img/6.png" %}"/></div><h5> 대전광역시 대덕구 중리동 493-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.3645182,127.4363881],
+                  //place:"청주 여누",
+                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5> 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6341916, 127.4249196],
+                   //place:"청주 오프리",
+                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.6196166,127.4296442],
+                    //place:"청주 늘푸른식당",
+                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
+                   //place:"청주 스토리",
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5>충청북도 청주시 흥덕구 복대2동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6316732, 127.4318127],
+                   //place:"청주 하일",
+                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"러빙헛 송촌점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 송촌점</h4><div class="img-box"><img src="{% static "img/6.png" %}"/></div><h5> 대전광역시 대덕구 중리동 493-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.3645182,127.4363881],
+                                                                                    
+
+
+     
+                  //검색시 나타나는 부분 -이부분은 아직 수정중
+                  ['<div class="wrap"><div class="text-box"><h4>검색하신 장소입니다</h4></div><h5></h5><hr><h5></h5><h5></h5><hr><a target="_blank" href="#/"><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', ],
+
   
             ]     
               
