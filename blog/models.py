@@ -22,7 +22,7 @@ class Report(models.Model):
 
 class Save(models.Model):
     save_title = models.CharField(max_length=100)
-    save__content = models.TextField(default = '')
+    save_content = models.TextField(default = '')
 
     def __str__(self):
         return self.title

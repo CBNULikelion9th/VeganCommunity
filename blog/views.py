@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import PostForm, ReportForm
+from .forms import PostForm, ReportForm, SaveForm
 from .models import Post
 
 
