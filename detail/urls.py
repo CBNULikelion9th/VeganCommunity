@@ -10,5 +10,5 @@ urlpatterns = [
     path('info/category3', views.category3, name="category3"),
     path('info/category4', views.category4, name="category4"),
     path('info/filter/<int:check>', views.filter, name="filter"),
-    path('info/detailinfo', views.detail_info, name="detail_info"),
+    path('info/detailinfo/<int:check>', views.detail_info, name="detail_info"),
 ]

@@ -98,7 +98,17 @@ input[type="submit"]{
     border: 0ch;
     font-size: 18px;
 }
+input[type="checkbox"]{
+    background-color: rgb(201, 216, 180);
+    border: 1px solid rgb(49, 49, 49);
+    font-size: 20px;
+}
 
+input[type="checkbox"]::after{
+    background-color: rgb(190, 255, 98);
+    border: 1px solid rgb(94, 94, 94);
+    font-size: 20px;
+}
 .filtering {
     margin-top: 40px;
 }
@@ -128,6 +138,7 @@ a {
 
 .description {
     align-items: center;
+    border-left: 1px solid gray;
 }
 
 .food-info{

@@ -9,11 +9,16 @@ from bs4 import BeautifulSoup
 import random
 from django.views.generic import TemplateView
 
+from .jsondata.cate2_data import filter_list2
+from .jsondata.cate3_data import filter_list3
+from .jsondata.detail_crawl import imgcrawl
+
 index = []      # 해당 음식의 인덱스
 food_list= []   # api로 가져온 전체 음식리스트
 # check=1         # 카테고리 구분
 filter_list1=["더덕구이", "도미구이","병어구이"]  # 필터링 요소에 따른 음식리스트
 imglink = []
+filter_list = []
 
 result = foodapi.read_data()    # json 읽어옴
 foodset = result["I2790"]["row"]
@@ -153,25 +158,26 @@ def filter(request, check):
             }
 
         elif check == 3:
-            from .jsondata.cate3_data import filter_list2
+            # from .jsondata.cate3_data import filter_list2
             print(3)
             print(selected)
-            print(filter_list2)
-            filter_list = []
+            print(filter_list3)
+            filter_list.clear()
+            # filter_list = []
             filter_check = []
             category =  Products(f1="채소류",f2="과일류",f3="곡류")
             for item in selected:
                 if item == "채소류":
                     filter_check.append(1)
-                    filter_list.append(filter_list2[0][random.randrange(1,8)])
+                    filter_list.append(filter_list3[0][random.randrange(1,8)])
                 if item == "과일류":
                     filter_check.append(2)
-                    filter_list.append(filter_list2[1][random.randrange(1,8)])
+                    filter_list.append(filter_list3[1][random.randrange(1,8)])
                 if item == "곡류":
                     filter_check.append(3)
                 # if len(filter_check) < 2:
                 #     filter_list.append(filter_list2[1])
-                    filter_list.append(filter_list2[2][random.randrange(1,8)])
+                    filter_list.append(filter_list3[2][random.randrange(1,8)])
                 #     filter_list.append(filter_list2[2])
                 # if len(filter_check) < 3:
                 #     filter_list.append(filter_list2[2])
@@ -190,7 +196,7 @@ def filter(request, check):
             print(titles)
             # filter_list2 = getshop()
             filter_check = []
-            filter_list = []
+            # filter_list = []
             filter_name  = []
             category =  ShoppingMall(f1="마켓컬리",f2="쿠팡",f3="푸드슈퍼마켓",f4="G마켓")
             for item in selected:
@@ -236,6 +242,39 @@ def filter(request, check):
 
     return render(request,'detail/main.html',context)
 
-def detail_info(request):
-    return render(request, 'detail/info.html')
+def detail_info(request, check):
+    url = "https://search.naver.com/search.naver?where=image&sm=tab_jum&query="
+    imglist = []
+    if check == 1:
+        for filter in filter_list1:
+            imglist.append(imgcrawl(filter))
+        # print(imglist)
+        context = {
+            'check':check,
+            'filter_list':filter_list1,
+            'imglist':imglist
+        }
+    elif check == 2:
+        for filter in filter_list2:
+            print(filter)
+            imglist.append(imgcrawl(filter['name']))
+        # print(imglist)
+        context = {
+            'check':check,
+            'filter_list2':filter_list2,
+            'imglist':imglist
+        }
+    elif check == 3:
+        for filter in filter_list:
+            imglist.append(imgcrawl(filter))
+        # print(imglist)
+        context = {
+            'check':check,
+            'filter_list':filter_list,
+            'imglist':imglist
+        }
+        # imgcrawl()
+        
+        
+    return render(request, 'detail/info.html', context)
 

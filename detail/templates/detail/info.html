@@ -1,14 +1,91 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/info.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <title>Information</title>
 </head>
 <body>
-    <div>
-        <h4>Information Page</h4>
-    </div>
+    <nav>
+        <div>
+            <h1>Information Page</h1>
+        </div>
+    </nav>
+    <main>
+        <table>
+        {% if check == 1 %}
+        <div class="title">
+            <tr>
+            {% for filter in filter_list %}           
+                <td>
+                    <h3>{{ filter }}</h3>
+                </td>             
+            {% endfor %}
+            </tr>
+        </div>
+        <div class="img">
+            <tr>
+            {% for img in imglist %}            
+                <td>
+                    <img src="{{ img }}"" alt="{{ filter }}" width="200" height="200">
+                </td>            
+            {% endfor %}
+        </tr>
+        </div>
+        </table>
+        <table>
+        {% elif check == 2 %}
+        <div>
+            <div class="title">
+                <tr>
+                {% for filter in filter_list2 %}           
+                    <td>
+                        <h3>{{ filter.name }}</h3>
+                    </td>             
+                {% endfor %}
+                </tr>
+            </div>
+                <div class="img">
+                    <tr>
+                    {% for img in imglist %}            
+                        <td>
+                            <img src="{{ img }}"" alt="{{ filter }}" width="200" height="200">
+                        </td>            
+                    {% endfor %}
+                </tr>
+                </div>
+        </div>
+    </table>
+    <table>
+        {% elif check == 3 %}
+        <div>
+            <div class="title">
+                <tr>
+                {% for filter in filter_list %}           
+                    <td>
+                        <h3>{{ filter }}</h3>
+                    </td>             
+                {% endfor %}
+                </tr>
+            </div>
+            <div class="img">
+                <tr>
+                {% for img in imglist %}            
+                    <td>
+                        <img src="{{ img }}"" alt="{{ filter }}" width="200" height="200">
+                    </td>            
+                {% endfor %}
+            </tr>
+            </div>
+        </div>
+    </table>
+        {% endif %}
+    </main>
 </body>
 </html>
