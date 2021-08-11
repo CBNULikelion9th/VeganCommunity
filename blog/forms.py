@@ -20,8 +20,7 @@ class SaveForm(forms.ModelForm):
 
     class Meta:
         model = Save
-        fields = 'save_content',
-
+        fields = '__all__'
 
 class AddForm(forms.ModelForm):
 

@@ -15,8 +15,7 @@ def test(request):
 def vegan_info(request):
     return render(request, 'blog/info.html')
 
-def store_save(request):
-    return render(request, 'blog/save.html')
+
 
 def exception(request):
     return render(request, 'blog/exception.html')
@@ -40,4 +39,11 @@ def vegan_area_add(request):
     })
 
 
+def store_save(request):
+    if request.method == 'GET':
+        form = SaveForm()
+
+        return render(request, 'blog/save.html', {
+           'form' : form,
+    })
 
