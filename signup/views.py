@@ -26,7 +26,7 @@ def login(request):
 
         
         user = auth.authenticate(request, username=username, password=password)
-        
+        print(user)
         
         if user is not None:
             auth.login(request, user)
@@ -45,7 +45,7 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         #로그아웃 성공화면=메인화면
-        return render('/')
+        return render(request, 'index.html')
 
     return render(request, 'login.html')
 
@@ -58,11 +58,5 @@ def reset_password(request):
 def index(request):
     return render(request, 'index.html')
 
-def send_email(request):
-    subject = "message"
-    to = ["yukmj1123@gmail.com"]
-    from_email = "veganiateam@gmail.com"
-    message = "메시지 테스트"
-    EmailMessage(subject=subject, body=message, to=to, from_email=from_email).send()
 
 
