@@ -13,7 +13,7 @@ class ReportForm(forms.ModelForm):
 
     class Meta:
         model = Report
-        fields = 'report_content',
+        fields = '__all__'
 
 
 class SaveForm(forms.ModelForm):
