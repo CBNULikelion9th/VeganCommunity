@@ -1,8 +1,6 @@
 from urllib.request import Request, urlopen
-from urllib.parse import urlencode, unquote, quote_plus
+from urllib.parse import quote_plus
 from urllib import parse
-import urllib
-import requests
 import json
 
 import urllib.request as ul
@@ -20,7 +18,4 @@ def info():
     dictionary = xmltodict.parse(response_body)
     json_object = json.dumps(dictionary)
     dictionary = json.loads(json_object)
-    print(type(json_object))
     return dictionary
-
-# info()

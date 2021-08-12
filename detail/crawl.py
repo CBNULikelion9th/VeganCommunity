@@ -4,15 +4,15 @@ import os
 from dotenv import load_dotenv
 
 def crawling(item):
-    load_dotenv(verbose=True)
-    apikey = os.getenv('apikey')
+    load_dotenv(verbose=False)
+    GOOGLE_SEARCH_ENGINE_KEY = os.getenv('GOOGLE_SEARCH_ENGINE_KEY')
 
     engineid = "e885abd5f563ddafb"
 
     url = "https://www.googleapis.com/customsearch/v1"
 
     param = {
-        "key":apikey,
+        "key":GOOGLE_SEARCH_ENGINE_KEY,
 
         "cx":engineid,
 

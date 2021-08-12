@@ -1,7 +1,5 @@
 from django.urls import path
 from . import views
-# from detail_info.views import InfoView
-# from detail_info.views import detail_info
 
 urlpatterns = [
     path('info/', views.info, name="info"),

@@ -26,22 +26,18 @@ def getNameValue(url, tag, name) :
     return content.get('value')  
 
 def getshop():
-    # from .jsondata.cate4_data import url_list, getClassValue, getNameValue
 
     titles = []
     tag = 'a'
     className = 'basicList_link__1MaTN'
     for url in url_list :
         titles.append(getClassValue(url, tag, className))
-    print(titles)
 
     prices = []
     tag = 'span'
-    # className = 'basicList_price__2r23_'
     className = "price_num__2WUXn"
     for url in url_list :
         prices.append(getNameValue(url, tag, className))
-    print(prices)
 
     filter_list2 = {
         'titles':titles,
