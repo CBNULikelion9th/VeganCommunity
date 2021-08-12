@@ -403,9 +403,9 @@ body {
             ].join(' ');
           }
  
-          infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-address'].textContent = address;
+          // infowindowContent.children['place-icon'].src = place.icon;
+          // infowindowContent.children['place-name'].textContent = place.name;
+          // infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);
         });
  
@@ -429,19 +429,22 @@ body {
               autocomplete.setOptions({strictBounds: this.checked});
             });      
         }
-        var request = {
-  placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-  fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
-};
 
-service = new google.maps.places.PlacesService(map);
-service.getDetails(request, callback);
+      var request = {
+      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+      fields: ['name', 'rating', 'formatted_phone_number', 'geometry','photo']
+      };
 
-function callback(place, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    createMarker(place);
-  }
-}        
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, callback);
+      //
+      console.log(service.getDetails);
+      //
+      function callback(place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+              createMarker(place);
+          }
+      }        
        
         
     </script>

@@ -207,7 +207,7 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color:  rgb(129,152, 97);
   text-decoration: underline;
 }
 a:hover {
@@ -2966,9 +2966,10 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: rgb(129,152, 97);
+  border-color: rgb(129,152, 97);
 }
+
 .btn-primary:hover {
   color: #fff;
   background-color: #0b5ed7;
@@ -4202,8 +4203,10 @@ textarea.form-control-lg {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgb(129,152, 97);
+  font-weight: 400;
 }
+
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
 }
@@ -7353,9 +7356,8 @@ textarea.form-control-lg {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #0d6efd !important;
+  color: rgb(129,152, 97);
 }
-
 .text-secondary {
   color: #6c757d !important;
 }
