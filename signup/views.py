@@ -58,8 +58,5 @@ def reset_password(request):
 def index(request):
     return render(request, 'index.html')
 
-def myview(request):
-    request.user 
-    request.session
-    request.session.session_key
+
 
