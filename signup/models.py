@@ -1,5 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 from django.db import models
+from importlib import import_module
+from django.contrib.auth.signals import user_logged_in
+from django.conf import settings
 
 # Create your models here.
 class UserManager(BaseUserManager):    
@@ -76,3 +79,19 @@ class User(AbstractBaseUser,PermissionsMixin):
     date_joined = models.DateTimeField(auto_now_add=True)     
     USERNAME_FIELD = 'username'    
     REQUIRED_FIELDS = ['vegan', 'email']
+
+SessionStore=import_module(settings.SESSION_ENGINE).SessionStore
+
+class UserSession(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, editable=False)
+    session_key = models.CharField(max_length=40, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+def block_duplicate_logins(sender, request, user, **kwargs):
+    for user_session in UserSession.objects.filter(user=user):
+        session_key = user_session.session_key
+        session = SessionStore(session_key)
+        session.delete()
+    session_key = request.session.session_key
+    UserSession.objects.create(user=user, session_key=session_key)
+    user_logged_in.connect(block_duplicate_logins)
