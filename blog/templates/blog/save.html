@@ -96,7 +96,7 @@ overflow: hidden;
         <div class = "save-title">
            가게이름을 입력해주세요           
            <div class = "form-content">               
-             <form action="{% url 'store_save %'}" method='Save'>
+             <form action="{% url 'store_save' %}" method='POST' >
                {% csrf_token %}
                {{form.as_p}}   
                <hr>           

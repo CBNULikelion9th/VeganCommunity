@@ -98,7 +98,7 @@ transform: translateX(-50%);
         <div class = "report-title">
            신고사유를 입력해주세요           
            <div class = "form-content">               
-             <form action="{% url 'area_report %'}" method='Report'>
+             <form action="{% url 'area_report' %}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}   
                <hr>           

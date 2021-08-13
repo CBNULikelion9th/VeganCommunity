@@ -329,7 +329,22 @@ body {
 
   
             ]     
-              
+            var request = {
+      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+      fields: ['name', 'rating', 'formatted_phone_number', 'geometry','photo']
+      };
+
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, callback);
+      //
+      // console.log(service.getDetails);
+      //
+      function callback(place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+              createMarker(place);
+          }
+      }        
+       
               //마커 이미지
               var customicon = 'http://drive.google.com/uc?export=view&id=1tZgPtboj4mwBYT6cZlcY36kYaQDR2bRM'
    
@@ -430,22 +445,7 @@ body {
             });      
         }
 
-      var request = {
-      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-      fields: ['name', 'rating', 'formatted_phone_number', 'geometry','photo']
-      };
-
-      service = new google.maps.places.PlacesService(map);
-      service.getDetails(request, callback);
-      //
-      console.log(service.getDetails);
-      //
-      function callback(place, status) {
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-              createMarker(place);
-          }
-      }        
-       
+  
         
     </script>
 
