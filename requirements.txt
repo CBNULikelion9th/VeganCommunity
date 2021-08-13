@@ -8,3 +8,8 @@ pytz==2021.1
 requests==2.26.0
 sqlparse==0.4.1
 urllib3==1.26.6
+django-heroku==0.3.1
+gunicorn==20.1.0
+psycopg2==2.9.1
+whitenoise==5.2.0
+dj-database-url==0.5.0
