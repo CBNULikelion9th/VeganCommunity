@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 import os
+import django_heroku
 
 # GOOGLE_SEARCH_ENGINE_KEY2 = os.environ['GOOGLE_SEARCH_ENGINE_KEY2']
 # GOOGLE_SEARCH_ENGINE_KEY = os.environ['GOOGLE_SEARCH_ENGINE_KEY']
@@ -155,3 +156,5 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 LOGIN_REDIRECT_URL = 'mainpage'
 LOGOUT_REDIRECT_URL = 'mainpage'
+
+django_heroku.settings(locals())
