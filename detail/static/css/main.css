@@ -43,7 +43,7 @@ nav div.nav-1, nav div.nav-2 {
 
 #btn-search{
     height: 30px;
-    background-color: rgba(255, 160, 71, 0.647);
+    background-color: rgb(129,152, 97);
     border: 1px solid rgb(92, 92, 92);
     border-radius: 5px;
 }
@@ -62,7 +62,7 @@ main {
 
 .container-1{
     height: 250px;
-    background-color: #fff;
+  
     border-radius: 3px;
     border: 1px solid #DBDBDB;
 }
@@ -85,7 +85,7 @@ main {
     display: inline-flex;
     padding: 0% 5%;
     margin: 0%;
-    background-color: rgba(255, 160, 71, 0.647);
+    background-color: rgb(129,152, 97);
     /* border: 1px solid black; */
 }
 
@@ -98,7 +98,17 @@ input[type="submit"]{
     border: 0ch;
     font-size: 18px;
 }
+input[type="checkbox"]{
+    background-color: rgb(201, 216, 180);
+    border: 1px solid rgb(49, 49, 49);
+    font-size: 20px;
+}
 
+input[type="checkbox"]::after{
+    background-color: rgb(190, 255, 98);
+    border: 1px solid rgb(94, 94, 94);
+    font-size: 20px;
+}
 .filtering {
     margin-top: 40px;
 }
@@ -128,6 +138,7 @@ a {
 
 .description {
     align-items: center;
+    border-left: 1px solid gray;
 }
 
 .food-info{

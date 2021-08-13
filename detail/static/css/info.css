@@ -1,0 +1,15 @@
+.title{
+    display: inline-flex;
+}
+.img{
+    display: inline-flex;
+}
+nav{
+    background-color: rgb(129,152, 97);
+    background-size: cover;
+    width: 100%;
+}
+h1{
+    margin: 0;
+    padding: 10px;
+}
