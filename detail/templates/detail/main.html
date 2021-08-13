@@ -7,6 +7,9 @@
         <title>Main</title>
         <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css"/>
         <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     </head>
     <body>
         <!-- navigation -->
@@ -55,8 +58,9 @@
                         </ul>
                     </div>
                     <div class="row-6 filtering">
-                        <p style="margin-left: 5%;">보고싶은 요소를 선택하세요 !</p>
-                       <form action="{% url 'filter' %}" method="POST">
+                        <p style="margin-left: 5%;">🥗보고싶은 요소를 선택하세요 !
+                        <br>🥗 해시태그를 누르면 더 많은 사진을 볼 수 있어요 !</p>
+                       <form action="{% url 'filter' check %}" method="POST">
                         {% csrf_token %}
                         {% if category %}
                         <ul class="filtering-list">
@@ -80,7 +84,7 @@
                             {% endif %}
                         </ul>
                         {% endif %}
-                        <input type="submit" value="선택하기">
+                        <input type="submit" value="✔" style="color: green; font-size: 30px; margin-left: 40px;">
                         </form>
                     </div>
                 </article>
@@ -98,25 +102,139 @@
                         <ul class="food-info">
                             <li>
                                 <div>
-                                <img src="../../static/img/{{ filter_list.0 }}.jpg" id="food-img" alt="food1">
+                                <img src={{ imglink.0 }} id="food-img" onerror="this.style.display='none'" alt="food1">
                                 </div>
-                                <div>
-                                <p class="tag">
+                                    {% if check == 1 %}
+                                    <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
                                     #{{ filter_list.0  }}
+                                </a>
+                                    {% elif check == 4 %}
+                                    <p>
+                                    # {{ filter_name.0 }}<br>
+                                    {{ sample.0.0 }}<br>
+                                    {{ prices.0.0 }}
                                 </p>
-                                </div>
+                                <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
+                                    {% elif check == 2 %}
+                                    {% if filter_list2.0.name %}
+                                        #{{ filter_list2.0.name  }}<br>
+                                    {% endif %}
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                #{{ filter_list2.0.1  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                #{{ filter_list2.0.2  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                #{{ filter_list2.0.3  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                #{{ filter_list2.0.4  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                #{{ filter_list2.0.5  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                #{{ filter_list2.0.6  }}<br>
+                                            {% endif %}
+                                        {% endfor %} 
+                                    {% elif check == 3 %}
+                                        {% if filter_list.0 %}
+                                            #{{ filter_list.0  }}<br>
+                                        {% endif %}                                                             
+                                    {% endif %}
+                                </a>
                             </li>
                             <li>
-                                <img src="../../static/img/{{ filter_list.1 }}.jpg" id="food-img" alt="food2">
-                                <p class="tag">
-                                    #{{ filter_list.1 }}
-                                </p>
+                                <img src={{ imglink.1 }} id="food-img" onerror="this.style.display='none'" alt="food2">        
+                                    {% if check == 1 %}
+                                    <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
+                                    #{{ filter_list.1  }}
+                                    </a>
+                                    {% elif check == 4 %}
+                                    <p>
+                                    # {{ filter_name.1 }}<br>
+                                    {{ sample.1.0 }}<br>
+                                    {{ prices.0.1 }}
+                                    </p>
+                                    <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
+                                    {% elif check == 2 %}
+                                        {% if filter_list2.1.name %}
+                                        #{{ filter_list2.1.name  }}<br>
+                                        {% endif %}
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                #{{ filter_list2.1.1  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                #{{ filter_list2.1.2  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                #{{ filter_list2.1.3  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                #{{ filter_list2.1.4  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                #{{ filter_list2.1.5  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                #{{ filter_list2.1.6  }}<br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% elif check == 3 %}
+                                        {% if filter_list.1 %}
+                                            #{{ filter_list.1  }}<br>
+                                        {% endif %}                               
+                                                 
+                                    {% endif %}
+                                </a>
                             </li>
                             <li>
-                                <img src="../../static/img/{{ filter_list.2 }}.jpg" id="food-img" alt="food3">
-                                <p class="tag">
-                                    #{{ filter_list.2 }}
-                                </p>
+                                <img src={{ imglink.2 }} id="food-img" onerror="this.style.display='none'" alt="food3">                               
+                                    {% if check == 1 %}
+                                    <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
+                                    #{{ filter_list.2  }}
+                                    </a>
+                                    {% elif check == 4 %}
+                                    <p>
+                                    # {{ filter_name.2 }}<br>
+                                    {{ sample.2.0 }}<br>
+                                    {{ prices.0.2 }}
+                                    </p>
+                                    <a href="{% url 'detail_info' check %}" class="tag" style="font-size: 20px;"></a>
+                                    {% elif check == 2 %}
+                                    {% if filter_list2.2.name %}
+                                        #{{ filter_list2.2.name  }}<br>
+                                    {% endif %}    
+                                        {% for i in filter_check %}
+                                            {% if i == 1 %}
+                                                #{{ filter_list2.2.1  }}<br>
+                                            {% endif %}
+                                            {% if i == 2 %}
+                                                #{{ filter_list2.2.2  }}<br>
+                                            {% endif %}
+                                            {% if i == 3 %}
+                                                #{{ filter_list2.2.3  }}<br>
+                                            {% endif %}
+                                            {% if i == 4 %}
+                                                #{{ filter_list2.2.4  }}<br>
+                                            {% endif %}
+                                            {% if i == 5 %}
+                                                #{{ filter_list2.2.5  }}<br>
+                                            {% endif %}
+                                            {% if i == 6 %}
+                                                #{{ filter_list2.2.6  }}<br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% elif check == 3 %}
+                                        {% if filter_list.2 %}
+                                            #{{ filter_list.2  }}<br>
+                                        {% endif %}                               
+                                                 
+                                    {% endif %}
+                                </a>
                             </li>
                         </ul>
                     </div>
