@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 import os
 
+# GOOGLE_SEARCH_ENGINE_KEY2 = os.environ['GOOGLE_SEARCH_ENGINE_KEY2']
+# GOOGLE_SEARCH_ENGINE_KEY = os.environ['GOOGLE_SEARCH_ENGINE_KEY']
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

@@ -1,10 +1,10 @@
 import requests as r
 import urllib.request as ur
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 def crawling(item):
-    load_dotenv(verbose=False)
+    # load_dotenv(verbose=False)
     GOOGLE_SEARCH_ENGINE_KEY = os.getenv('GOOGLE_SEARCH_ENGINE_KEY')
 
     engineid = "e885abd5f563ddafb"
@@ -12,7 +12,7 @@ def crawling(item):
     url = "https://www.googleapis.com/customsearch/v1"
 
     param = {
-        "key":GOOGLE_SEARCH_ENGINE_KEY,
+        "key":str(GOOGLE_SEARCH_ENGINE_KEY),
 
         "cx":engineid,
 

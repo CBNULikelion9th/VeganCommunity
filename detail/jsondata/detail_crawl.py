@@ -2,7 +2,7 @@ from urllib.request import urlopen
 from urllib import parse
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
-import ssl
+# import ssl
 
 def imgcrawl(keyword):
     url = 'https://search.naver.com/search.naver?where=image&sm=tab_jum&query='
