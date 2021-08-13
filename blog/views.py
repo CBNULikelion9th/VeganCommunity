@@ -48,7 +48,7 @@ def vegan_area_add(request):
             form.save()
             return redirect('map_main',)
 
-    return render(request, 'blog/add.html',{
+    return render(request,'blog/add.html',{
         'form':form,
     })
 

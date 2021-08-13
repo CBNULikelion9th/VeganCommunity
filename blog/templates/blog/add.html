@@ -77,7 +77,7 @@ z-index: 10px;
     <section id="form-outline">
     <div class="form-inline"></div>         
     <div class = "form-add">           
-             <form action="{% url 'vegan_area_add %'}" method='POST'>
+             <form action="{% url 'vegan_area_add' %}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}                  
                <input type="submit" value="추가하기">
