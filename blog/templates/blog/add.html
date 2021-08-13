@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>Vegan Store Add Page</title>
+<title>Add Store</title>
 <link rel="stylesheet" />
 
 <style>
@@ -43,7 +43,7 @@ z-index: 10px;
     height: 600px;
     width: 800px;
     background-color: rgb(117, 117, 117, 0.452);
-    margin: 200px;
+    margin: 100px 300px 300px 600px;
     position: inherit;
 }
 .form-inline {
@@ -77,7 +77,7 @@ z-index: 10px;
     <section id="form-outline">
     <div class="form-inline"></div>         
     <div class = "form-add">           
-             <form action="{% url 'area_add %'}" method='Add'>
+             <form action="{% url 'vegan_area_add' %}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}                  
                <input type="submit" value="추가하기">

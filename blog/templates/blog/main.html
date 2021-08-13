@@ -1,7 +1,8 @@
 {% load static %}
+
 <html>
 <head>
-<title>Main Map Page</title>
+<title>MAIN PAGE</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link  rel="stylesheet" />
 </head>
@@ -12,11 +13,11 @@
   <html> 
   <head>
       <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">      
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <style>
+
           body {
               overflow: hidden;
           }
@@ -30,7 +31,10 @@
           div.text-box {
               text-align: center;
           }
-          
+          h3 {
+              color: rgb(129,152, 97) ;              
+              font-size:large;
+          }          
           h4 {
               margin: 10px auto 0;
               font-size:large;
@@ -47,15 +51,14 @@
           img {
               width: 300px;
               margin: -20px auto 0;
-          }
-        
+          }        
           a {
               text-decoration: none;
               color: #000;
           }
           #map {
         height: 100%;
-      }
+          }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
@@ -81,6 +84,7 @@
       }
  
       .pac-card {
+        height: 300px;
         margin: 10px 10px 0 0;
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
@@ -97,6 +101,7 @@
       }
  
       .pac-controls {
+        
         display: inline-block;
         padding: 5px 11px;
       }
@@ -119,12 +124,12 @@
       }
  
       #pac-input:focus {
-        border-color: #4d90fe;
+        border-color: rgb(129,152, 97) ;
       }
  
       #title {
         color: #fff;
-        background-color: #4d90fe;
+        background-color: rgb(129,152, 97) ;
         font-size: 25px;
         font-weight: 500;
         padding: 6px 12px;
@@ -137,7 +142,7 @@
 
         /* 오른쪽 지도 들어갈 부분 */
 body {
-  background-color: rgb(245,246,247);
+  background-color: #f5f6f7;
   left: 0%;
   padding: 0px;
   margin: 0px;
@@ -145,147 +150,31 @@ body {
   
 }
 
-/* 초록 위 배너 */
-.leftbody {
-    background-color: rgb(245,246,247);
-    width: 300px;
-    left: 500px;
-    padding: 0px;
-    margin: 0px;
-    min-width: 300px;
-}
-
-/* 검색창 초록 배너 */
-#up-mainfunc {
-  background-color: rgb(129,152, 97) ;  
-  height: 300px;
-  width: 420px;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  z-index: 10px;
-}
-/* we are vegan 글씨 */
-.maplogo_up {
-    position: absolute;
-    color: rgb(245,246,247);
-    width: 400px;
-    top: 40px;
-    left: 15%;
-    transform: translateY(-50%);
-    margin-left: 20px;
-    font-size: 45px;
-    font-weight: 1000px;
-}
-.add_store {
-  top: 20;
-  font-size: 15px;
-  text-decoration: none;
-  color: rgb(245,246,247);
-  padding: 0 38px;
-}
-.menu-list {
-  position: absolute;
-  margin-top: 15%;
-  left: 130;
-  font-size: 30px;
-}
-.menu-list .menu a {
-  text-decoration: none;
-  color: rgb(245,246,247);
-  padding: 0 38px;
-}
-
-/* 초록 아래 배너 */
-#down-mainfunc {
-    background-color: rgb(129,152, 97) ;  
-    height: 800px;
-    width: 420px;
-    position: fixed;
-    top: 310px;
-    right: 0px;
-    left: 0px;
-    z-index: 10px;
-    scroll-behavior: smooth;
-    
-}
-.sort_store {
-  position: absolute;
-  color: rgb(245,246,247);
-  width: 400px;
-  left: 250px;
-  top: 30px;
-  transform: translateY(-50%);
-  margin-left: 20px;
-  font-size: 15px;
-  font-weight: 500px;
-}
-.search_store {
-  position: absolute;
-  color: rgb(245,246,247);
-  width: 400px;
-  top: 100px;
-  left: 13%;
-  transform: translateY(-50%);
-  margin-left: 20px;
-  font-size: 30px;
-  font-weight: 1000px;
-}
-
-.store_text {
-  width: 600px;
-  color: rgb(245,246,247);
-}
-
-p, h4 {
-  margin: 0;
-}
-.store_text p {
-  top: 30;
-  margin-top: 40px;
-  font-size: 30px;
-  font-weight: 550;
-  color: rgb(245,246,247);
-}
-.store_text h4 {
-  
-  font-size: 17px;
-  font-weight: 450;
-  color: white;
-}
-
-        
-      </style>
+</style>
   </head>
-   
+  
   <body>
     <div class="pac-card" id="pac-card">
         <div>
           <div id="title">
-            Autocomplete search
+            WE ARE VEGAN
           </div>
           <div id="type-selector" class="pac-controls">
-            <input type="radio" name="type" id="changetype-all" checked="checked">
-            <label for="changetype-all">All</label>
-   
-            <input type="radio" name="type" id="changetype-establishment">
-            <label for="changetype-establishment">Establishments</label>
-   
-            <input type="radio" name="type" id="changetype-address">
-            <label for="changetype-address">Addresses</label>
-   
-            <input type="radio" name="type" id="changetype-geocode">
-            <label for="changetype-geocode">Geocodes</label>
-          </div>
-          <div id="strict-bounds-selector" class="pac-controls">
+            <!-- <input type="button" name="type"> -->
+            <a href="{% url 'vegan_info' %}"><h3>INFO</h3></a>
+            <a href="{% url 'vegan_area_add' %}"><h3>ADD</h3></a>
+            <a href="{% url 'store_save' %}"><h3>SAVE</h3></a>
+            <a href="{% url 'area_report' %}"><h3>REPORT</h3></a>                       
+         </div>
+          <!-- <div id="strict-bounds-selector" class="pac-controls">
             <input type="checkbox" id="use-strict-bounds" value="">
             <label for="use-strict-bounds">Strict Bounds</label>
-          </div>
+          </div> -->
         </div>
         <div id="pac-container">
           <input id="pac-input" type="text"
-              placeholder="Enter a location">
+              placeholder="Enter the name of the VEGAN store">
+          
         </div>
       </div>
       <div id="map"></div>
@@ -297,20 +186,21 @@ p, h4 {
 
       <div id="map"></div>   
       <script type="text/javascript">
-          function initMap() {
-   
+          
+          function initMap() {   
               //지도 스타일
               //var : 자바스크립트에서 모든 변수의 데이터타입을 표현
               var map = new google.maps.Map(document.getElementById('map'), {
                   
                   //처음 중심 좌표
                   center: {
-                      lat: 37, 
-                      lng: 126 
+                      lat: 36.605671, 
+                      lng: 128.1073013,
                   },                  
                   //처음 줌 값. 숫자가 작을수록 낮은 배율
                   zoom: 8
               });
+
         var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
         var types = document.getElementById('type-selector');
@@ -333,18 +223,128 @@ p, h4 {
               var locations = [
   
                   //place:"청주 여누",
-                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5> 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><h5>별점 4.5</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6341916, 127.4249196],
+                  ['<div class="wrap"><div class="text-box"><h4>여누</h4><div class="img-box"><img src="{% static "img/2.png" %}"/></div><h5>사진출처 : 구글 / 충청북도 청주시 흥덕구 복대동 990번지 KR 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6341916, 127.4249196],
                    //place:"청주 오프리",
-                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><h5>별점 4.8</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>',36.6196166,127.4296442],
+                  ['<div class="wrap"><div class="text-box"><h4>오프리</h4><div class="img-box"><img src="{% static "img/1.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 흥덕구 가경동 번지 1층 1929 KR 일부호 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.6196166,127.4296442],
                     //place:"청주 늘푸른식당",
-                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><h5>별점 - </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a target="_blank" href="#/""><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6481218, 127.479121],
+                  ['<div class="wrap"><div class="text-box"><h4>늘푸른식당</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 청주시 상당구 우암동 325-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
                    //place:"청주 스토리",
-                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5>충청북도 청주시 흥덕구 복대2동 </h5><h5>별점 4.9</h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/""><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6316732, 127.4318127],
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/4.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 흥덕구 복대2동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6316732, 127.4318127],
                    //place:"청주 하일",
-                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><h5>별점 5.0</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a target="_blank" href="#/"><h5>리뷰 보기</h5><h5>저장 하기</h5><h5>신고 하기</h5></a></div>', 36.6481164,127.4528564],
+                  ['<div class="wrap"><div class="text-box"><h4>하일</h4><div class="img-box"><img src="{% static "img/5.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 청주시 상당구 북문로1가 번지 3층 4-1 KR 반비반트</h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"러빙헛 송촌점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 송촌점</h4><div class="img-box"><img src="{% static "img/6.png" %}"/></div><h5> 사진출처 : 구글 / 대전광역시 대덕구 중리동 493-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.3645182,127.4363881],
+                  //place:"Vegan Buffet",
+                  ['<div class="wrap"><div class="text-box"><h4>Vegan Buffet</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청남도 천안시 동남구 신방동 530-4 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 -</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',36.793931,127.1510345,],
+                  //place:"배지그린",
+                  ['<div class="wrap"><div class="text-box"><h4>배지그린</h4><div class="img-box"><img src="{% static "img/9.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 강남구 개포동 개포로20길 24-10 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.4769333,127.0474939,],
+                  //place:"러빙헛카페",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛카페</h4><div class="img-box"><img src="{% static "img/10.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 강남구 개포동 개포로22길 35 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4768848,127.0492398,],
+                   //place:"도반",
+                  ['<div class="wrap"><div class="text-box"><h4>도반</h4><div class="img-box"><img src="{% static "img/11.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 서초구 양재동 263-15번지 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4762512,127.0425508,],
+                  //place:"러빙헛 스마일점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 스마일점</h4><div class="img-box"><img src="{% static "img/12.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 강남구 개포4동 논현로 18 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4734806,127.0508364,],
+                  //place:"남미플랜트랩",
+                  ['<div class="wrap"><div class="text-box"><h4>남미플랜트랩</h4><div class="img-box"><img src="{% static "img/13.png" %}"/></div><h5> 사진출처 : 구글 / 2층 455-20, 방배동 서초구 서울특별시 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.4805678,126.983086,],
+                  //place:"플랜트",
+                  ['<div class="wrap"><div class="text-box"><h4>플랜트</h4><div class="img-box"><img src="{% static "img/14.png" %}"/></div><h5> 사진출처 : 구글 / 2 floor, 117 보광로 이태원1동 용산구 서울특별시 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5330759,126.9940922,],
+                  //place:"스프라우트",
+                  ['<div class="wrap"><div class="text-box"><h4>스프라우트</h4><div class="img-box"><img src="{% static "img/15.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 용산구 이태원2동 회나무로13길 36 </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5408594,126.9896319,],
+                  //place:"베제투스",
+                  ['<div class="wrap"><div class="text-box"><h4>베제투스</h4><div class="img-box"><img src="{% static "img/16.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 용산구 용산2가동 22-12 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5436344,126.9871621,],
+                  //place:"비건스페이스",
+                  ['<div class="wrap"><div class="text-box"><h4>비건스페이스</h4><div class="img-box"><img src="{% static "img/17.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 용산구 용산동2가 46-1번지 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5541168,126.9298092,],
+                  //place:"드렁큰비건",
+                  ['<div class="wrap"><div class="text-box"><h4>드렁큰비건</h4><div class="img-box"><img src="{% static "img/19.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 마포구 창전동 와우산로30길 13 </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481164,127.4528564],
+                  //place:"소이로움",
+                  ['<div class="wrap"><div class="text-box"><h4>소이로움</h4><div class="img-box"><img src="{% static "img/18.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 누하동 필운대로 41 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5797021,126.9684406,],
+                  //place:"비건키친",
+                  ['<div class="wrap"><div class="text-box"><h4>비건키친</h4><div class="img-box"><img src="{% static "img/20.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 서대문구 연희동 연희로26가길 15 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5736557,126.935996,],
+                   //place:"반 BAAN",
+                  ['<div class="wrap"><div class="text-box"><h4>반 BAAN</h4><div class="img-box"><img src="{% static "img/21.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 서대문구 신촌동 연세로11길 21 2층 </h5><hr><h5>임시휴업</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5588313,126.9354202,],
+                  //place:"셰발레리 Chez Valerie",
+                  ['<div class="wrap"><div class="text-box"><h4>셰발레리 Chez Valerie</h4><div class="img-box"><img src="{% static "img/22.png" %}"/></div><h5> 사진출처 : 구글 / KR 서울특별시 마포구 포은로 52 1층 VEGAN </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5520304,126.9067351,],
+                   //place:"마지",
+                  ['<div class="wrap"><div class="text-box"><h4>마지</h4><div class="img-box"><img src="{% static "img/23.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 체부동 자하문로5길 19 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5776465,126.9708093,],
+                   //place:"채식주의자",
+                  ['<div class="wrap"><div class="text-box"><h4>채식주의자</h4><div class="img-box"><img src="{% static "img/24.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 통인동 102번지 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.580283,126.9707694,],
+                  //place:"Vegan Cafe",
+                  ['<div class="wrap"><div class="text-box"><h4>Vegan Cafe</h4><div class="img-box"><img src="{% static "img/25.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 통인동 자하문로13길 4-7 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5803349,126.9707633,],
+                  //place:"오세계향",
+                  ['<div class="wrap"><div class="text-box"><h4>오세계향</h4><div class="img-box"><img src="{% static "img/26.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 관훈동 인사동12길 14-5 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 37.5746333,126.9851174,],
+                  //place:"한과채",
+                  ['<div class="wrap"><div class="text-box"><h4>한과채</h4><div class="img-box"><img src="{% static "img/28.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 관훈동 인사동10길 13 </h5><hr><h5>매장 내 식사 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5743048,126.9855713,],
+                  //place:"어라운드 그린",
+                  ['<div class="wrap"><div class="text-box"><h4>어라운드 그린</h4><div class="img-box"><img src="{% static "img/29.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 마포구 망원2동 망원로 79 3층 1929 KR 일부호 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',37.5575354,126.9055319,],                  
+                  //place:"마루자연식김밥",
+                  ['<div class="wrap"><div class="text-box"><h4>마루자연식김밥</h4><div class="img-box"><img src="{% static "img/30.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 종로구 관훈동 인사동길 35-4 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.6481218, 127.479121],
+                   //place:"빛가람 채식뷔페&카페",
+                  ['<div class="wrap"><div class="text-box"><h4>스토리</h4><div class="img-box"><img src="{% static "img/31.png" %}"/></div><h5> 사진출처 : 구글 / 충청북도 충주시 안림동 91-1 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.9742263,127.9717381,],
+                  //place:"플랜티카 PLANTICA",
+                  ['<div class="wrap"><div class="text-box"><h4>플랜티카 PLANTICA</h4><div class="img-box"><img src="{% static "img/32.png" %}"/></div><h5> 사진출처 : 구글 / 전라북도 전주시 완산구 중앙동3가 14-9 KR 1F </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><h5>배달서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.8179038,127.1445976, ],
+                  //place:"채식주의자의무화과",
+                  ['<div class="wrap"><div class="text-box"><h4>채식주의자의무화과</h4><div class="img-box"><img src="{% static "img/33.png" %}"/></div><h5> 사진출처 : 구글 / 전라북도 전주시 완산구 중화산동2가 번지 1층 20-10 KR </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.815694,127.1283387,],
+                  //place:"러빙헛서신점비건뷔페",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛서신점비건뷔페</h4><div class="img-box"><img src="{% static "img/34.png" %}"/></div><h5> 사진출처 : 구글 / 전라북도 전주시 완산구 서신동 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 -</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.8317334,127.1182951,],
+                  //place:"미쁨채식뷔페",
+                  ['<div class="wrap"><div class="text-box"><h4>미쁨채식뷔페</h4><div class="img-box"><img src="{% static "img/35.png" %}"/></div><h5> 사진출처 : 구글 / 전라북도 완주군 소양면 해월리 736-2 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.851779,127.2581448,],
+                  //place:"비건테이블",
+                  ['<div class="wrap"><div class="text-box"><h4>비건테이블</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 경상남도 하동군 화개면 용강리 141-3 KR </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.2408979,127.6417736,],
+                   //place:"러빙헛 코리천국점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 코리천국점</h4><div class="img-box"><img src="{% static "img/36.png" %}"/></div><h5> 사진출처 : 구글 / 경상남도 진주시 하대2동 도동로 238 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1914667,128.1221366,],
+                  //place:"슬로우스테디",
+                  ['<div class="wrap"><div class="text-box"><h4>슬로우스테디</h4><div class="img-box"><img src="{% static "img/37.png" %}"/></div><h5> 사진출처 : 구글 / 경상남도 함안군 가야읍 도항리 339-1번지 KR </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.2733315,128.3974689,],
+                  //place:"Loving Hut",
+                  ['<div class="wrap"><div class="text-box"><h4>Loving Hut</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 경상남도 진주시 하대2동 도동로 238 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1915525,128.1220349,],
+                  //place:"HOME Bistro and Cafe",
+                  ['<div class="wrap"><div class="text-box"><h4>HOME Bistro and Cafe</h4><div class="img-box"><img src="{% static "img/38.png" %}"/></div><h5> 사진출처 : 구글 / 5, jung dong, 2-ro, 26 beon-gil, 해운대구 부산광역시 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.164227,129.1636219,],
+                  //place:"다전",
+                  ['<div class="wrap"><div class="text-box"><h4>다전</h4><div class="img-box"><img src="{% static "img/15.png" %}"/></div><h5> 사진출처 : 구글 / 부산광역시 부산진구 부전2동 신천대로62번길 61 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.153562,129.0581692,],
+                  //place:"베지나랑 2호점",
+                  ['<div class="wrap"><div class="text-box"><h4>베지나랑 2호점</h4><div class="img-box"><img src="{% static "img/40.png" %}"/></div><h5> 사진출처 : 구글 / 부산광역시 수영구 민락동 광안해변로370번길 9-32 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><h5>배달 서비스 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.156633,129.1341752,],
+                  //place:"Love Urth",
+                  ['<div class="wrap"><div class="text-box"><h4>Love Urth</h4><div class="img-box"><img src="{% static "img/41.png" %}"/></div><h5> 사진출처 : 구글 / 서울특별시 용산구 용산동2가 46-1번지 1층 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1564449,129.1185228,],
+                  //place:"콩스랑 Bean's Cook",
+                  ['<div class="wrap"><div class="text-box"><h4>콩스랑 Beans cook</h4><div class="img-box"><img src="{% static "img/42.png" %}"/></div><h5> 사진출처 : 구글 / 부산광역시 수영구 수영동 479-1 </h5><hr><h5>매장 내 식사 x</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1732745,129.1161139, ],
+                  //place:"45 Vegan Bakery and Cafe",
+                  ['<div class="wrap"><div class="text-box"><h4>45 Vegan Bakery and Cafe</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 부산광역시 수영구 수영동 연수로357번길 17-10 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1721488,129.1100558,],
+                  //place:"에코토피아",
+                  ['<div class="wrap"><div class="text-box"><h4>에코토피아</h4><div class="img-box"><img src="{% static "img/43.png" %}"/></div><h5> 사진출처 : 구글 / 부산광역시 수영구 남천동 수영로408번길 30-6 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.141543,129.109526,],
+                   //place:"잇드링크비건",
+                  ['<div class="wrap"><div class="text-box"><h4>잇드링크비건</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 부산광역시 부산진구 전포동 204-6 </h5><hr><h5>매장 내 식사 -</h5><h5>테이크 아웃 -</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.1579784,129.067611,],
+                  //place:"나유타카페",
+                  ['<div class="wrap"><div class="text-box"><h4>나유타카페</h4><div class="img-box"><img src="{% static "img/44.png" %}"/></div><h5> 사진출처 : 구글 / 부산광역시 금정구 장전동 수림로61번길 53 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.2374078,129.0856674,],
+                   //place:"예인",
+                  ['<div class="wrap"><div class="text-box"><h4>예인</h4><div class="img-box"><img src="{% static "img/46.png" %}"/></div><h5> 사진출처 : 구글 / 연산동 479-17번지 2층 연제구 부산광역시 KR </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 x</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.1831219,129.1067769,],
+                   //place:"러빙헛 로데오점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 로데오점</h4><div class="img-box"><img src="{% static "img/47.png" %}"/></div><h5> 사진출처 : 구글 / 대구광역시 수성구 범어동 96-1 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 35.8548007,128.6385398,],
+                  //place:"러빙헛 효목점",
+                  ['<div class="wrap"><div class="text-box"><h4>러빙헛 효목점</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 대구광역시 동구 효목2동 화랑로25길 34 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>',35.8768477,128.6409738,],
+                  //place:"비건쿡",
+                  ['<div class="wrap"><div class="text-box"><h4>비건쿡</h4><div class="img-box"><img src="{% static "img/3.png" %}"/></div><h5> 충청북도 영동군 영동읍 매천리 119 </h5><hr><h5>매장 내 식사 ○</h5><h5>테이크 아웃 ○</h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', 36.1659196,127.7898077,],
+
+     
+                  //검색시 나타나는 부분
+                  ['<div class="wrap"><div class="text-box"><h4>검색하신 장소입니다</h4></div><h5></h5><hr><h5></h5><h5></h5><hr><a href="{% url "store_save" %}"><h5>SAVE</a></h5><a href="{% url "area_report" %}"><h5>REPORT</h5></a> </div>', ],
+
   
             ]     
-              
+            var request = {
+      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+      fields: ['name', 'rating', 'formatted_phone_number', 'geometry','photo']
+      };
+
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, callback);
+      //
+      // console.log(service.getDetails);
+      //
+      function callback(place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+              createMarker(place);
+          }
+      }        
+       
               //마커 이미지
               var customicon = 'http://drive.google.com/uc?export=view&id=1tZgPtboj4mwBYT6cZlcY36kYaQDR2bRM'
    
@@ -418,9 +418,9 @@ p, h4 {
             ].join(' ');
           }
  
-          infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-address'].textContent = address;
+          // infowindowContent.children['place-icon'].src = place.icon;
+          // infowindowContent.children['place-name'].textContent = place.name;
+          // infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);
         });
  
@@ -431,8 +431,8 @@ p, h4 {
           radioButton.addEventListener('click', function() {
             autocomplete.setTypes(types);
           });
-        }
- 
+        } 
+
         setupClickListener('changetype-all', []);
         setupClickListener('changetype-address', ['address']);
         setupClickListener('changetype-establishment', ['establishment']);
@@ -442,110 +442,23 @@ p, h4 {
             .addEventListener('click', function() {
               console.log('Checkbox clicked! New state=' + this.checked);
               autocomplete.setOptions({strictBounds: this.checked});
-            });
-      
+            });      
         }
+
+  
+        
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjM9mpO9_qqSTjiOSnyPy5ssVsAfb3NsY&libraries=places&callback=initMap"
-        async defer></script> 
-     
-      
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap"
+        async defer></script> -->
+        
+        <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA9hhCszWY6L_6EHUL3f4TafpkZkEkPME&libraries=places&callback=initMap">
+</script>
   </body></html>
   
 
    <!-- 지도 불러오는 부분 끝-->
 
-   <!-- 왼쪽 배너 -->
-   <leftbody>
 
-    <section id="up-mainfunc">
-        <div class="maplogo_up">
-          We are Vegan
-          <div class="add_store">
-            <a href="{% url 'vegan_area_add' %}">비건도 먹을 수 있는 음식점! 추가하기</a>
-          </div> 
-          <div class="search_store">
-            <input type="search" value="" >
-            <input type="submit" value="검색">
-          </div>         
-          <div class="menu-list">            
-            <div class="menu">
-              <a href="{% url 'vegan_info' %}">info</a>
-            </div> 
-            <div class="menu">
-                <a href="#">음식점</a>
-            </div>
-            <div class="menu">
-              <a href="#">카페</a>
-            </div>
-                  
-        </div>   
-    </section>
-
-    <section id="down-mainfunc">
-      <!-- 정렬 기능 아직, 링크만 걸어뒀어요 -->      
-      <div class="sort_store"> 
-        <a href="{% url 'map_main' %}">최신순</a>
-        <a href="{% url 'map_main' %}">별점순</a>
-        <!-- 이렇게 위로 두줄 링크 건 부분 -->
-      </div>
-      <div style=
-      "overflow:scroll; width:410px; height:800px; padding:10px; background-color:rgb(129,152, 97) ; ">
-
-          <div class="store_text">
-            <a href="{% url 'map_main' %}"><p>여누</p></a>            
-            <h4>평점 : 4.5<h4>
-            <h4>충청북도 청주시 흥덕구 복대동 990번지 KR 1층<h4>
-            <h4>매장 내 식사 / 테이크아웃 <h4>
-          
-            <a href="{% url 'map_main' %}"><p>오프리</p></a>            
-            <h4>평점 : 4.9<h4>
-            <h4>충청북도 청주시 흥덕구 가경동 번지 1층</h4>
-            <h4>1929 KR 일부호<h4>
-            <h4>매장 내 식사 / 테이크아웃 <h4>
-
-            <a href="{% url 'map_main' %}"><p>늘푸른식당</p></a>            
-            <h4>평점 : 3.8<h4>
-            <h4>충청북도 청주시 상당구 우암동 325-6<h4>
-            <h4>매장 내 식사 <h4>
-
-            <a href="{% url 'map_main' %}"><p>스토리</p></a>            
-            <h4>충청북도 청주시 흥덕구 복대2동<h4>
-
-            <a href="{% url 'map_main' %}"><p>하일</p></a>            
-            <h4>충청북도 청주시 상당구 북문로1가 번지 3층</h4>
-            <h4> 4-1 KR 반비반트<h4>
-            <h4>테이크아웃<h4>        
-
-            <a href="{% url 'map_main' %}"><p>러빙헛</p></a>            
-            <h4>평점 : 3.9<h4>
-            <h4>채식(Vegan) / 대전광역시 대덕구 중리동 493-6<h4>
-            <h4>매장 내 식사 / 테이크아웃 <h4>
-    
-            <a href="{% url 'map_main' %}"><p>비건바닐라</p></a>            
-            <h4>평점 : 4.9<h4>
-            <h4>제과점, 대전광역시 서구 갈마동 781<h4>
-            <h4>테이크아웃 <h4>              
-
-            <a href="{% url 'map_main' %}"><p>세이비건</p></a>      
-            <h4>평점 : 5.0<h4>      
-            <h4>식료품점, 대전광역시 유성구 노은2동 917-5<h4>
-    
-            <a href="{% url 'map_main' %}"><p>에이블리</p></a>            
-            <h4>평점 : 4.0<h4>
-            <h4>대전광역시 유성구 전민동 364-4번지 1층<h4>
-            <h4>매장 내 식사 / 테이크아웃 <h4>
-       
-            <a href="{% url 'map_main' %}"><p>채식주의자의무화과</p></a>            
-            <h4>평점 : 4.8<h4>
-            <h4>전라북도 전주시 완산구 중화산동2가 번지 1층</h4>
-            <h4> 20-10 KR<h4>
-            <h4>매장 내 식사 / 테이크아웃 <h4>
-          </div>
-      </div>
-
-  </section>   
-</leftbody>
-
-</html>  
+</html>

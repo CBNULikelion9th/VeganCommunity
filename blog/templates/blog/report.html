@@ -3,8 +3,84 @@
 <html>
 <head>
 <title>Post Reporting Page</title>
+<link rel="stylesheet" />
+<style>
+    body {
+  background-color: rgb(129,152, 97);
+  padding: 0;
+  margin: 0;
+  min-width: 1000px;
+}
 
-<link href="{% static 'blog/layout.css' %}" rel="stylesheet" />
+#header {
+height: 200px;
+width: 1000px;
+position: fixed;
+top: 0%;
+right: 0%;
+left: 1300px;
+z-index: 10px;
+}
+.logo {
+  position: relative;
+  top: 50px; left: 50px;  
+  color: rgb(245,246,247);
+  
+  transform: translateY(-50%);
+  font-size: 80px;
+  font-weight: 1000px;
+}
+.content-report {
+position: absolute;
+color: rgb(245,246,247);
+top: 100%;
+width: 500px;
+transform: translateY(-3%);
+margin-left: 160px;
+font-size: 50px;
+font-weight: 300px;
+}
+#form-outline {
+height: 600px;
+width: 800px;
+background-color: rgb(117, 117, 117, 0.452);
+margin-top: 275px;
+margin-left: 590px;
+position: relative;
+overflow: hidden;
+}
+
+.form-inline{
+height: 500px;
+width: 700px;
+background-color: rgb(245,246,247);
+margin-top: 50px;
+margin-left: 50px;
+position: relative;
+overflow: hidden;
+}
+
+.report-title {
+  position: absolute;
+  display: flex;
+  margin-top: -430px;
+  margin-left: 300px;
+  font-size: 35px;
+  font-weight: 500px;
+  transform: translateX(-50%);
+}
+.form-content {
+position: absolute;
+display: flex;
+width: 1000px;
+margin-top: 100px;
+margin-left: 500px;
+font-size: 20px;
+font-weight: 300px;
+color: #3f3d3d;
+transform: translateX(-50%);
+}
+</style>
 </head>
 
 <body>
@@ -22,7 +98,7 @@
         <div class = "report-title">
            신고사유를 입력해주세요           
            <div class = "form-content">               
-             <form action="{% url 'area_report %'}" method='Report'>
+             <form action="{% url 'area_report' %}" method='POST'>
                {% csrf_token %}
                {{form.as_p}}   
                <hr>           

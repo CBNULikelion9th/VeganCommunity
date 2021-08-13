@@ -5,7 +5,7 @@ from . import foodapi
 from .models import Ingredient, FoodNutrients, Products, ShoppingMall
 from . import crawl
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 import random
 
 from .jsondata.cate2_data import filter_list2
@@ -20,7 +20,8 @@ imglink = []
 filter_list = []
 
 result = foodapi.read_data()    # json 읽어옴
-foodset = result["I2790"]["row"]
+
+foodset = result['I2790']['row']
 for i in range(0,len(result["I2790"]["row"])):
     food_list.append(foodset[i]["DESC_KOR"])
 

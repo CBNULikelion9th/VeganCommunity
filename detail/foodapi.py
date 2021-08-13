@@ -1,17 +1,18 @@
 from urllib.request import Request, urlopen
 import json
 import urllib
+import urllib.request as ur
 import os
-from dotenv import load_dotenv
 
 def read_data():
-    load_dotenv(verbose=False)
-    GOOGLE_SEARCH_ENGINE_KEY = os.getenv('GOOGLE_SEARCH_ENGINE_KEY2')
+    GOOGLE_SEARCH_ENGINE_KEY = os.environ.get('GOOGLE_SEARCH_ENGINE_KEY2')
+
     startRow = 1
     endRow = 150
     url = 'http://openapi.foodsafetykorea.go.kr/api/'+GOOGLE_SEARCH_ENGINE_KEY+'/I2790/json/'+str(startRow)+'/'+str(endRow)
+    
+    req = urllib.request.Request(url)
+    response = urllib.request.urlopen(req)
+    result = json.loads(response.read().decode('utf-8'))
 
-    data = urllib.request.urlopen(url).read()
-    output = json.loads(data)
-
-    return output
+    return result

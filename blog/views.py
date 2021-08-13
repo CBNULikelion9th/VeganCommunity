@@ -1,43 +1,55 @@
-from django.shortcuts import render
-from .forms import PostForm, ReportForm
+from django.shortcuts import redirect, render
+from .forms import  PostForm, ReportForm, SaveForm, AddForm
 from .models import Post
 
 
 # Create your views here.
 
-
 def map_main(request):
     return render(request, 'blog/main.html')
-
-def test(request):
-    return render(request, 'blog/test.html')
-
 def vegan_info(request):
     return render(request, 'blog/info.html')
 
+
+
 def store_save(request):
-    return render(request, 'blog/save.html')
+    if request.method == 'GET':
+        form = SaveForm()
+    elif request.method == 'POST':
+        form = SaveForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('map_main',)
 
-def exception(request):
-    return render(request, 'blog/exception.html')
-
-def mypage(request):
-    return render(request, 'blog/mypage.html')
+    return render(request, 'blog/save.html',{
+        'form':form,
+    })
 
 def area_report(request):
     if request.method == 'GET':
         form = ReportForm()
+    elif request.method == 'POST':
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('map_main')
 
-        return render(request, 'blog/report.html', {
-           'form' : form,
+    return render(request, 'blog/report.html',{
+        'form':form,
     })
+
+
 def vegan_area_add(request):
     if request.method == 'GET':
-        form = PostForm()
+        form = PostForm()        
+    elif request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('map_main',)
 
-        return render(request, 'blog/add.html', {
-           'form' : form,
+    return render(request,'blog/add.html',{
+        'form':form,
     })
-
 
 

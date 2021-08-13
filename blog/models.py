@@ -20,6 +20,14 @@ class Report(models.Model):
         return self.title
 
 
+class Save(models.Model):
+    save_title = models.CharField(max_length=100)
+    save_content = models.TextField(default = '')
+
+    def __str__(self):
+        return self.title
+
+
 class Add(models.Model):
     add_title = models.CharField(max_length=100)
     add_content = models.TextField(default = '')

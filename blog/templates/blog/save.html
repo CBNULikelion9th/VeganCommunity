@@ -1,42 +1,111 @@
 {% load static %}
+
 <html>
 <head>
-<title>Post Save Page</title>
-<link href="{% static 'blog/base.css' %}" rel="stylesheet" />
+<title>Save Store</title>
+<!-- <link href="{% static 'blog/layout.css' %}" rel="stylesheet" /> -->
+<link rel="stylesheet" />
+
+<style>
+body {
+  background-color: rgb(129,152, 97);
+  padding: 0;
+  margin: 0;
+  min-width: 1000px;
+}
+
+#header {
+height: 200px;
+width: 1000px;
+position: fixed;
+top: 0%;
+right: 0%;
+left: 1300px;
+z-index: 10px;
+}
+.logo {
+  position: relative;
+  top: 100px;
+  margin: 50px;
+  color: rgb(245,246,247);  
+  transform: translateY(-50%);
+  font-size: 80px;
+  font-weight: 1000px;
+}
+.content-save {
+position: absolute;
+color: rgb(245,246,247);
+top: 100%;
+transform: translateY(-3%);
+margin-left: 420px;
+font-size: 50px;
+font-weight: 300px;
+}
+
+#form-outline {
+height: 600px;
+width: 800px;
+background-color: rgb(117, 117, 117, 0.452);
+margin-top: 275px;
+margin-left: 590px;
+position: relative;
+overflow: hidden;
+}
+
+.form-inline{
+height: 500px;
+width: 700px;
+background-color: rgb(245,246,247);
+margin-top: 50px;
+margin-left: 50px;
+position: relative;
+overflow: hidden;
+}
+
+.save-title {
+    position: absolute;
+    margin-top: -430px;
+    margin-left: 200px;
+    font-size: 35px;
+}
+
+.form-content {
+    margin-top: 100px;
+    margin-left: 125px;
+    color: #3f3d3d;
+    font-size: 15px;
+    transform: translateX(-50%);
+}
+
+
+</style>
 </head>
+
 <body>
     <section id="header">
         <div class="logo">
             We are Vegan
-            <div class="content-save">
-                _save
+            <div class="content-report">
+                _ Save Store 
             </div>
         </div>
     </section> 
+
     <section id="form-outline">
-        <div class="form-inline"></div>
+    <div class="form-inline"></div>
         <div class = "save-title">
-           저장되었습니다
-           <div class = "form-content">     
-               MYPGAE로 이동하시겠습니까?          
-               <div class="form-button">
-                
-                <a href="{% url 'map_main' %}">MAIN으로</a>
-                <a href="{% url 'mypage' %}">MYPAGE로</a>                
-               </div> 
-
-            </div>
+           가게이름을 입력해주세요           
+           <div class = "form-content">               
+             <form action="{% url 'store_save' %}" method='POST' >
+               {% csrf_token %}
+               {{form.as_p}}   
+               <hr>           
+               <input type="submit" value="저장하기">
+             </form> 
+            </div> 
         </div>
+    </div>
+    
     </section>
-
-    
-          
-            
-    
-
-          
-    
-    
-  
 </body>
 </html> 
