@@ -19,17 +19,25 @@ filter_list1=["더덕구이", "도미구이","병어구이"]  # 필터링 요소
 imglink = []
 filter_list = []
 
-result = foodapi.read_data()    # json 읽어옴
+# result = foodapi.read_data()    # json 읽어옴
 
-foodset = result['I2790']['row']
-for i in range(0,len(result["I2790"]["row"])):
-    food_list.append(foodset[i]["DESC_KOR"])
+# foodset = result['I2790']['row']
+# for i in range(0,len(result["I2790"]["row"])):
+#     food_list.append(foodset[i]["DESC_KOR"])
 
-    index.append(i)
+#     index.append(i)
 
 def info(request):
     category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")  # 처음엔 카테고리 1을 보여줌
     check=1 
+
+    foodset = foodapi.read_data()    # json 읽어옴
+
+    # foodset = result['I2790']['row']
+    for i in range(0,len(foodset)):
+        food_list.append(foodset[i]["DESC_KOR"])
+
+    index.append(i)
 
     context ={
         'category':category,
