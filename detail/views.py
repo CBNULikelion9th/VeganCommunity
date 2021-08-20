@@ -1,47 +1,34 @@
 from django.shortcuts import render
 from django.conf import settings
 import urllib.request as ul
-from . import foodapi
+# from . import foodapi
 from .models import Ingredient, FoodNutrients, Products, ShoppingMall
 from . import crawl
 from urllib.request import urlopen
 # from bs4 import BeautifulSoup
 import random
-
+from .jsondata.cate1_data import food_list_set
 from .jsondata.cate2_data import filter_list2
 from .jsondata.cate3_data import filter_list3
 from .jsondata.detail_crawl import imgcrawl
+from random import shuffle
 
 index = []      # 해당 음식의 인덱스
-food_list= []   # api로 가져온 전체 음식리스트
+food_list= food_list_set   # api로 가져온 전체 음식리스트
 # check=1         # 카테고리 구분
 filter_list1=["더덕구이", "도미구이","병어구이"]  # 필터링 요소에 따른 음식리스트
 imglink = []
 filter_list = []
 
-# result = foodapi.read_data()    # json 읽어옴
-
-# foodset = result['I2790']['row']
-# for i in range(0,len(result["I2790"]["row"])):
-#     food_list.append(foodset[i]["DESC_KOR"])
-
-#     index.append(i)
-
 def info(request):
     category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")  # 처음엔 카테고리 1을 보여줌
     check=1 
 
-    foodset = foodapi.read_data()    # json 읽어옴
-
-    # foodset = result['I2790']['row']
-    for i in range(0,len(foodset)):
-        food_list.append(foodset[i]["DESC_KOR"])
-
-    index.append(i)
+    print(food_list)
 
     context ={
         'category':category,
-        'index' : index,
+        # 'index' : index,
         'food_list':food_list,
         'check':check
     }
@@ -105,11 +92,14 @@ def filter(request, check):
 
         if check == 1:
             category = Ingredient(f1="나물",f2="구이",f3="떡",f4="국",f5="면")
-        
-            for item in selected:
-                for i in range(1,len(food_list)):    
-                    if item in food_list[i]:
-                        filter_list1.append(food_list[i]) # 필터링값에 따라 보여줄 리스트
+            shuffle(food_list)
+            while len(filter_list1) < 3 :
+                for item in selected:
+                    for i in range(1,len(food_list)):    
+                        if item in food_list[i]:
+                            if food_list[i] not in filter_list1:
+                                filter_list1.append(food_list[i]) # 필터링값에 따라 보여줄 리스트
+                                break
 
             for item in filter_list1:
                 imglink.append(str(crawl.crawling(item)))   # 이미지 크롤링
@@ -122,7 +112,7 @@ def filter(request, check):
 
         elif check == 2:
             from .jsondata.cate2_data import filter_list2
-
+            shuffle(filter_list2)
             filter_check = []
             category =  FoodNutrients(f1="열량",f2="탄수화물",f3="단백질",f4="지방",f5="당류",f6="콜레스테롤")
             for item in selected:
@@ -146,25 +136,40 @@ def filter(request, check):
             }
 
         elif check == 3:
+            from .jsondata.detail_crawl import imgcrawl
+            imglink.clear()
             filter_list.clear()
             filter_check = []
             category =  Products(f1="채소류",f2="과일류",f3="곡류")
+
             for item in selected:
                 if item == "채소류":
                     filter_check.append(1)
-                    filter_list.append(filter_list3[0][random.randrange(1,8)])
+                    filter = filter_list3[0][random.randrange(1,8)]
+                    filter_list.append(filter)
+                    imglink.append(str(imgcrawl(filter)))
                 if item == "과일류":
                     filter_check.append(2)
-                    filter_list.append(filter_list3[1][random.randrange(1,8)])
+                    filter = filter_list3[1][random.randrange(1,8)]
+                    filter_list.append(filter)
+                    imglink.append(str(imgcrawl(filter)))
                 if item == "곡류":
                     filter_check.append(3)
+                    filter = filter_list3[2][random.randrange(1,8)]
+                    filter_list.append(filter)
+                    imglink.append(str(imgcrawl(filter)))
 
-                    filter_list.append(filter_list3[2][random.randrange(1,8)])
+            while len(filter_list) < 3:
+                for filter in filter_check:
+                    filter = filter_list3[filter][random.randrange(1,8)]
+                    filter_list.append(filter)
+                    imglink.append(str(imgcrawl(filter)))
 
             context = {
                 'check':check,
                 'category':category,
                 'filter_check':filter_check,
+                'imglink': imglink,
                 'filter_list':filter_list,
             }
 

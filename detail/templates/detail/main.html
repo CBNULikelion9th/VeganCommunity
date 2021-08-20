@@ -58,8 +58,7 @@
                         </ul>
                     </div>
                     <div class="row-6 filtering">
-                        <p style="margin-left: 5%;">🥗보고싶은 요소를 선택하세요 !
-                        <br>🥗 해시태그를 누르면 더 많은 사진을 볼 수 있어요 !</p>
+                        <p style="margin-left: 5%;">🥗 보고싶은 요소를 선택하세요 !</p>
                        <form action="{% url 'filter' check %}" method="POST">
                         {% csrf_token %}
                         {% if category %}
