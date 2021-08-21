@@ -1,4 +1,8 @@
-<h1>회원가입에 성공했습니다</h1>
+{% load static %}
+<head>
+    <link href= "{% static './css/home.css' %}" rel="stylesheet">
+</head>
+<p1>VEGANIA</p1>
+<h4>회원가입에 성공했습니다</h4>
 <hr>
-메인페이지로 이동
-<a href="{% url 'mainpage' %}"><input type="button" value="메인으로 이동"></a>
+<h4><a href="{% url 'mainpage' %}"><input type="button" value="메인으로 이동"></a></h4>

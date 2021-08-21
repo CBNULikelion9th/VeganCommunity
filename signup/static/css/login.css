@@ -11,15 +11,25 @@ h4{
     margin-bottom: 0px;
     margin-left: 650px;
     margin-right: 0;
+    text-align: center;
 }
 p1{
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-left: 600px;
+    margin-left: 650px;
     margin-right: 0;
     font-size: 60;
     text-align: center;
     color: rgb(129,152, 97) ;
     font-weight: bolder;
 
+}
+
+h7{
+
+    margin-top: 30px;
+    margin-bottom: 0px;
+    margin-left: 650px;
+    margin-right: 0;
+    text-align: center;
 }
