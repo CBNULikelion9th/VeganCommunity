@@ -65,7 +65,7 @@ from django.contrib.auth.forms import (
 
 class UserPasswordResetView(PasswordResetView):
     template_name = 'password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
-    success_url = 'password_reset_done'
+    # success_url = 'password_reset_done.html'
     form_class = PasswordResetForm
     
     def form_valid(self, form):
