@@ -17,16 +17,24 @@
     </head>
     <body>
         <!-- Navigation-->
+        
+        {% if user.is_active %}
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'mainpage' %}">Vegania</a>
                 <a class="navbar-brand">{{request.user.username}}</a>
-                <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
-                <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
                 <a class="btn btn-primary" href="{% url 'logout' %}">Log out</a>
             </div>
         </nav>
-
+        {% else %}
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'mainpage' %}">Vegania</a>
+                <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+                <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
+            </div>
+        </nav>
+        {% endif %}
         <!-- Icons Grid-->
         <section class="features-icons bg-light text-center">
             <div class="container">

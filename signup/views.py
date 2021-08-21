@@ -58,5 +58,23 @@ def reset_password(request):
 def index(request):
     return render(request, 'index.html')
 
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView
+from django.contrib.auth.forms import (
+    AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
+)
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+    # success_url = 'password_reset_done.html'
+    form_class = PasswordResetForm
+    
+    def form_valid(self, form):
+        if User.objects.filter(email=self.request.POST.get("email")).exists():
+            return super().form_valid(form)
+        else:
+            return render(self.request, 'password_reset_done_fail.html')
+            
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'password_reset_done.html' #템플릿을 변경하려면 이와같은 형식으로 입력
 
 
