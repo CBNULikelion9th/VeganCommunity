@@ -8,8 +8,4 @@ urlpatterns = [
     path('area_report/', views.area_report, name='area_report'),
     path('vegan_area_add/', views.vegan_area_add, name='vegan_area_add'),
 
-
-
-    
-
 ]
