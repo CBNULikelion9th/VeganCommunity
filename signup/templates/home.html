@@ -5,7 +5,7 @@
     <link href= "{% static './css/home.css' %}" rel="stylesheet">
 </head>
 
-<h3> VEGANIA </h3>
+<h3>VEGANIA </h3>
 
 <body>
     <p><a href="{% url 'login' %}"><input type="button" value="로그인 하기"></a>
@@ -16,7 +16,8 @@
     <a href="{% url 'signup' %}"><input type="button" value="회원가입"></a>
     </h1>
     <h2>
-    <a href="{% url 'reset_password' %}"><input type="button" value="비밀번호초기화"></a>
+    <a href="{% url 'reset_password' %}"><input type="button" value="비밀번호초기화"></a></h2>
+    <h2><a href="{% url 'mainpage' %}"><input type="button" value="메인페이지로"></a>
     </h2>
 </body>
 
