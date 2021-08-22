@@ -1,0 +1,9 @@
+{% load static %}
+<head>
+    <link href= "{% static './css/home.css' %}" rel="stylesheet">
+</head>
+<p1>VEGANIA</p1>
+<h4>로그인에 실패했습니다</h4>
+<hr>
+<h4><a href="{% url 'mainpage' %}"><input type="button" value="메인으로 이동"></a></h4>
+<h4><a href="{% url 'login' %}"><input type="button" value="다시로그인하기"></a></h4>
