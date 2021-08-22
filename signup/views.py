@@ -31,7 +31,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             #로그인 성공시 메인화면
-            return render(request, 'loginsucess.html')
+            return render(request, 'loginsuc.html')
 
         else:
 
